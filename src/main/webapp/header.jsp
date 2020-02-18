@@ -1,17 +1,12 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Product - Agriturismo Sarella</title>
-    <meta name="description" content="I cinghiali lo amano, i sanpietresi lo temono.">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-    <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">
-    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <title>Header - Agriturismo Sarella</title>
+    <%@include file="include.jsp"%>
 </head>
 
 <body>
@@ -24,7 +19,7 @@
                     <table class="table table-bordered table-sm">
                         <tbody>
                             <tr>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/index.html" style="color: rgb(134,138,143);" title="Home">Home</a></td>
+                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/index.jsp" style="color: rgb(134,138,143);" title="Home">Home</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="rooms/rooms-catalog-page.html" style="color: rgb(134,138,143);" title="Rooms">Rooms</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/about-us.html" style="color: rgb(134,138,143);" title="About us">About us</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a><a class="text-center border rounded d-none small-padding btn btn-info"
@@ -71,9 +66,9 @@
                     <h4 class="modal-title">RegistrationForm</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group"><label for="name">Nome</label><input class="form-control item" type="text" id="reg-name" placeholder="Your name"></div>
-                        <div class="form-group"><label for="name">Cognome</label><input class="form-control item" type="text" id="reg-surname" placeholder="Your surname"></div>
-                        <div class="form-group"><label for="name">Data di nascita</label><input class="form-control item" id="reg-date" type="date"></div>
+                        <div class="form-group"><label >Nome</label><input class="form-control item" type="text" id="reg-name" placeholder="Your name"></div>
+                        <div class="form-group"><label >Cognome</label><input class="form-control item" type="text" id="reg-surname" placeholder="Your surname"></div>
+                        <div class="form-group"><label >Data di nascita</label><input class="form-control item" id="reg-date" type="date"></div>
                         <div class="form-group"><label for="password">Password</label><input class="form-control item" type="password" id="reg-password" placeholder="Your password"></div>
                         <div class="form-group"><label for="email">Email</label><input class="form-control item" type="email" id="reg-email" placeholder="Your e-mail"></div>
                     </form>
