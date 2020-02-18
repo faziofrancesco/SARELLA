@@ -8,6 +8,17 @@ public class Camera {
     private String descrizione;
     private String imagePath;
 
+    public Camera(Integer idCamera, Integer tipologia, Integer numPersone, Double prezzo, String descrizione, String imagePath) {
+        this.idCamera = idCamera;
+        this.tipologia = tipologia;
+        this.numPersone = numPersone;
+        this.prezzo = prezzo;
+        this.descrizione = descrizione;
+        this.imagePath = imagePath;
+    }
+
+    public Camera() {}
+
     public Integer getIdCamera() {
         return idCamera;
     }
@@ -55,15 +66,4 @@ public class Camera {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-
-    public Camera(Integer idCamera, Integer tipologia, Integer numPersone, Double prezzo, String descrizione, String imagePath) {
-        this.idCamera = idCamera;
-        this.tipologia = tipologia;
-        this.numPersone = numPersone;
-        this.prezzo = prezzo;
-        this.descrizione = descrizione;
-        this.imagePath = imagePath;
-    }
-
-    public Camera() {}
 }

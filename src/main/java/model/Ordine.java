@@ -5,13 +5,13 @@ public class Ordine {
     private Integer idClienteFk;
     private Integer idPagamentoFk;
 
-    public Ordine(Integer idClienteFk, Integer idPagamentoFk) {
+    public Ordine(Integer idOrdine, Integer idClienteFk, Integer idPagamentoFk) {
+        this.idOrdine = idOrdine;
         this.idClienteFk = idClienteFk;
         this.idPagamentoFk = idPagamentoFk;
     }
 
-    public Ordine() {
-    }
+    public Ordine() {}
 
     public Integer getIdOrdine() {
         return idOrdine;

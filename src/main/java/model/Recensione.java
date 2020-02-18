@@ -5,18 +5,21 @@ import java.sql.Timestamp;
 public class Recensione {
     private Integer idRecensione;
     private Integer idClienteFk;
-    private Integer  idOrdineFk;
+    private Integer idOrdineFk;
     private Integer idVotoFk;
     private String descrizione;
     private Timestamp dataRecensione;
 
-    public Recensione(Integer idClienteFk, Integer idOrdineFk, Integer idVotoFk, String descrizione, Timestamp dataRecensione) {
+    public Recensione(Integer idRecensione, Integer idClienteFk, Integer idOrdineFk, Integer idVotoFk, String descrizione, Timestamp dataRecensione) {
+        this.idRecensione = idRecensione;
         this.idClienteFk = idClienteFk;
         this.idOrdineFk = idOrdineFk;
         this.idVotoFk = idVotoFk;
         this.descrizione = descrizione;
         this.dataRecensione = dataRecensione;
     }
+
+    public Recensione() {}
 
     public Integer getIdRecensione() {
         return idRecensione;
@@ -64,8 +67,5 @@ public class Recensione {
 
     public void setDataRecensione(Timestamp dataRecensione) {
         this.dataRecensione = dataRecensione;
-    }
-
-    public Recensione() {
     }
 }
