@@ -19,18 +19,28 @@
                     <table class="table table-bordered table-sm">
                         <tbody>
                             <tr>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/index.jsp" style="color: rgb(134,138,143);" title="Home">Home</a></td>
+                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="index.jsp" style="color: rgb(134,138,143);" title="Home">Home</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="rooms/rooms-catalog-page.html" style="color: rgb(134,138,143);" title="Rooms">Rooms</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/about-us.html" style="color: rgb(134,138,143);" title="About us">About us</a></td>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a><a class="text-center border rounded d-none small-padding btn btn-info"
-                                        title="${username}" role="button">${username}</a></td>
+                                <td class="text-center nav-item" role="presentation">
+                                    <% if(true) {%>
+                                        <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a>
+                                    <%} else {%>
+                                        <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="${username}" role="button">${username}</a>
+                                    <% }%>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="blog-post-list.html" style="color: rgb(134,138,143);" title="Blog">Blog</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="products/products-catalog-page.html" style="color: rgb(134,138,143);" title="Products">Products</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/contact-us.html" style="color: rgb(134,138,143);" title="Contacts">Contacts</a></td>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Sign Up" role="button" data-toggle="modal" data-target="#registrationModal">Sign Up</a><a class="text-center border rounded d-none small-padding btn btn-info"
-                                        title="Log Out" role="button">Log Out</a></td>
+                                <td class="text-center nav-item" role="presentation">
+                                    <% if(true) {%>
+                                        <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Sign Up" role="button" data-toggle="modal" data-target="#registrationModal">Sign Up</a>
+                                    <%} else {%>
+                                        <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Log Out" role="button">Log Out</a>
+                                    <%}%>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
