@@ -4,13 +4,12 @@ public class Numpersone {
     private Integer idNumPersone;
     private Integer numPersone;
 
-    public Numpersone( Integer numPersone) {
-
+    public Numpersone(Integer idNumPersone, Integer numPersone) {
+        this.idNumPersone = idNumPersone;
         this.numPersone = numPersone;
     }
 
-    public Numpersone() {
-    }
+    public Numpersone() {}
 
     public Integer getIdNumPersone() {
         return idNumPersone;

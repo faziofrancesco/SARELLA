@@ -8,11 +8,14 @@ public class MetodoPagamento {
     private Integer ccv;
     private Date date;
 
-    public MetodoPagamento(String numeroCarta, Integer ccv, Date date) {
+    public MetodoPagamento(Integer metodoPagamento, String numeroCarta, Integer ccv, Date date) {
+        this.metodoPagamento = metodoPagamento;
         this.numeroCarta = numeroCarta;
         this.ccv = ccv;
         this.date = date;
     }
+
+    public MetodoPagamento() {}
 
     public Integer getMetodoPagamento() {
         return metodoPagamento;
@@ -44,8 +47,5 @@ public class MetodoPagamento {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public MetodoPagamento() {
     }
 }

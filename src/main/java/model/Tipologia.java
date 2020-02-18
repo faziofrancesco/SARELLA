@@ -4,12 +4,12 @@ public class Tipologia {
     private Integer idTipologia;
     private Integer tipologia;
 
-    public Tipologia(Integer tipologia) {
+    public Tipologia(Integer idTipologia, Integer tipologia) {
+        this.idTipologia = idTipologia;
         this.tipologia = tipologia;
     }
 
-    public Tipologia() {
-    }
+    public Tipologia() {}
 
     public Integer getIdTipologia() {
         return idTipologia;

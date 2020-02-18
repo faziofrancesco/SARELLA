@@ -8,14 +8,14 @@ public class Pagamento {
     private Double importo;
     private Timestamp dataPagamento;
 
-    public Pagamento( Integer idMetodoPagamentoFk, Double importo, Timestamp dataPagamento) {
+    public Pagamento(Integer idPagamento, Integer idMetodoPagamentoFk, Double importo, Timestamp dataPagamento) {
+        this.idPagamento = idPagamento;
         this.idMetodoPagamentoFk = idMetodoPagamentoFk;
         this.importo = importo;
         this.dataPagamento = dataPagamento;
     }
 
-    public Pagamento() {
-    }
+    public Pagamento() {}
 
     public Integer getIdPagamento() {
         return idPagamento;

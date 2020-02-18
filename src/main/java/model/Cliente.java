@@ -1,8 +1,9 @@
 package model;
+
 import java.sql.Date;
 
 public class Cliente {
-    private int idCliente;
+    private Integer idCliente;
     private String nome;
     private String cognome;
     private String username;
@@ -10,9 +11,8 @@ public class Cliente {
     private Date dataDiNascita;
     private String email;
 
-    public Cliente() { }
-
-    public Cliente( String nome, String cognome, String username, String password, Date dataDiNascita, String email) {
+    public Cliente(Integer idCliente, String nome, String cognome, String username, String password, Date dataDiNascita, String email) {
+        this.idCliente = idCliente;
         this.nome = nome;
         this.cognome = cognome;
         this.username = username;
@@ -20,6 +20,8 @@ public class Cliente {
         this.dataDiNascita = dataDiNascita;
         this.email = email;
     }
+
+    public Cliente() {}
 
     public int getIdCliente() {
         return idCliente;

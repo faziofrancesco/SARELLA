@@ -9,15 +9,15 @@ public class Prenotazione {
     private Timestamp dataCheckIn;
     private Timestamp dataCheckout;
 
-    public Prenotazione(Integer idOrdineFk, Integer idCameraFk, Timestamp dataCheckIn, Timestamp dataCheckout) {
+    public Prenotazione(Integer idPrenotazione, Integer idOrdineFk, Integer idCameraFk, Timestamp dataCheckIn, Timestamp dataCheckout) {
+        this.idPrenotazione = idPrenotazione;
         this.idOrdineFk = idOrdineFk;
         this.idCameraFk = idCameraFk;
         this.dataCheckIn = dataCheckIn;
         this.dataCheckout = dataCheckout;
     }
 
-    public Prenotazione() {
-    }
+    public Prenotazione() {}
 
     public Integer getIdPrenotazione() {
         return idPrenotazione;
