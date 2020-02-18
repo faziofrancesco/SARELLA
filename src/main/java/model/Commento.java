@@ -44,11 +44,11 @@ public class Commento {
     }
 
     public String getContenuto() {
-        return Contenuto;
+        return contenuto;
     }
 
     public void setContenuto(String contenuto) {
-        Contenuto = contenuto;
+        this.contenuto = contenuto;
     }
 
     public Timestamp getDataCommento() {
