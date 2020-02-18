@@ -1,11 +1,11 @@
 package persistence.jdbc;
 
+import persistence.DBManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import persistence.DBManager;
 
 public class JDBCQueryHandler implements AutoCloseable {
 
@@ -20,39 +20,21 @@ public class JDBCQueryHandler implements AutoCloseable {
 	}
 
 	@Override
-	public void close() {
+	public void close() throws SQLException {
 
 		try {
-
-			if (connection != null) {
-				connection.close();
-				connection = null;
-			}
-
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+			if (connection != null) connection.close();
 
 		} finally {
+			connection = null;
 			try {
-
-				if (preparedStatement != null) {
-					preparedStatement.close();
-					preparedStatement = null;
-				}
-
-			} catch (SQLException e2) {
-				e2.printStackTrace();
-
+				if (preparedStatement != null) preparedStatement.close();
 			} finally {
+				preparedStatement = null;
 				try {
-
-					if (resultSet != null) {
-						resultSet.close();
-						resultSet = null;
-					}
-
-				} catch (SQLException e3) {
-					e3.printStackTrace();
+					if (resultSet != null) resultSet.close();
+				} finally {
+					resultSet = null;
 				}
 			}
 		}
@@ -81,5 +63,4 @@ public class JDBCQueryHandler implements AutoCloseable {
 	public void executeUpdate() throws SQLException {
 		preparedStatement.executeUpdate();
 	}
-
 }
