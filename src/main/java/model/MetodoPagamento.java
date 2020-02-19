@@ -3,26 +3,27 @@ package model;
 import java.sql.Date;
 
 public class MetodoPagamento {
-    private Integer metodoPagamento;
+    private Integer idMetodoPagamento;
     private String numeroCarta;
     private Integer ccv;
     private Date date;
 
-    public MetodoPagamento(Integer metodoPagamento, String numeroCarta, Integer ccv, Date date) {
-        this.metodoPagamento = metodoPagamento;
+    public MetodoPagamento(Integer idMetodoPagamento, String numeroCarta, Integer ccv, Date date) {
+        this.idMetodoPagamento = idMetodoPagamento;
         this.numeroCarta = numeroCarta;
         this.ccv = ccv;
         this.date = date;
     }
 
-    public MetodoPagamento() {}
-
-    public Integer getMetodoPagamento() {
-        return metodoPagamento;
+    public MetodoPagamento() {
     }
 
-    public void setMetodoPagamento(Integer metodoPagamento) {
-        this.metodoPagamento = metodoPagamento;
+    public Integer getIdMetodoPagamento() {
+        return idMetodoPagamento;
+    }
+
+    public void setIdMetodoPagamento(Integer metodoPagamento) {
+        this.idMetodoPagamento = metodoPagamento;
     }
 
     public String getNumeroCarta() {

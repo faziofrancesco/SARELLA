@@ -1,16 +1,18 @@
 package persistence.jdbc;
+
+import model.Recensione;
+import persistence.PersistenceException;
+import persistence.recensioneDao;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Prenotazione;
-import model.Recensione;
-import persistence.PersistenceException;
-import persistence.recensioneDao;
-public class recensioneDaoJdbc implements recensioneDao{
-    private Recensione extractTo(ResultSet set) throws SQLException{
+public class RecensioneDaoJDBC implements recensioneDao {
+
+    private Recensione extractTo(ResultSet set) throws SQLException {
         Recensione obj = new Recensione();
         obj.setIdRecensione(set.getInt("id_recensione"));
         obj.setIdClienteFk(set.getInt("fk_cliente"));
@@ -20,43 +22,53 @@ public class recensioneDaoJdbc implements recensioneDao{
         obj.setDataRecensione(set.getTimestamp("data_recensione"));
         return obj;
     }
+
+    private void insertInto(Recensione object, PreparedStatement statement, Integer id) throws SQLException {
+
+        int index = 0;
+        if(id != null) {
+            statement.setInt(1, id);
+            index = 1;
+        }
+
+        statement.setInt(1, object.getIdClienteFk());
+        statement.setInt(2, object.getIdOrdineFk());
+        statement.setInt(3, object.getIdVotoFk());
+        statement.setString(4, object.getDescrizione());
+        statement.setTimestamp(5, object.getDataRecensione());
+    }
+
     @Override
     public void save(Recensione object) {
         String query = "{call save_recensione(?,?,?,?,?)}";
 
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getIdClienteFk());
-            statement.setInt(2, object.getIdOrdineFk());
-            statement.setInt(3, object.getIdVotoFk());
-            statement.setString(4,object.getDescrizione());
-            statement.setTimestamp(5, object.getDataRecensione());
-            statement.execute();
+            insertInto(object, handler.getStatement(), null);
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
 
     @Override
     public Recensione retrieve(Recensione object) {
-        String query = "SELECT * FROM recensione where id_recensione=?";
+        String query = "{call retrieve_by_id_from_recensione(?)}";
         Recensione recensione = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setInt(1, object.getIdRecensione());
-
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 result.next();
-                recensione=extractTo(result);
+                recensione = extractTo(result);
             }
             return recensione;
+
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -64,20 +76,20 @@ public class recensioneDaoJdbc implements recensioneDao{
 
     @Override
     public List<Recensione> retrieveAll() {
-        String query = "SELECT * FROM recensione";
+        String query = "SELECT * FROM retrieve_all_from_recensione";
         List<Recensione> recensioni = null;
-        Recensione recensione= null;
+        Recensione recensione = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 recensioni = new ArrayList<Recensione>();
                 while (result.next()) {
-                    recensione=extractTo(result);
+                    recensione = extractTo(result);
                     recensioni.add(recensione);
                 }
             }
@@ -93,18 +105,12 @@ public class recensioneDaoJdbc implements recensioneDao{
     public void update(Recensione object) {
         String query = "{call update_recensione(?,?,?,?,?,?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getIdRecensione());
-            statement.setInt(2, object.getIdClienteFk());
-            statement.setInt(3, object.getIdOrdineFk());
-            statement.setInt(4, object.getIdVotoFk());
-            statement.setString(5,object.getDescrizione());
-            statement.setTimestamp(6, object.getDataRecensione());
-            handler.executeUpdate();
-        }
-        catch (SQLException e) {
+
+            insertInto(object, handler.getStatement(), object.getIdRecensione());
+            handler.execute();
+
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
@@ -114,10 +120,9 @@ public class recensioneDaoJdbc implements recensioneDao{
         String delete = "{call delete_from_recensione(?)}";
         try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 
-            PreparedStatement smt = handler.getStatement();
-            smt.setInt(1, object.getIdRecensione());
+            handler.getStatement().setInt(1, object.getIdRecensione());
 
-            handler.executeUpdate();
+            handler.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

@@ -17,7 +17,8 @@ public class Prenotazione {
         this.dataCheckout = dataCheckout;
     }
 
-    public Prenotazione() {}
+    public Prenotazione() {
+    }
 
     public Integer getIdPrenotazione() {
         return idPrenotazione;

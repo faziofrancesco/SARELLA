@@ -1,17 +1,18 @@
 package persistence.jdbc;
+
+import model.Cliente;
+import persistence.PersistenceException;
+import persistence.clienteDao;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Cliente;
-import persistence.PersistenceException;
-import persistence.clienteDao;
+public class ClienteDaoJDBC implements clienteDao {
 
-public class clienteDaoJdbc implements clienteDao {
-
-    private Cliente extractTo(ResultSet set) throws SQLException{
+    private Cliente extractTo(ResultSet set) throws SQLException {
 
         Cliente obj = new Cliente();
         obj.setIdCliente(set.getInt("id_cliente"));
@@ -25,41 +26,49 @@ public class clienteDaoJdbc implements clienteDao {
 
     }
 
+    private void insertInto(Cliente object, PreparedStatement statement, Integer id) throws SQLException {
+
+        int index = 0;
+        if(id != null) {
+            statement.setInt(1, id);
+            index = 1;
+        }
+
+        statement.setString(index + 1, object.getNome());
+        statement.setString(index + 2, object.getCognome());
+        statement.setDate(index + 3, object.getDataDiNascita());
+        statement.setString(index + 4, object.getEmail());
+        statement.setString(index + 5, object.getUsername());
+        statement.setString(index + 6, object.getPassword());
+    }
+
     @Override
     public void save(Cliente object) {
         String query = "{call save_cliente(?,?,?,?,?,?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setString(1, object.getNome());
-            statement.setString(2, object.getCognome());
-            statement.setDate(3, object.getDataDiNascita());
-            statement.setString(4, object.getEmail());
-            statement.setString(5, object.getUsername());
-            statement.setString(6, object.getPassword());
-            statement.execute();
+            insertInto(object, handler.getStatement(), null);
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
 
     @Override
     public Cliente retrieve(Cliente object) {
-        String query = "SELECT * FROM cliente where id_cliente=?";
+        String query = "{call retrieve_by_id_from_cliente(?)}";
         Cliente utente = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setInt(1, object.getIdCliente());
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 result.next();
-                utente=extractTo(result);
+                utente = extractTo(result);
             }
 
             return utente;
@@ -71,20 +80,20 @@ public class clienteDaoJdbc implements clienteDao {
 
     @Override
     public List<Cliente> retrieveAll() {
-        String query = "SELECT * FROM cliente";
+        String query = "SELECT * FROM retrieve_all_from_cliente";
         List<Cliente> utenti = null;
         Cliente utente = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 utenti = new ArrayList<Cliente>();
                 while (result.next()) {
-                    utente=extractTo(result);
+                    utente = extractTo(result);
                     utenti.add(utente);
                 }
             }
@@ -98,20 +107,11 @@ public class clienteDaoJdbc implements clienteDao {
 
     @Override
     public void update(Cliente object) {
-        String update = "call update_cliente(?,?,?,?,?,?,?)";
+        String update = "{call update_cliente(?,?,?,?,?,?,?)}";
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
-
-            PreparedStatement smt = handler.getStatement();
-            smt.setString(2, object.getNome());
-            smt.setString(3,object.getCognome());
-            smt.setDate(4, object.getDataDiNascita());
-            smt.setString(5, object.getEmail());
-            smt.setString(6, object.getUsername());
-            smt.setString(7, object.getPassword());
-            smt.setInt(1, object.getIdCliente());
-
-            handler.executeUpdate();
+            insertInto(object, handler.getStatement(), object.getIdCliente());
+            handler.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
@@ -124,10 +124,9 @@ public class clienteDaoJdbc implements clienteDao {
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
 
-            PreparedStatement smt = handler.getStatement();
-            smt.setInt(1, object.getIdCliente());
+            handler.getStatement().setInt(1, object.getIdCliente());
 
-            handler.executeUpdate();
+            handler.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
@@ -136,18 +135,17 @@ public class clienteDaoJdbc implements clienteDao {
 
     @Override
     public Cliente retrieveByEmail(String email) {
-        String query = "SELECT * FROM cliente where e_mail=?";
         Cliente utente = null;
-
+        String query="select * from cliente where e_mail=?";
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setString(1, email);
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 result.next();
-                utente=extractTo(result);
+                utente = extractTo(result);
             }
 
             return utente;

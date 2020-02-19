@@ -1,15 +1,16 @@
 package model;
 
-public class Numpersone {
+public class NumPersone {
     private Integer idNumPersone;
     private Integer numPersone;
 
-    public Numpersone(Integer idNumPersone, Integer numPersone) {
+    public NumPersone(Integer idNumPersone, Integer numPersone) {
         this.idNumPersone = idNumPersone;
         this.numPersone = numPersone;
     }
 
-    public Numpersone() {}
+    public NumPersone() {
+    }
 
     public Integer getIdNumPersone() {
         return idNumPersone;

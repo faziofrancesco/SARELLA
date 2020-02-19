@@ -1,53 +1,65 @@
 package persistence.jdbc;
+
+import model.Tipologia;
+import persistence.PersistenceException;
+import persistence.tipologiaDao;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Tipologia;
-import persistence.PersistenceException;
-import persistence.tipologiaDao;
-public class tipologiaDaoJdbc implements  tipologiaDao {
-    private Tipologia extractTo(ResultSet set) throws SQLException{
+public class TipologiaDaoJDBC implements tipologiaDao {
+
+    private Tipologia extractTo(ResultSet set) throws SQLException {
         Tipologia obj = new Tipologia();
         obj.setIdTipologia(set.getInt("id_tipologia"));
         obj.setTipologia(set.getInt("tipologia"));
         return obj;
     }
+
+    private void insertInto(Tipologia object, PreparedStatement statement, Integer id) throws SQLException {
+
+        int index = 0;
+        if(id != null) {
+            statement.setInt(1, id);
+            index = 1;
+        }
+
+        statement.setInt(1, object.getTipologia());
+    }
+
     @Override
     public void save(Tipologia object) {
         String query = "{call save_tipologia(?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getTipologia());
-            statement.execute();
+            insertInto(object, handler.getStatement(), null);
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
 
     @Override
     public Tipologia retrieve(Tipologia object) {
-        String query = "SELECT * FROM tipologia where id_tipologia=?";
+        String query = "{call retrieve_by_id_from_tipologia(?)}";
         Tipologia tipologia = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setInt(1, object.getIdTipologia());
-
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 result.next();
-                tipologia=extractTo(result);
+                tipologia = extractTo(result);
             }
             return tipologia;
+
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -55,20 +67,20 @@ public class tipologiaDaoJdbc implements  tipologiaDao {
 
     @Override
     public List<Tipologia> retrieveAll() {
-        String query = "SELECT * FROM tipologia";
+        String query = "SELECT * FROM retrieve_all_from_tipologia";
         List<Tipologia> tipologie = null;
-        Tipologia tipologia= null;
+        Tipologia tipologia = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 tipologie = new ArrayList<Tipologia>();
                 while (result.next()) {
-                    tipologia=extractTo(result);
+                    tipologia = extractTo(result);
                     tipologie.add(tipologia);
                 }
             }
@@ -86,14 +98,10 @@ public class tipologiaDaoJdbc implements  tipologiaDao {
 
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getIdTipologia());
-            statement.setInt(2, object.getTipologia());
+            insertInto(object, handler.getStatement(), object.getIdTipologia());
+            handler.execute();
 
-            handler.executeUpdate();
-
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
@@ -103,10 +111,8 @@ public class tipologiaDaoJdbc implements  tipologiaDao {
         String delete = "{call delete_from_tipologia(?)}";
         try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 
-            PreparedStatement smt = handler.getStatement();
-            smt.setInt(1, object.getIdTipologia());
-
-            handler.executeUpdate();
+            handler.getStatement().setInt(1, object.getIdTipologia());
+            handler.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

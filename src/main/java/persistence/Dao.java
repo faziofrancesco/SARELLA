@@ -4,14 +4,14 @@ import java.util.List;
 
 public interface Dao<T> {
 
-	void save(T object);
+    void save(T object);
 
-	T retrieve(T object);
+    T retrieve(T object);
 
-	List<T> retrieveAll();
+    List<T> retrieveAll();
 
-	void update(T object);
+    void update(T object);
 
-	void delete(T object);
+    void delete(T object);
 
 }

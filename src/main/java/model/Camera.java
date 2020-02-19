@@ -1,6 +1,7 @@
 package model;
 
 public class Camera {
+
     private Integer idCamera;
     private Integer tipologia;
     private Integer numPersone;
@@ -17,7 +18,8 @@ public class Camera {
         this.imagePath = imagePath;
     }
 
-    public Camera() {}
+    public Camera() {
+    }
 
     public Integer getIdCamera() {
         return idCamera;

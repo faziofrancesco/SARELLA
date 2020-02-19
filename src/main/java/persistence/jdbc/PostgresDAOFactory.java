@@ -1,62 +1,63 @@
 package persistence.jdbc;
+
 import persistence.*;
 
 
 public class PostgresDAOFactory extends DAOFactory {
 
 
-	@Override
-	public clienteDao getClienteDao() {
-		return new clienteDaoJdbc();
-	}
+    @Override
+    public clienteDao getClienteDao() {
+        return new ClienteDaoJDBC();
+    }
 
-	@Override
-	public cameraDao getCameraDao() {
-		return new cameraDaoJdbc();
-	}
+    @Override
+    public cameraDao getCameraDao() {
+        return new CameraDaoJDBC();
+    }
 
-	@Override
-	public prenotazioneDao getPrenotazioneDao() {
-		return new prenotazioneDaoJdbc();
-	}
+    @Override
+    public prenotazioneDao getPrenotazioneDao() {
+        return new PrenotazioneDaoJDBC();
+    }
 
-	@Override
-	public ordineDao getOrdineDao() {
-		return new ordineDaoJdbc();
-	}
+    @Override
+    public ordineDao getOrdineDao() {
+        return new OrdineDaoJDBC();
+    }
 
-	@Override
-	public pagamentoDao getPagamentoDao() {
-		return new pagamentoDaoJdbc();
-	}
+    @Override
+    public pagamentoDao getPagamentoDao() {
+        return new PagamentoDaoJDBC();
+    }
 
-	@Override
-	public commentoDao getCommentoDao() {
-		return new commentoDaoJdbc();
-	}
+    @Override
+    public commentoDao getCommentoDao() {
+        return new CommentoDaoJDBC();
+    }
 
-	@Override
-	public metodoPagamentoDao getMetodoPagamentoDao() {
-		return new metodoPagamentoDaoJdbc();
-	}
+    @Override
+    public metodoPagamentoDao getMetodoPagamentoDao() {
+        return new MetodoPagamentoDaoJDBC();
+    }
 
-	@Override
-	public numPersoneDao getNumPersoneDao() {
-		return new numPersoneDaoJdbc();
-	}
+    @Override
+    public numPersoneDao getNumPersoneDao() {
+        return new NumPersoneDaoJDBC();
+    }
 
-	@Override
-	public recensioneDao getRecensioneDao() {
-		return new recensioneDaoJdbc();
-	}
+    @Override
+    public recensioneDao getRecensioneDao() {
+        return new RecensioneDaoJDBC();
+    }
 
-	@Override
-	public tipologiaDao getTipologiaDao() {
-		return new  tipologiaDaoJdbc();
-	}
+    @Override
+    public tipologiaDao getTipologiaDao() {
+        return new TipologiaDaoJDBC();
+    }
 
-	@Override
-	public votoDao getVotoDao() {
-		return new votoDaoJdbc();
-	}
+    @Override
+    public votoDao getVotoDao() {
+        return new VotoDaoJDBC();
+    }
 }

@@ -9,7 +9,8 @@ public class Voto {
         this.voto = voto;
     }
 
-    public Voto() {}
+    public Voto() {
+    }
 
     public Integer getIdVoto() {
         return idVoto;

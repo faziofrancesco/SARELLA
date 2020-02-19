@@ -9,7 +9,8 @@ public class Tipologia {
         this.tipologia = tipologia;
     }
 
-    public Tipologia() {}
+    public Tipologia() {
+    }
 
     public Integer getIdTipologia() {
         return idTipologia;
