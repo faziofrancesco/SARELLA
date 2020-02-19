@@ -1,6 +1,11 @@
 package model;
 
-public class Ordine {
+import java.io.Serializable;
+
+public class Ordine implements Serializable {
+
+    private static final long serialVersionUID = -8926377506093885613L;
+
     private Integer idOrdine;
     private Integer idClienteFk;
     private Integer idPagamentoFk;

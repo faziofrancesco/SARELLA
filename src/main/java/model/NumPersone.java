@@ -1,6 +1,11 @@
 package model;
 
-public class NumPersone {
+import java.io.Serializable;
+
+public class NumPersone implements Serializable {
+
+    private static final long serialVersionUID = -109825344657206254L;
+
     private Integer idNumPersone;
     private Integer numPersone;
 

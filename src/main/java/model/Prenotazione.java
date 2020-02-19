@@ -1,8 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Prenotazione {
+public class Prenotazione implements Serializable {
+
+    private static final long serialVersionUID = 6002181924151099461L;
+
     private Integer idPrenotazione;
     private Integer idOrdineFk;
     private Integer idCameraFk;

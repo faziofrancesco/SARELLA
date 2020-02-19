@@ -1,8 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Cliente {
+public class Cliente implements Serializable {
+
+    private static final long serialVersionUID = -456777073157261356L;
+
     private Integer idCliente;
     private String nome;
     private String cognome;

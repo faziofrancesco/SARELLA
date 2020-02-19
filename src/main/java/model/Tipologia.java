@@ -1,6 +1,11 @@
 package model;
 
-public class Tipologia {
+import java.io.Serializable;
+
+public class Tipologia implements Serializable {
+
+    private static final long serialVersionUID = 9177833561969410176L;
+
     private Integer idTipologia;
     private String tipologia;
 
