@@ -100,7 +100,7 @@
             </div>
             </form>
         </div>
-        <div class="modal-footer"><button class="btn btn-primary" type="button">Aggiungi camera</button></div>
+        <div class="modal-footer"><button class="btn btn-primary" type="button" id="btnaddc" onclick="addc(event)">Aggiungi camera</button></div>
     </div>
     </div>
     </div>
