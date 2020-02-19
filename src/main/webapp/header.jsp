@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Header - Agriturismo Sarella</title>
     <%@include file="include.jsp"%>
-    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="assets/js/login.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 

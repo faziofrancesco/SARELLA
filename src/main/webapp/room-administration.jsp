@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>AdminPage - Agriturismo Sarella</title>
     <%@ include file="include.jsp"%>
+    <script type="text/javascript" src="assets/js/gestionecamera.js"></script>
+
 </head>
 
 <body>
@@ -85,15 +87,15 @@
                                         </select>
                                     </div>
                                 <div class="form-group">
-                                    <label for="addRoomModalPassword">Immagine</label>
-                                    <input class="form-control" id="addRoomModalPassword" type="text"></div>
+                                    <label for="addRoomModalImg">Immagine</label>
+                                    <input class="form-control" id="addRoomModalImg" type="text"></div>
                             <div class="form-group">
                                 <label for="addRoomModalPrice">Prezzo</label>
                                 <input class="form-control" id="addRoomModalPrice" type="number" required=""></div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="addRoomModalPrice">Descrizione</label>
+                                <label for="addRoomModalDescription">Descrizione</label>
                                 <textarea id="addRoomModalDescription" class="form-control" rows="15"></textarea></div>
                         </div>
                 </div>

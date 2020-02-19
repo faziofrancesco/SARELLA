@@ -1,15 +1,15 @@
 function addc(event){
     $.ajax({
         type: "POST",
-        url: "rooms_servlet",
+        url: "/rooms_servlet",
 
         data: {
-            Id1 : $("#Id1").val(),
-            Tipo1 : $("#Tipo1").val(),
-            Descrizione1 : $("#Descrizione1").val(),
-            numMaxPersone1 : $("#numMaxPersone1").val(),
-            Img1 : $("#Img1").val(),
-            Prezzo1 : $("#Prezzo1").val()
+            Id1 : $("#addRoomModalNumC").val(),
+            Tipo1 : $("#addRoomModalType").val(),
+            Descrizione1 : $("#addRoomModalDescription").val(),
+            numMaxPersone1 : $("#addRoomModalNumP").val(),
+            Img1 : $("#addRoomModalImg").val(),
+            Prezzo1 : $("#addRoomModalPrice").val()
         },
         success:function(){
             alert("Camera Inserita corretamente");

@@ -43,10 +43,8 @@ public class CameraDaoJDBC implements cameraDao {
     @Override
     public void save(Camera object) {
 
-        String query = "{call save_camera(?,?,?,?,?)}";
-
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            insertInto(object, handler.getStatement(), null);
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("call save_camera(?,?,?,?,?,?)")) {
+            insertInto(object, handler.getStatement(), object.getIdCamera());
             handler.execute();
 
         } catch (SQLException e) {
