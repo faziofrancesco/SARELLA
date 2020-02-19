@@ -2,9 +2,9 @@ package model;
 
 public class Tipologia {
     private Integer idTipologia;
-    private Integer tipologia;
+    private String tipologia;
 
-    public Tipologia(Integer idTipologia, Integer tipologia) {
+    public Tipologia(Integer idTipologia, String tipologia) {
         this.idTipologia = idTipologia;
         this.tipologia = tipologia;
     }
@@ -20,11 +20,11 @@ public class Tipologia {
         this.idTipologia = idTipologia;
     }
 
-    public Integer getTipologia() {
+    public String getTipologia() {
         return tipologia;
     }
 
-    public void setTipologia(Integer tipologia) {
+    public void setTipologia(String tipologia) {
         this.tipologia = tipologia;
     }
 }

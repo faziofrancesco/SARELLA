@@ -27,7 +27,7 @@ public class TipologiaDaoJDBC implements tipologiaDao {
             index = 1;
         }
 
-        statement.setInt(1, object.getTipologia());
+        statement.setString(1, object.getTipologia());
     }
 
     @Override
