@@ -88,7 +88,7 @@
                                     </div>
                                 <div class="form-group">
                                     <label for="addRoomModalImg">Immagine</label>
-                                    <input class="form-control" id="addRoomModalImg" type="text"></div>
+                                    <input class="form-control" id="addRoomModalImg" type="file"></div>
                             <div class="form-group">
                                 <label for="addRoomModalPrice">Prezzo</label>
                                 <input class="form-control" id="addRoomModalPrice" type="number" required=""></div>
@@ -135,7 +135,7 @@
                                                 <option value="14">This is item 3</option></optgroup></select></div>
                                 <div class="form-group">
                                     <label for="updateRoomModalImg">Immagine</label>
-                                    <input class="form-control" id="updateRoomModalImg" type="text"></div>
+                                    <input class="form-control" id="updateRoomModalImg" type="file"></div>
                             <div class="form-group">
                                 <label for="updateRoomModalPrice">Prezzo</label>
                                 <input class="form-control" id="updateRoomModalPrice" type="number" required=""></div>

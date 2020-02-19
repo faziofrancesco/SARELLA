@@ -15,7 +15,10 @@ import persistence.DBManager;
 import persistence.Dao;
 @WebServlet(value = "/gestionecamere", name = "gestionecamere")
 
-public class gestionecamere extends  HttpServlet{
+public class GestioneCamere extends  HttpServlet{
+
+    private static final long serialVersionUID = 2590468198652604537L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher rd=req.getRequestDispatcher("room-administration.jsp");
