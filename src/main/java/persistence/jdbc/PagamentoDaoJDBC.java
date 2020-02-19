@@ -1,15 +1,18 @@
 package persistence.jdbc;
+
+import model.Pagamento;
+import persistence.PersistenceException;
+import persistence.pagamentoDao;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Pagamento;
-import persistence.PersistenceException;
-import persistence.pagamentoDao;
-public class pagamentoDaoJdbc implements pagamentoDao{
-    private Pagamento extractTo(ResultSet set) throws SQLException{
+public class PagamentoDaoJDBC implements pagamentoDao {
+
+    private Pagamento extractTo(ResultSet set) throws SQLException {
         Pagamento obj = new Pagamento();
         obj.setIdPagamento(set.getInt("id_pagamento"));
         obj.setIdMetodoPagamentoFk(set.getInt("fk_metodop"));
@@ -17,41 +20,50 @@ public class pagamentoDaoJdbc implements pagamentoDao{
         obj.setDataPagamento(set.getTimestamp("data_pagamento"));
         return obj;
     }
+
+    private void insertInto(Pagamento object, PreparedStatement statement, Integer id) throws SQLException {
+
+        int index = 0;
+        if(id != null) {
+            statement.setInt(1, id);
+            index = 1;
+        }
+
+        statement.setInt(index + 1, object.getIdMetodoPagamentoFk());
+        statement.setDouble(index + 2, object.getImporto());
+        statement.setTimestamp(index + 3, object.getDataPagamento());
+    }
+
     @Override
     public void save(Pagamento object) {
         String query = "{call save_pagamento(?,?,?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getIdMetodoPagamentoFk());
-            statement.setDouble(2, object.getImporto());
-            statement.setTimestamp(3, object.getDataPagamento());
-            statement.execute();
+            insertInto(object, handler.getStatement(), null);
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
 
     @Override
     public Pagamento retrieve(Pagamento object) {
-        String query = "SELECT * FROM pagamento where id_pagamento=?";
+        String query = "{call retrieve_by_id_from_pagamento(?)}";
         Pagamento pagamento = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setInt(1, object.getIdPagamento());
-
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 result.next();
-                pagamento=extractTo(result);
+                pagamento = extractTo(result);
             }
             return pagamento;
+
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -59,20 +71,20 @@ public class pagamentoDaoJdbc implements pagamentoDao{
 
     @Override
     public List<Pagamento> retrieveAll() {
-        String query = "SELECT * FROM pagamento";
+        String query = "SELECT * FROM retrieve_all_from_pagamento";
         List<Pagamento> pagamenti = null;
-        Pagamento pagamento= null;
+        Pagamento pagamento = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 pagamenti = new ArrayList<Pagamento>();
                 while (result.next()) {
-                    pagamento=extractTo(result);
+                    pagamento = extractTo(result);
                     pagamenti.add(pagamento);
                 }
             }
@@ -88,17 +100,11 @@ public class pagamentoDaoJdbc implements pagamentoDao{
     public void update(Pagamento object) {
         String query = "{call update_pagamento(?,?,?,?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getIdPagamento());
-            statement.setInt(2, object.getIdMetodoPagamentoFk());
-            statement.setDouble(3, object.getImporto());
-            statement.setTimestamp(4, object.getDataPagamento());
-            handler.executeUpdate();
+            insertInto(object, handler.getStatement(), object.getIdPagamento());
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
@@ -107,11 +113,8 @@ public class pagamentoDaoJdbc implements pagamentoDao{
     public void delete(Pagamento object) {
         String delete = "{call delete_from_pagamento(?)}";
         try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
-
-            PreparedStatement smt = handler.getStatement();
-            smt.setInt(1, object.getIdPagamento());
-
-            handler.executeUpdate();
+            handler.getStatement().setInt(1, object.getIdPagamento());
+            handler.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

@@ -1,52 +1,62 @@
 package persistence.jdbc;
+
+import model.NumPersone;
+import persistence.PersistenceException;
+import persistence.numPersoneDao;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.MetodoPagamento;
-import model.Numpersone;
-import persistence.PersistenceException;
-import persistence.numPersoneDao;
-public class numPersoneDaoJdbc implements numPersoneDao {
-    private Numpersone extractTo(ResultSet set) throws SQLException{
-        Numpersone obj = new Numpersone();
+public class NumPersoneDaoJDBC implements numPersoneDao {
+    private NumPersone extractTo(ResultSet set) throws SQLException {
+        NumPersone obj = new NumPersone();
         obj.setIdNumPersone(set.getInt("id_num_persone"));
         obj.setNumPersone(set.getInt("num_persone"));
         return obj;
     }
+
+    private void insertInto(NumPersone object, PreparedStatement statement, Integer id) throws SQLException {
+
+        int index = 0;
+        if(id != null) {
+            statement.setInt(1, id);
+            index = 1;
+        }
+
+        statement.setInt(index + 1, object.getNumPersone());
+    }
+
     @Override
-    public void save(Numpersone object) {
+    public void save(NumPersone object) {
         String query = "{call save_num_persone(?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getNumPersone());
-            statement.execute();
+            insertInto(object, handler.getStatement(), null);
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
 
     @Override
-    public Numpersone retrieve(Numpersone object) {
-        String query = "SELECT * FROM num_persone where id_num_persone=?";
-        Numpersone numpersone = null;
+    public NumPersone retrieve(NumPersone object) {
+        String query = "{call retrieve_by_id_from_nump(?)}";
+        NumPersone numpersone = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setInt(1, object.getIdNumPersone());
 
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 result.next();
-                numpersone=extractTo(result);
+                numpersone = extractTo(result);
             }
             return numpersone;
         } catch (SQLException e) {
@@ -55,21 +65,21 @@ public class numPersoneDaoJdbc implements numPersoneDao {
     }
 
     @Override
-    public List<Numpersone> retrieveAll() {
-        String query = "SELECT * FROM num_persone";
-        List<Numpersone> lnumpersone = null;
-        Numpersone numpersone= null;
+    public List<NumPersone> retrieveAll() {
+        String query = "SELECT * FROM retrieve_all_from_nump";
+        List<NumPersone> lnumpersone = null;
+        NumPersone numpersone = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
-               lnumpersone = new ArrayList<Numpersone>();
+                lnumpersone = new ArrayList<NumPersone>();
                 while (result.next()) {
-                   numpersone=extractTo(result);
+                    numpersone = extractTo(result);
                     lnumpersone.add(numpersone);
                 }
             }
@@ -82,32 +92,26 @@ public class numPersoneDaoJdbc implements numPersoneDao {
     }
 
     @Override
-    public void update(Numpersone object) {
+    public void update(NumPersone object) {
         String query = "{call update_num_persone(?,?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getIdNumPersone());
-            statement.setInt(2, object.getNumPersone());
+            insertInto(object, handler.getStatement(), object.getIdNumPersone());
+            handler.execute();
 
-            handler.executeUpdate();
-
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
 
     @Override
-    public void delete(Numpersone object) {
+    public void delete(NumPersone object) {
         String delete = "{call delete_from_num_persone(?)}";
         try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 
-            PreparedStatement smt = handler.getStatement();
-            smt.setInt(1, object.getIdNumPersone());
+            handler.getStatement().setInt(1, object.getIdNumPersone());
 
-            handler.executeUpdate();
+            handler.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

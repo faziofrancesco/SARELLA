@@ -9,58 +9,55 @@ import java.sql.SQLException;
 
 public class JDBCQueryHandler implements AutoCloseable {
 
-	private Connection connection = null;
-	private PreparedStatement preparedStatement = null;
-	private ResultSet resultSet = null;
+    private Connection connection = null;
+    private PreparedStatement preparedStatement = null;
+    private ResultSet resultSet = null;
 
-	public JDBCQueryHandler(String query) throws SQLException {
+    public JDBCQueryHandler(String query) throws SQLException {
 
-		connection = DBManager.getInstance().getDataSource().getConnection();
-		preparedStatement = connection.prepareStatement(query);
-	}
+        connection = DBManager.getInstance().getDataSource().getConnection();
+        preparedStatement = connection.prepareStatement(query);
+    }
 
-	@Override
-	public void close() throws SQLException {
+    @Override
+    public void close() throws SQLException {
 
-		try {
-			if (connection != null) connection.close();
+        try {
+            if (connection != null) connection.close();
 
-		} finally {
-			connection = null;
-			try {
-				if (preparedStatement != null) preparedStatement.close();
-			} finally {
-				preparedStatement = null;
-				try {
-					if (resultSet != null) resultSet.close();
-				} finally {
-					resultSet = null;
-				}
-			}
-		}
-	}
+        } finally {
+            connection = null;
+            try {
+                if (preparedStatement != null) preparedStatement.close();
+            } finally {
+                preparedStatement = null;
+                try {
+                    if (resultSet != null) resultSet.close();
+                } finally {
+                    resultSet = null;
+                }
+            }
+        }
+    }
 
-	public Connection getConnection() {
-		return connection;
-	}
+    public Connection getConnection() {
+        return connection;
+    }
 
-	public PreparedStatement getStatement() {
-		return preparedStatement;
-	}
+    public PreparedStatement getStatement() {
+        return preparedStatement;
+    }
 
-	public ResultSet getResultSet() {
-		return resultSet;
-	}
+    public ResultSet getResultSet() {
+        return resultSet;
+    }
 
-	public boolean existsResultSet() throws SQLException {
-		return resultSet != null && resultSet.isBeforeFirst();
-	}
+    public boolean existsResultSet() throws SQLException {
+        return resultSet != null && resultSet.isBeforeFirst();
+    }
 
-	public void executeQuery() throws SQLException {
-		resultSet = preparedStatement.executeQuery();
-	}
-
-	public void executeUpdate() throws SQLException {
-		preparedStatement.executeUpdate();
-	}
+    public void execute() throws SQLException {
+        if(preparedStatement.execute())
+            resultSet = preparedStatement.getResultSet();
+    }
 }

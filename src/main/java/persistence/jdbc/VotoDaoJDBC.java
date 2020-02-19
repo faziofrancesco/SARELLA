@@ -1,54 +1,66 @@
 package persistence.jdbc;
+
+import model.Voto;
+import persistence.PersistenceException;
+import persistence.votoDao;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Tipologia;
-import model.Voto;
-import persistence.PersistenceException;
-import persistence.votoDao;
-public class votoDaoJdbc implements votoDao{
-    private Voto extractTo(ResultSet set) throws SQLException{
+public class VotoDaoJDBC implements votoDao {
+
+    private Voto extractTo(ResultSet set) throws SQLException {
         Voto obj = new Voto();
         obj.setIdVoto(set.getInt("id_voto"));
         obj.setVoto(set.getInt("voto"));
         return obj;
     }
+
+    private void insertInto(Voto object, PreparedStatement statement, Integer id) throws SQLException {
+
+        int index = 0;
+        if(id != null) {
+            statement.setInt(1, id);
+            index = 1;
+        }
+
+        statement.setInt(1, object.getVoto());
+    }
+
     @Override
     public void save(Voto object) {
         String query = "{call save_voto(?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getVoto());
-            statement.execute();
+            insertInto(object, handler.getStatement(), null);
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
 
     @Override
     public Voto retrieve(Voto object) {
-        String query = "SELECT * FROM voto where id_voto=?";
+        String query = "{call retrieve_by_id_from_voto(?)}";
         Voto voto = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            handler.getStatement().setInt(1, object.getIdVoto());
 
-            handler.executeQuery();
+            handler.getStatement().setInt(1, object.getIdVoto());
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 result.next();
-                voto=extractTo(result);
+                voto = extractTo(result);
             }
             return voto;
+
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -56,20 +68,20 @@ public class votoDaoJdbc implements votoDao{
 
     @Override
     public List<Voto> retrieveAll() {
-        String query = "SELECT * FROM voto";
+        String query = "SELECT * FROM retrieve_all_from_voto";
         List<Voto> voti = null;
-        Voto voto= null;
+        Voto voto = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 voti = new ArrayList<Voto>();
                 while (result.next()) {
-                    voto=extractTo(result);
+                    voto = extractTo(result);
                     voti.add(voto);
                 }
             }
@@ -87,14 +99,10 @@ public class votoDaoJdbc implements votoDao{
 
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getIdVoto());
-            statement.setInt(2, object.getVoto());
+            insertInto(object, handler.getStatement(), object.getIdVoto());
+            handler.execute();
 
-            handler.executeUpdate();
-
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
@@ -104,10 +112,8 @@ public class votoDaoJdbc implements votoDao{
         String delete = "{call delete_from_voto(?)}";
         try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 
-            PreparedStatement smt = handler.getStatement();
-            smt.setInt(1, object.getIdVoto());
-
-            handler.executeUpdate();
+            handler.getStatement().setInt(1, object.getIdVoto());
+            handler.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

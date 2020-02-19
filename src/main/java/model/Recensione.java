@@ -19,7 +19,8 @@ public class Recensione {
         this.dataRecensione = dataRecensione;
     }
 
-    public Recensione() {}
+    public Recensione() {
+    }
 
     public Integer getIdRecensione() {
         return idRecensione;

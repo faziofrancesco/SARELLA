@@ -11,7 +11,8 @@ public class Ordine {
         this.idPagamentoFk = idPagamentoFk;
     }
 
-    public Ordine() {}
+    public Ordine() {
+    }
 
     public Integer getIdOrdine() {
         return idOrdine;

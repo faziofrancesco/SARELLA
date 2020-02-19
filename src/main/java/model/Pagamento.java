@@ -15,7 +15,8 @@ public class Pagamento {
         this.dataPagamento = dataPagamento;
     }
 
-    public Pagamento() {}
+    public Pagamento() {
+    }
 
     public Integer getIdPagamento() {
         return idPagamento;

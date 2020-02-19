@@ -1,15 +1,18 @@
 package persistence.jdbc;
+
+import model.Camera;
+import persistence.PersistenceException;
+import persistence.cameraDao;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Camera;
-import persistence.PersistenceException;
-import persistence.cameraDao;
-public class cameraDaoJdbc implements cameraDao {
-    private Camera extractTo(ResultSet set) throws SQLException{
+public class CameraDaoJDBC implements cameraDao {
+
+    private Camera extractFrom(ResultSet set) throws SQLException {
 
         Camera obj = new Camera();
         obj.setIdCamera(set.getInt("id_camera"));
@@ -21,43 +24,53 @@ public class cameraDaoJdbc implements cameraDao {
         return obj;
 
     }
+
+    private void insertInto(Camera object, PreparedStatement statement, Integer id) throws SQLException {
+
+        int index = 0;
+        if(id != null) {
+            statement.setInt(1, id);
+            index = 1;
+        }
+
+        statement.setInt(index + 1, object.getTipologia());
+        statement.setInt(index + 2, object.getNumPersone());
+        statement.setString(index + 3, object.getDescrizione());
+        statement.setString(index + 4, object.getImagePath());
+        statement.setDouble(index + 5, object.getPrezzo());
+    }
+
     @Override
     public void save(Camera object) {
+
         String query = "{call save_camera(?,?,?,?,?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(1, object.getTipologia());
-            statement.setInt(2, object.getNumPersone());
-            statement.setString(3, object.getDescrizione());
-            statement.setString(4, object.getImagePath());
-            statement.setDouble(5, object.getPrezzo());
-            statement.execute();
+            insertInto(object, handler.getStatement(), null);
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
 
     @Override
     public Camera retrieve(Camera object) {
-        String query = "SELECT * FROM camera where id_camera=?";
+        String query = "{call retrieve_by_id_from_camera(?)}";
         Camera camera = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setInt(1, object.getIdCamera());
-
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 result.next();
-                camera=extractTo(result);
+                camera = extractFrom(result);
             }
             return camera;
+
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         }
@@ -65,20 +78,20 @@ public class cameraDaoJdbc implements cameraDao {
 
     @Override
     public List<Camera> retrieveAll() {
-        String query = "SELECT * FROM camera";
+        String query = "SELECT * FROM retrieve_all_from_camera";
         List<Camera> camere = null;
         Camera camera = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
 
-            handler.executeQuery();
+            handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
                 camere = new ArrayList<Camera>();
                 while (result.next()) {
-                    camera=extractTo(result);
+                    camera = extractFrom(result);
                     camere.add(camera);
                 }
             }
@@ -94,19 +107,11 @@ public class cameraDaoJdbc implements cameraDao {
     public void update(Camera object) {
         String query = "{call update_camera(?,?,?,?,?,?)}";
 
-
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
-            PreparedStatement statement = handler.getStatement();
-            statement.setInt(2, object.getTipologia());
-            statement.setInt(3, object.getNumPersone());
-            statement.setString(4, object.getDescrizione());
-            statement.setString(5, object.getImagePath());
-            statement.setDouble(6, object.getPrezzo());
-            statement.setInt(1, object.getIdCamera());
-            handler.executeUpdate();
+            insertInto(object, handler.getStatement(), object.getIdCamera());
+            handler.execute();
 
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
@@ -114,12 +119,11 @@ public class cameraDaoJdbc implements cameraDao {
     @Override
     public void delete(Camera object) {
         String delete = "{call delete_from_camera(?)}";
+
         try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 
-            PreparedStatement smt = handler.getStatement();
-            smt.setInt(1, object.getIdCamera());
-
-            handler.executeUpdate();
+            handler.getStatement().setInt(1, object.getIdCamera());
+            handler.execute();
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

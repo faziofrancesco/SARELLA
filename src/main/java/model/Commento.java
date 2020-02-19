@@ -17,7 +17,8 @@ public class Commento {
         this.dataCommento = dataCommento;
     }
 
-    public Commento() {}
+    public Commento() {
+    }
 
     public Integer getIdCommento() {
         return idCommento;
