@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Camera;
 import persistence.PersistenceException;
-import persistence.cameraDao;
+import persistence.CameraDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CameraDaoJDBC implements cameraDao {
+public class CameraDaoJDBC implements CameraDao {
 
     private Camera extractFrom(ResultSet set) throws SQLException {
 

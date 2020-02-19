@@ -7,57 +7,57 @@ public class PostgresDAOFactory extends DAOFactory {
 
 
     @Override
-    public clienteDao getClienteDao() {
+    public ClienteDao getClienteDao() {
         return new ClienteDaoJDBC();
     }
 
     @Override
-    public cameraDao getCameraDao() {
+    public CameraDao getCameraDao() {
         return new CameraDaoJDBC();
     }
 
     @Override
-    public prenotazioneDao getPrenotazioneDao() {
+    public PrenotazioneDao getPrenotazioneDao() {
         return new PrenotazioneDaoJDBC();
     }
 
     @Override
-    public ordineDao getOrdineDao() {
+    public OrdineDao getOrdineDao() {
         return new OrdineDaoJDBC();
     }
 
     @Override
-    public pagamentoDao getPagamentoDao() {
+    public PagamentoDao getPagamentoDao() {
         return new PagamentoDaoJDBC();
     }
 
     @Override
-    public commentoDao getCommentoDao() {
+    public CommentoDao getCommentoDao() {
         return new CommentoDaoJDBC();
     }
 
     @Override
-    public metodoPagamentoDao getMetodoPagamentoDao() {
+    public MetodoPagamentoDao getMetodoPagamentoDao() {
         return new MetodoPagamentoDaoJDBC();
     }
 
     @Override
-    public numPersoneDao getNumPersoneDao() {
+    public NumPersoneDao getNumPersoneDao() {
         return new NumPersoneDaoJDBC();
     }
 
     @Override
-    public recensioneDao getRecensioneDao() {
+    public RecensioneDao getRecensioneDao() {
         return new RecensioneDaoJDBC();
     }
 
     @Override
-    public tipologiaDao getTipologiaDao() {
+    public TipologiaDao getTipologiaDao() {
         return new TipologiaDaoJDBC();
     }
 
     @Override
-    public votoDao getVotoDao() {
+    public VotoDao getVotoDao() {
         return new VotoDaoJDBC();
     }
 }

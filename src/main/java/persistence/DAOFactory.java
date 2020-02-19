@@ -1,28 +1,26 @@
 package persistence;
 
-import model.Camera;
-
 public abstract class DAOFactory {
 
-    public abstract clienteDao getClienteDao();
+    public abstract ClienteDao getClienteDao();
 
-    public abstract cameraDao getCameraDao();
+    public abstract CameraDao getCameraDao();
 
-    public abstract prenotazioneDao getPrenotazioneDao();
+    public abstract PrenotazioneDao getPrenotazioneDao();
 
-    public abstract ordineDao getOrdineDao();
+    public abstract OrdineDao getOrdineDao();
 
-    public abstract pagamentoDao getPagamentoDao();
+    public abstract PagamentoDao getPagamentoDao();
 
-    public abstract commentoDao getCommentoDao();
+    public abstract CommentoDao getCommentoDao();
 
-    public abstract metodoPagamentoDao getMetodoPagamentoDao();
+    public abstract MetodoPagamentoDao getMetodoPagamentoDao();
 
-    public abstract numPersoneDao getNumPersoneDao();
+    public abstract NumPersoneDao getNumPersoneDao();
 
-    public abstract recensioneDao getRecensioneDao();
+    public abstract RecensioneDao getRecensioneDao();
 
-    public abstract tipologiaDao getTipologiaDao();
+    public abstract TipologiaDao getTipologiaDao();
 
-    public abstract votoDao getVotoDao();
+    public abstract VotoDao getVotoDao();
 }
