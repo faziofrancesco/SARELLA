@@ -8,7 +8,7 @@
     <title>Header - Agriturismo Sarella</title>
     <%@include file="include.jsp"%>
     <script type="text/javascript" src="js/login.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -65,10 +65,17 @@
                             style="margin-bottom: 0px;height: 32px;"><a class="text-left d-xl-flex align-items-xl-center" style="height: 32px;width: 466px;" data-toggle="modal" data-target="#retrievalModal" href="#"><br>Don't remember username or password?<br><br></a></div>
                     </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-primary" type="button">Accedi</button></div>
+                <div class="modal-footer">
+
+                    <div class="g-signin2" data-onsuccess="onSignIn" ></div>
+                    <script>
+                        function onSignIn(googleUser) {
+                            googleSignIn(googleUser);
+                        }
+                    </script>
+                    <button class="btn btn-primary" type="button">Accedi</button></div>
 
             </div>
-            <div class="g-signin2" data-onsuccess="onSignIn" style="margin-top: 2%;"></div>
         </div>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="retrievalModal">

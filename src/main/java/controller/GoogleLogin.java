@@ -22,9 +22,8 @@ public class GoogleLogin extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String email = req.getParameter("email");
 		String name = req.getParameter("name");
-		String surname = req.getParameter("surname");
 		Cliente user = DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByEmail(email);
-
+		System.out.println(email);
 		if(user != null) {
 			req.getSession().setAttribute("user", user);
 			req.getSession().setAttribute("firstLogin", true);
@@ -34,7 +33,7 @@ public class GoogleLogin extends HttpServlet{
 			Cliente u=new Cliente();
 			u.setEmail(email);
 			u.setNome(name);
-			u.setUsername(surname);
+
 			Dao<Cliente> userdao = DBManager.getInstance().getDAOFactory().getClienteDao();
 			userdao.save(u);
 			req.getSession().setAttribute("user", user);
