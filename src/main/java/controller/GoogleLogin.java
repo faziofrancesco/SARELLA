@@ -16,8 +16,10 @@ import persistence.DBManager;
 import persistence.Dao;
 
 @WebServlet(value = "/googleLogin", name = "googleLogin")
-public class GoogleLogin extends HttpServlet{
-	
+public class GoogleLogin extends HttpServlet {
+
+	private static final long serialVersionUID = 7919968393646409012L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String email = req.getParameter("email");

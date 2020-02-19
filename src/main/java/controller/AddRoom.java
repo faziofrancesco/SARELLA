@@ -15,9 +15,6 @@ import persistence.Dao;
 @WebServlet(value = "/rooms_servlet", name = "rooms_servlet")
 public class AddRoom extends HttpServlet {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 4054930605466624053L;
 
     @Override
