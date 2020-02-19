@@ -19,7 +19,7 @@
                     <table class="table table-bordered table-sm">
                         <tbody>
                             <tr>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/index.html" style="color: rgb(134,138,143);" title="Home">Home</a></td>
+                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="index.jsp" style="color: rgb(134,138,143);" title="Home">Home</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="rooms/rooms-catalog-page.html" style="color: rgb(134,138,143);" title="Rooms">Rooms</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/about-us.html" style="color: rgb(134,138,143);" title="About us">About us</a></td>
                                 <td class="text-center nav-item" role="presentation">
