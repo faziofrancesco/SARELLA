@@ -1,4 +1,4 @@
-package controller.admin;
+package controller;
 
 import java.io.IOException;
 
@@ -37,13 +37,13 @@ public class AddRoom extends HttpServlet {
 
         Camera r = new Camera();
         r.setIdCamera(Integer.parseInt(id));
-        r.setTipologia(tipo);
+        r.setTipologia(Integer.parseInt(tipo));
         r.setDescrizione(descrizione);
         r.setNumPersone(Integer.parseInt(numMaxPersone));
         r.setPrezzo(Double.parseDouble(prezzo));
         r.setImagePath(immagine);
 
-        DBManager.getInstance().getDAOFactory().getRoomDao().save(r);
+        DBManager.getInstance().getDAOFactory().getCameraDao().save(r);
 
         resp.setStatus(201);
     }

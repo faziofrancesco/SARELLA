@@ -1,5 +1,7 @@
 package persistence;
 
+import model.Camera;
+
 public abstract class DAOFactory {
 
     public abstract clienteDao getClienteDao();
@@ -23,5 +25,4 @@ public abstract class DAOFactory {
     public abstract tipologiaDao getTipologiaDao();
 
     public abstract votoDao getVotoDao();
-
 }
