@@ -40,8 +40,5 @@ public class GoogleLogin extends HttpServlet{
 			req.getSession().setAttribute("firstLogin", true);
 			resp.getOutputStream().print(1);
 		}
-	
-	
-		
 	}
 }
