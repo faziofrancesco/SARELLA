@@ -1,8 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Commento {
+public class Commento implements Serializable {
+
+    private static final long serialVersionUID = -6779645499470753018L;
+
     private Integer idCommento;
     private Integer idClienteFk;
     private Integer idRecensioneFk;

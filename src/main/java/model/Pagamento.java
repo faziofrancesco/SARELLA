@@ -1,8 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Pagamento {
+public class Pagamento implements Serializable {
+
+    private static final long serialVersionUID = 1517679055274660590L;
+
     private Integer idPagamento;
     private Integer idMetodoPagamentoFk;
     private Double importo;

@@ -1,8 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class MetodoPagamento {
+public class MetodoPagamento implements Serializable {
+
+    private static final long serialVersionUID = 7321192651515044667L;
+
     private Integer idMetodoPagamento;
     private String numeroCarta;
     private Integer ccv;

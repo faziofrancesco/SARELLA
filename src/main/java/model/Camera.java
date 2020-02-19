@@ -1,6 +1,10 @@
 package model;
 
-public class Camera {
+import java.io.Serializable;
+
+public class Camera implements Serializable {
+
+    private static final long serialVersionUID = 5872710316948492959L;
 
     private Integer idCamera;
     private Integer tipologia;
