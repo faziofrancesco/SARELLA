@@ -15,7 +15,7 @@ public class TipologiaDaoJDBC implements tipologiaDao {
     private Tipologia extractTo(ResultSet set) throws SQLException {
         Tipologia obj = new Tipologia();
         obj.setIdTipologia(set.getInt("id_tipologia"));
-        obj.setTipologia(set.getInt("tipologia"));
+        obj.setTipologia(set.getString("tipologia"));
         return obj;
     }
 
@@ -27,7 +27,7 @@ public class TipologiaDaoJDBC implements tipologiaDao {
             index = 1;
         }
 
-        statement.setInt(1, object.getTipologia());
+        statement.setString(1, object.getTipologia());
     }
 
     @Override
