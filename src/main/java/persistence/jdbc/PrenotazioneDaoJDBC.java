@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Prenotazione;
 import persistence.PersistenceException;
-import persistence.prenotazioneDao;
+import persistence.PrenotazioneDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrenotazioneDaoJDBC implements prenotazioneDao {
+public class PrenotazioneDaoJDBC implements PrenotazioneDao {
     private Prenotazione extractTo(ResultSet set) throws SQLException {
         Prenotazione obj = new Prenotazione();
         obj.setIdPrenotazione(set.getInt("id_prenotazione"));

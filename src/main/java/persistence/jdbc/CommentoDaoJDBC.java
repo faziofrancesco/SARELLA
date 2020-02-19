@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Commento;
 import persistence.PersistenceException;
-import persistence.commentoDao;
+import persistence.CommentoDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommentoDaoJDBC implements commentoDao {
+public class CommentoDaoJDBC implements CommentoDao {
 
     private Commento extractTo(ResultSet set) throws SQLException {
 
