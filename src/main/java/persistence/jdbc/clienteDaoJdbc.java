@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import jdk.jfr.internal.cmd.Execute;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 import model.Cliente;
 import persistence.PersistenceException;
 import persistence.clienteDao;
@@ -130,6 +128,29 @@ public class clienteDaoJdbc implements clienteDao {
             smt.setInt(1, object.getIdCliente());
 
             handler.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public Cliente retrieveByEmail(String email) {
+        String query = "SELECT * FROM cliente where e_mail=?";
+        Cliente utente = null;
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+            handler.getStatement().setString(1, email);
+            handler.executeQuery();
+
+            if (handler.existsResultSet()) {
+
+                ResultSet result = handler.getResultSet();
+                result.next();
+                utente=extractTo(result);
+            }
+
+            return utente;
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

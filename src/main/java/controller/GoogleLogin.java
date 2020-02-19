@@ -1,0 +1,48 @@
+package controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import model.Cliente;
+import persistence.DBManager;
+import persistence.Dao;
+
+@WebServlet(value = "/googleLogin", name = "googleLogin")
+public class GoogleLogin extends HttpServlet{
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String email = req.getParameter("email");
+		String name = req.getParameter("name");
+		String surname = req.getParameter("surname");
+		Cliente user = DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByEmail(email);
+
+		if(user != null) {
+			req.getSession().setAttribute("user", user);
+			req.getSession().setAttribute("firstLogin", true);
+			resp.getOutputStream().print(1);
+		}
+		else {
+			Cliente u=new Cliente();
+			u.setEmail(email);
+			u.setNome(name);
+			u.setUsername(surname);
+			Dao<Cliente> userdao = DBManager.getInstance().getDAOFactory().getClienteDao();
+			userdao.save(u);
+			req.getSession().setAttribute("user", user);
+			req.getSession().setAttribute("firstLogin", true);
+			resp.getOutputStream().print(1);
+		}
+	
+	
+		
+	}
+}

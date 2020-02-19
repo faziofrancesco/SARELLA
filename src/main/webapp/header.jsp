@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Header - Agriturismo Sarella</title>
     <%@include file="include.jsp"%>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 
 <body>
@@ -66,7 +68,9 @@
                     </form>
                 </div>
                 <div class="modal-footer"><button class="btn btn-primary" type="button">Accedi</button></div>
+
             </div>
+            <div class="g-signin2" data-onsuccess="onSignIn" style="margin-top: 2%;"></div>
         </div>
     </div>
     <div class="modal fade justify-content-center align-items-center" role="dialog" tabindex="-1" id="registrationModal">
