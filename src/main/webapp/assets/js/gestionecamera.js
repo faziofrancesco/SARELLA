@@ -14,12 +14,9 @@ function addc(event){
         success:function(){
             alert("Camera Inserita corretamente");
             window.location.replace("room-administration.jsp");
-
         },
         error : function () {
             alert("la camera  non è stata inserita corretamente");
-            window.location.replace("room-administration.jsp");
-
         }
     });
 }

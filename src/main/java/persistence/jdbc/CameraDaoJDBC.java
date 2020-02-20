@@ -20,7 +20,7 @@ public class CameraDaoJDBC implements CameraDao {
         obj.setNumPersone(set.getInt("fk_nump"));
         obj.setDescrizione(set.getString("descrizione"));
         obj.setImagePath(set.getString("image_path"));
-        obj.setPrezzo(set.getDouble("prezzo"));
+        obj.setPrezzo(set.getBigDecimal("prezzo"));
         return obj;
 
     }
@@ -37,7 +37,7 @@ public class CameraDaoJDBC implements CameraDao {
         statement.setInt(index + 2, object.getNumPersone());
         statement.setString(index + 3, object.getDescrizione());
         statement.setString(index + 4, object.getImagePath());
-        statement.setDouble(index + 5, object.getPrezzo());
+        statement.setBigDecimal(index + 5, object.getPrezzo());
     }
 
     @Override

@@ -91,7 +91,7 @@
                                     <input class="form-control" id="addRoomModalImg" type="file"></div>
                             <div class="form-group">
                                 <label for="addRoomModalPrice">Prezzo</label>
-                                <input class="form-control" id="addRoomModalPrice" type="number" required=""></div>
+                                <input class="form-control" id="addRoomModalPrice" type="number" min="0" step="0.01" required=""></div>
                         </div>
                         <div class="col">
                             <div class="form-group">

@@ -16,7 +16,7 @@ public class PagamentoDaoJDBC implements PagamentoDao {
         Pagamento obj = new Pagamento();
         obj.setIdPagamento(set.getInt("id_pagamento"));
         obj.setIdMetodoPagamentoFk(set.getInt("fk_metodop"));
-        obj.setImporto(set.getDouble("importo"));
+        obj.setImporto(set.getBigDecimal("importo"));
         obj.setDataPagamento(set.getTimestamp("data_pagamento"));
         return obj;
     }
@@ -30,7 +30,7 @@ public class PagamentoDaoJDBC implements PagamentoDao {
         }
 
         statement.setInt(index + 1, object.getIdMetodoPagamentoFk());
-        statement.setDouble(index + 2, object.getImporto());
+        statement.setBigDecimal(index + 2, object.getImporto());
         statement.setTimestamp(index + 3, object.getDataPagamento());
     }
 

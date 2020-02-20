@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 public class Pagamento implements Serializable {
@@ -9,10 +10,10 @@ public class Pagamento implements Serializable {
 
     private Integer idPagamento;
     private Integer idMetodoPagamentoFk;
-    private Double importo;
+    private BigDecimal importo;
     private Timestamp dataPagamento;
 
-    public Pagamento(Integer idPagamento, Integer idMetodoPagamentoFk, Double importo, Timestamp dataPagamento) {
+    public Pagamento(Integer idPagamento, Integer idMetodoPagamentoFk, BigDecimal importo, Timestamp dataPagamento) {
         this.idPagamento = idPagamento;
         this.idMetodoPagamentoFk = idMetodoPagamentoFk;
         this.importo = importo;
@@ -38,11 +39,11 @@ public class Pagamento implements Serializable {
         this.idMetodoPagamentoFk = idMetodoPagamentoFk;
     }
 
-    public Double getImporto() {
+    public BigDecimal getImporto() {
         return importo;
     }
 
-    public void setImporto(Double importo) {
+    public void setImporto(BigDecimal importo) {
         this.importo = importo;
     }
 
