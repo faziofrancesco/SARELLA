@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Cliente;
 import persistence.PersistenceException;
-import persistence.clienteDao;
+import persistence.ClienteDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteDaoJDBC implements clienteDao {
+public class ClienteDaoJDBC implements ClienteDao {
 
     private Cliente extractTo(ResultSet set) throws SQLException {
 

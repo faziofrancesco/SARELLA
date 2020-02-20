@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Recensione;
 import persistence.PersistenceException;
-import persistence.recensioneDao;
+import persistence.RecensioneDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecensioneDaoJDBC implements recensioneDao {
+public class RecensioneDaoJDBC implements RecensioneDao {
 
     private Recensione extractTo(ResultSet set) throws SQLException {
         Recensione obj = new Recensione();

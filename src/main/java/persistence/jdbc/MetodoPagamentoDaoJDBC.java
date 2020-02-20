@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.MetodoPagamento;
 import persistence.PersistenceException;
-import persistence.metodoPagamentoDao;
+import persistence.MetodoPagamentoDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MetodoPagamentoDaoJDBC implements metodoPagamentoDao {
+public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 
     private MetodoPagamento extractTo(ResultSet set) throws SQLException {
 

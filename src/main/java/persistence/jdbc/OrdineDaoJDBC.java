@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Ordine;
 import persistence.PersistenceException;
-import persistence.ordineDao;
+import persistence.OrdineDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrdineDaoJDBC implements ordineDao {
+public class OrdineDaoJDBC implements OrdineDao {
 
     private Ordine extractTo(ResultSet set) throws SQLException {
         Ordine obj = new Ordine();

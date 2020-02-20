@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Pagamento;
 import persistence.PersistenceException;
-import persistence.pagamentoDao;
+import persistence.PagamentoDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,13 +10,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PagamentoDaoJDBC implements pagamentoDao {
+public class PagamentoDaoJDBC implements PagamentoDao {
 
     private Pagamento extractTo(ResultSet set) throws SQLException {
         Pagamento obj = new Pagamento();
         obj.setIdPagamento(set.getInt("id_pagamento"));
         obj.setIdMetodoPagamentoFk(set.getInt("fk_metodop"));
-        obj.setImporto(set.getDouble("importo"));
+        obj.setImporto(set.getBigDecimal("importo"));
         obj.setDataPagamento(set.getTimestamp("data_pagamento"));
         return obj;
     }
@@ -30,7 +30,7 @@ public class PagamentoDaoJDBC implements pagamentoDao {
         }
 
         statement.setInt(index + 1, object.getIdMetodoPagamentoFk());
-        statement.setDouble(index + 2, object.getImporto());
+        statement.setBigDecimal(index + 2, object.getImporto());
         statement.setTimestamp(index + 3, object.getDataPagamento());
     }
 

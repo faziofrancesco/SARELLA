@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 @WebServlet(value = "/rooms_servlet", name = "rooms_servlet")
 public class AddRoom extends HttpServlet {
@@ -35,7 +36,7 @@ public class AddRoom extends HttpServlet {
         r.setTipologia(Integer.parseInt(tipo));
         r.setDescrizione(descrizione);
         r.setNumPersone(Integer.parseInt(numMaxPersone));
-        r.setPrezzo(Double.parseDouble(prezzo));
+        r.setPrezzo(new BigDecimal(prezzo));
         r.setImagePath(immagine);
 
         DBManager.getInstance().getDAOFactory().getCameraDao().save(r);

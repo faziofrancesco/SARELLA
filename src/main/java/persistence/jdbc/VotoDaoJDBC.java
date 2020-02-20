@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Voto;
 import persistence.PersistenceException;
-import persistence.votoDao;
+import persistence.VotoDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VotoDaoJDBC implements votoDao {
+public class VotoDaoJDBC implements VotoDao {
 
     private Voto extractTo(ResultSet set) throws SQLException {
         Voto obj = new Voto();

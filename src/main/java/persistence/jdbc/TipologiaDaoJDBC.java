@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.Tipologia;
 import persistence.PersistenceException;
-import persistence.tipologiaDao;
+import persistence.TipologiaDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TipologiaDaoJDBC implements tipologiaDao {
+public class TipologiaDaoJDBC implements TipologiaDao {
 
     private Tipologia extractTo(ResultSet set) throws SQLException {
         Tipologia obj = new Tipologia();

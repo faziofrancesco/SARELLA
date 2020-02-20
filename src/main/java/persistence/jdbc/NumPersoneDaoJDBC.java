@@ -2,7 +2,7 @@ package persistence.jdbc;
 
 import model.NumPersone;
 import persistence.PersistenceException;
-import persistence.numPersoneDao;
+import persistence.NumPersoneDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumPersoneDaoJDBC implements numPersoneDao {
+public class NumPersoneDaoJDBC implements NumPersoneDao {
     private NumPersone extractTo(ResultSet set) throws SQLException {
         NumPersone obj = new NumPersone();
         obj.setIdNumPersone(set.getInt("id_num_persone"));

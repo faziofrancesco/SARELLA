@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Camera implements Serializable {
 
@@ -9,11 +10,11 @@ public class Camera implements Serializable {
     private Integer idCamera;
     private Integer tipologia;
     private Integer numPersone;
-    private Double prezzo;
+    private BigDecimal prezzo;
     private String descrizione;
     private String imagePath;
 
-    public Camera(Integer idCamera, Integer tipologia, Integer numPersone, Double prezzo, String descrizione, String imagePath) {
+    public Camera(Integer idCamera, Integer tipologia, Integer numPersone, BigDecimal prezzo, String descrizione, String imagePath) {
         this.idCamera = idCamera;
         this.tipologia = tipologia;
         this.numPersone = numPersone;
@@ -49,11 +50,11 @@ public class Camera implements Serializable {
         this.numPersone = numPersone;
     }
 
-    public Double getPrezzo() {
+    public BigDecimal getPrezzo() {
         return prezzo;
     }
 
-    public void setPrezzo(Double prezzo) {
+    public void setPrezzo(BigDecimal prezzo) {
         this.prezzo = prezzo;
     }
 
