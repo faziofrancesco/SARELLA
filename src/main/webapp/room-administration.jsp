@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="model.Tipologia" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 
 <head>
@@ -13,7 +15,6 @@
 
 <body>
     <%@ include file="header.jsp"%>
-
     <main class="page service-page">
         <section class="clean-block clean-services dark">
             <div class="container">
@@ -69,21 +70,21 @@
                                     <div class="form-group">
                                         <label for="addRoomModalType">Tipologia</label>
                                         <select id="addRoomModalType" class="form-control" required="">
-                                            <optgroup label="This is a group">
-                                                <option value="12" selected="">This is item 1</option>
-                                                <option value="13">This is item 2</option>
-                                                <option value="14">This is item 3</option>
+                                            <optgroup label="Tipologie">
+                                                <c:forEach items="${tip}" var="tipolgie">
+                                                    <option value="${tipolgie.getIdTipologia()}">${tipolgie.getTipologia()}</option>
+                                                </c:forEach>
                                             </optgroup>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="addRoomModalNumP">Num. persone</label>
+                                        <label for="addRoomModalNumP">Num.persone</label>
                                         <select id="addRoomModalNumP"class="form-control" required="">
-                                            <optgroup label="This is a group">
-                                                <option value="12" selected="">This is item 1</option>
-                                                <option value="13">This is item 2</option>
-                                                <option value="14">This is item 3</option>
-                                            </optgroup>
+                                            <optgroup label="NumeroPersone">
+                                                <c:forEach var= "nump" items= "${nump}" >
+                                                <option value="${nump.getIdNumPersone()}">${nump.getNumPersone()}</option>
+                                                </c:forEach>
+                                            </optgroup>+
                                         </select>
                                     </div>
                                 <div class="form-group">

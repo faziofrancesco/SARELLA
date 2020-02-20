@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Cliente;
+import model.NumPersone;
+import model.Tipologia;
 import persistence.DBManager;
 import persistence.Dao;
 
@@ -22,6 +24,7 @@ public class Home extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         RequestDispatcher rd=req.getRequestDispatcher("index.jsp");
         rd.include(req,resp);
     }
