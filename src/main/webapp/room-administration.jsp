@@ -85,7 +85,7 @@
                                                 <c:forEach var= "nump" items= "${nump}" >
                                                 <option value="${nump.getIdNumPersone()}">${nump.getNumPersone()}</option>
                                                 </c:forEach>
-                                            </optgroup>+
+                                            </optgroup>
                                         </select>
                                     </div>
                                 <div class="form-group">
@@ -119,22 +119,35 @@
                             <div class="form-row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 d-flex flex-row flex-wrap">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="email">Numero camera</label>
-                                        <input class="form-control item" type="email" id="email" placeholder="Il numero identificativo della camera" required=""></div>
+                                        <label for="updateRoomModalIdRoom">N_Camera</label>
+                                        <select id="updateRoomModalIdRoom" class="form-control" required="">
+                                            <optgroup label="N_camere">
+                                                <c:forEach var= "idc" items= "${idc}" >
+                                                    <option value="${idc}">${idc}</option>
+                                                </c:forEach>
+                                            </optgroup>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="updateRoomModalType">Tipologia</label>
                                         <select id="updateRoomModalType"class="form-control" required="">
-                                            <optgroup label="This is a group">
-                                                <option value="12" selected="">This is item 1</option>
-                                                <option value="13">This is item 2</option>
-                                                <option value="14">This is item 3</option></optgroup></select></div>
+                                            <optgroup label="Tipologia">
+                                                <c:forEach items="${tip}" var="tipolgie">
+                                                <option value="${tipolgie.getIdTipologia()}">${tipolgie.getTipologia()}</option>
+                                                </c:forEach>
+                                            </optgroup>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
-                                        <label for="updateRoomModalNumP">Num. persone</label>
+                                        <label for="updateRoomModalNumP">Num.persone</label>
                                         <select id="updateRoomModalNumP" class="form-control" required="">
                                             <optgroup label="This is a group">
-                                                <option value="12" selected="">This is item 1</option>
-                                                <option value="13">This is item 2</option>
-                                                <option value="14">This is item 3</option></optgroup></select></div>
+                                                <c:forEach var= "nump" items= "${nump}" >
+                                                <option value="${nump.getIdNumPersone()}">${nump.getNumPersone()}</option>
+                                                </c:forEach>
+                                            </optgroup>
+                                        </select>
+                                    </div>
                                 <div class="form-group">
                                     <label for="updateRoomModalImg">Immagine</label>
                                     <input class="form-control" id="updateRoomModalImg" type="file"></div>
@@ -151,7 +164,7 @@
             </div>
             </form>
         </div>
-        <div class="modal-footer"><button class="btn btn-primary" type="button">Modifica la camera</button></div>
+        <div class="modal-footer"><button class="btn btn-primary" type="button" id="btnupdatec" onclick="updatec(event)">Modifica la camera</button></div>
     </div>
     </div>
     </div>
@@ -162,10 +175,19 @@
                     <h4 class="modal-title">Rimuovi camera</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group"><label for="email">Numero camera</label><select class="form-control"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        <div class="form-group">
+                            <label for="deleteRoomModalIdRoom">Id_Camera</label>
+                            <select id="deleteRoomModalIdRoom" class="form-control" required="">
+                                <optgroup label="N_camere">
+                                    <c:forEach var= "idc" items= "${idc}" >
+                                        <option value="${idc}">${idc}</option>
+                                    </c:forEach>
+                                </optgroup>
+                            </select>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-primary" type="button">Elimina la camera</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="button" id="btndeletec" onclick="deletec()(event)">Elimina la camera</button></div>
             </div>
         </div>
     </div>

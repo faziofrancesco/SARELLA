@@ -42,8 +42,8 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public void save(Camera object) {
-
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("call save_camera(?,?,?,?,?,?)")) {
+        String query="INSERT INTO camera(id_camera, fk_tipologia, fk_nump, descrizione, image_path, prezzo)VALUES(?,?,?,?,?,?)";
+        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             insertInto(object, handler.getStatement(), object.getIdCamera());
             handler.execute();
 
@@ -77,7 +77,7 @@ public class CameraDaoJDBC implements CameraDao {
     @Override
     public List<Camera> retrieveAll() {
         String query = "SELECT * FROM retrieve_all_from_camera";
-        List<Camera> camere = null;
+        List<Camera>camere = new ArrayList<Camera>();
         Camera camera = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
@@ -87,7 +87,6 @@ public class CameraDaoJDBC implements CameraDao {
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
-                camere = new ArrayList<Camera>();
                 while (result.next()) {
                     camera = extractFrom(result);
                     camere.add(camera);
@@ -103,7 +102,7 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public void update(Camera object) {
-        String query = "{call update_camera(?,?,?,?,?,?)}";
+        String query = "update camera set  fk_tipologia=?, fk_nump=?, descrizione=?, image_path=?, prezzo=? where id_camera=?";
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             insertInto(object, handler.getStatement(), object.getIdCamera());
@@ -116,7 +115,7 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public void delete(Camera object) {
-        String delete = "{call delete_from_camera(?)}";
+        String delete = "delete from camera where id_camera=?";
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
 
