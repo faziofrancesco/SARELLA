@@ -60,4 +60,9 @@ public class PostgresDAOFactory extends DAOFactory {
     public VotoDao getVotoDao() {
         return new VotoDaoJDBC();
     }
+
+    @Override
+    public GoogleUserDao getGoogleUserDao() {
+        return null;
+    }
 }

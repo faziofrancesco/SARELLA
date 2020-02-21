@@ -44,7 +44,7 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public void save(Cliente object) {
-        String query = "{call save_cliente(?,?,?,?,?,?)}";
+        String query = "INSERT INTO cliente(nome, cognome, data_di_nascita, e_mail, username, password) VALUES(?,?,?,?,?,?)";
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             insertInto(object, handler.getStatement(), null);

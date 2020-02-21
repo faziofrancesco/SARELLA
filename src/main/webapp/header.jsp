@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 
 <head>
@@ -8,6 +10,8 @@
     <title>Header - Agriturismo Sarella</title>
     <%@include file="include.jsp"%>
     <script type="text/javascript" src="assets/js/login.js"></script>
+    <script type="text/javascript" src="assets/js/user.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -114,14 +118,15 @@
                     <h4 class="modal-title">RegistrationForm</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group"><label for="name">Nome</label><input class="form-control item" type="text" id="reg-name" placeholder="Your name"></div>
-                        <div class="form-group"><label for="name">Cognome</label><input class="form-control item" type="text" id="reg-surname" placeholder="Your surname"></div>
-                        <div class="form-group"><label for="name">Data di nascita</label><input class="form-control item" id="reg-date" type="date"></div>
-                        <div class="form-group"><label for="password">Password</label><input class="form-control item" type="password" id="reg-password" placeholder="Your password"></div>
-                        <div class="form-group"><label for="email">Email</label><input class="form-control item" type="email" id="reg-email" placeholder="Your e-mail"></div>
+                        <div class="form-group"><label for="reg-name">Nome</label><input class="form-control item" type="text" id="reg-name" placeholder="Your name"></div>
+                        <div class="form-group"><label for="reg-surname">Cognome</label><input class="form-control item" type="text" id="reg-surname" placeholder="Your surname"></div>
+                        <div class="form-group"><label for="reg-date">Data di nascita</label><input class="form-control item" id="reg-date" type="date"></div>
+                        <div class="form-group"><label for="reg-username">Username</label><input class="form-control item" type="text" id="reg-username" placeholder="Your Username"></div>
+                        <div class="form-group"><label for="reg-password">Password</label><input class="form-control item" type="password" id="reg-password" placeholder="Your password"></div>
+                        <div class="form-group"><label for="reg-email">Email</label><input class="form-control item" type="email" id="reg-email" placeholder="Your e-mail"></div>
                     </form>
                 </div>
-                <div class="modal-footer"><button class="btn btn-primary" type="button">Procedi alla registrazione</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="button" id="btnregistration" onclick="registerUser(event) ">Procedi alla registrazione</button></div>
             </div>
         </div>
     </div>
