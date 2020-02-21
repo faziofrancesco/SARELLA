@@ -1,22 +1,20 @@
-function addc(event){
+function addc(formName){
+
+    let form = $(formName)[0];
+    let formData = new FormData(form);
+
     $.ajax({
         type: "POST",
-        url: "/rooms_servlet",
-
-        data: {
-            Id1 : $("#addRoomModalNumC").val(),
-            Tipo1 : $("#addRoomModalType").val(),
-            Descrizione1 : $("#addRoomModalDescription").val(),
-            numMaxPersone1 : $("#addRoomModalNumP").val(),
-            Img1 : $("#addRoomModalImg").val(),
-            Prezzo1 : $("#addRoomModalPrice").val()
-        },
+        url: "rooms_servlet",
+        data: formData,
+        contentType: false,
+        processData: false,
         success:function(){
-            alert("Camera Inserita corretamente");
+            alert("Camera Inserita correttamente");
             window.location.replace("room-administration.jsp");
         },
-        error : function () {
-            alert("la camera  non è stata inserita corretamente");
+        error:function(){
+            alert("la camera non è stata inserita correttamente");
         }
     });
 }
