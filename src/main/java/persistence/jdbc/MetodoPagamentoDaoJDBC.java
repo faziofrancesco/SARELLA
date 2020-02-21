@@ -38,9 +38,8 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 
     @Override
     public void save(MetodoPagamento object) {
-        String query = "{call save_metodo_pagamento(?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_metodo_pagamento(?,?,?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -51,10 +50,9 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 
     @Override
     public MetodoPagamento retrieve(MetodoPagamento object) {
-        String query = "{call retrieve_by_id_from_metodop(?)}";
         MetodoPagamento metodopagamento = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_metodop(?)")) {
             handler.getStatement().setInt(1, object.getIdMetodoPagamento());
             handler.execute();
 
@@ -72,11 +70,10 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 
     @Override
     public List<MetodoPagamento> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_metodop";
         List<MetodoPagamento> metodopagamenti = null;
         MetodoPagamento metodopagamento = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_metodop")) {
 
             handler.execute();
 
@@ -99,9 +96,8 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 
     @Override
     public void update(MetodoPagamento object) {
-        String query = "{call update_metodo_pagamento(?,?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_metodo_pagamento(?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdMetodoPagamento());
             handler.execute();
 
@@ -112,8 +108,8 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
 
     @Override
     public void delete(MetodoPagamento object) {
-        String delete = "{call delete_from_metodo_pagamento(?)}";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_metodo_pagamento(?)")) {
 
             handler.getStatement().setInt(1, object.getIdMetodoPagamento());
             handler.execute();

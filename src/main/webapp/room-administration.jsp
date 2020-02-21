@@ -162,7 +162,9 @@
                     <h4 class="modal-title">Rimuovi camera</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group"><label for="email">Numero camera</label><select class="form-control"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        <div class="form-group">
+                            <label for="email">Numero camera</label>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer"><button class="btn btn-primary" type="button">Elimina la camera</button></div>
@@ -172,11 +174,11 @@
 
     <%@ include file="footer.jsp"%>
 
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="../assets/js/smoothproducts.min.js"></script>
-    <script src="../assets/js/theme.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>

@@ -7,6 +7,7 @@ import persistence.OrdineDao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,14 +30,17 @@ public class OrdineDaoJDBC implements OrdineDao {
         }
 
         statement.setInt(index + 1, object.getIdClienteFk());
-        statement.setInt(index + 2, object.getIdPagamentoFk());
+        if(object.getIdPagamentoFk() != null) {
+            statement.setInt(index + 2, object.getIdPagamentoFk());
+        } else {
+            statement.setNull(index +2, Types.INTEGER);
+        }
     }
 
     @Override
     public void save(Ordine object) {
-        String query = "{call save_ordine(?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_ordine(?,?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -47,10 +51,9 @@ public class OrdineDaoJDBC implements OrdineDao {
 
     @Override
     public Ordine retrieve(Ordine object) {
-        String query = "{call retrieve_by_id_from_ordine(?)}";
         Ordine ordine = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_ordine(?)")) {
             handler.getStatement().setInt(1, object.getIdOrdine());
 
             handler.execute();
@@ -69,11 +72,10 @@ public class OrdineDaoJDBC implements OrdineDao {
 
     @Override
     public List<Ordine> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_ordine";
         List<Ordine> ordini = null;
         Ordine ordine = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_ordine")) {
 
             handler.execute();
 
@@ -96,10 +98,8 @@ public class OrdineDaoJDBC implements OrdineDao {
 
     @Override
     public void update(Ordine object) {
-        String query = "{call update_ordine(?,?,?)}";
 
-
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_ordine(?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdOrdine());
             handler.execute();
 
@@ -110,8 +110,8 @@ public class OrdineDaoJDBC implements OrdineDao {
 
     @Override
     public void delete(Ordine object) {
-        String delete = "{call delete_from_ordine(?)}";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_ordine(?)")) {
 
             handler.getStatement().setInt(1, object.getIdOrdine());
 

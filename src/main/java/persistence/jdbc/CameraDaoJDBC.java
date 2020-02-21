@@ -59,7 +59,7 @@ public class CameraDaoJDBC implements CameraDao {
     @Override
     public void save(Camera object) {
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("select save_camera(?,?,?,?,?,?)")) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_camera(?,?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdCamera());
             handler.execute();
 
@@ -72,7 +72,7 @@ public class CameraDaoJDBC implements CameraDao {
     public Camera retrieve(Camera object) {
         Camera camera = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("select retrieve_by_id_from_camera(?)")) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_camera(?)")) {
             handler.getStatement().setInt(1, object.getIdCamera());
             handler.execute();
 
@@ -91,11 +91,10 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public List<Camera> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_camera";
         List<Camera> camere = null;
         Camera camera = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_camera")) {
 
             handler.execute();
 
@@ -119,7 +118,7 @@ public class CameraDaoJDBC implements CameraDao {
     @Override
     public void update(Camera object) {
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("select update_camera(?,?,?,?,?,?)")) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_camera(?,?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdCamera());
             handler.execute();
 
@@ -131,7 +130,7 @@ public class CameraDaoJDBC implements CameraDao {
     @Override
     public void delete(Camera object) {
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("select delete_from_camera(?)")) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_camera(?)")) {
 
             handler.getStatement().setInt(1, object.getIdCamera());
             handler.execute();

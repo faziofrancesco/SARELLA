@@ -40,10 +40,8 @@ public class RecensioneDaoJDBC implements RecensioneDao {
 
     @Override
     public void save(Recensione object) {
-        String query = "{call save_recensione(?,?,?,?,?)}";
 
-
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_recensione(?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -54,10 +52,9 @@ public class RecensioneDaoJDBC implements RecensioneDao {
 
     @Override
     public Recensione retrieve(Recensione object) {
-        String query = "{call retrieve_by_id_from_recensione(?)}";
         Recensione recensione = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_recensione(?)")) {
             handler.getStatement().setInt(1, object.getIdRecensione());
             handler.execute();
 
@@ -76,11 +73,10 @@ public class RecensioneDaoJDBC implements RecensioneDao {
 
     @Override
     public List<Recensione> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_recensione";
         List<Recensione> recensioni = null;
         Recensione recensione = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_recensione")) {
 
             handler.execute();
 
@@ -103,9 +99,8 @@ public class RecensioneDaoJDBC implements RecensioneDao {
 
     @Override
     public void update(Recensione object) {
-        String query = "{call update_recensione(?,?,?,?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_recensione(?,?,?,?,?,?)")) {
 
             insertInto(object, handler.getStatement(), object.getIdRecensione());
             handler.execute();
@@ -117,8 +112,8 @@ public class RecensioneDaoJDBC implements RecensioneDao {
 
     @Override
     public void delete(Recensione object) {
-        String delete = "{call delete_from_recensione(?)}";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_recensione(?)")) {
 
             handler.getStatement().setInt(1, object.getIdRecensione());
 

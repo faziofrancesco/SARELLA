@@ -32,9 +32,8 @@ public class VotoDaoJDBC implements VotoDao {
 
     @Override
     public void save(Voto object) {
-        String query = "{call save_voto(?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_voto(?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -45,10 +44,9 @@ public class VotoDaoJDBC implements VotoDao {
 
     @Override
     public Voto retrieve(Voto object) {
-        String query = "{call retrieve_by_id_from_voto(?)}";
         Voto voto = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_voto(?)")) {
 
             handler.getStatement().setInt(1, object.getIdVoto());
             handler.execute();
@@ -68,11 +66,10 @@ public class VotoDaoJDBC implements VotoDao {
 
     @Override
     public List<Voto> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_voto";
         List<Voto> voti = null;
         Voto voto = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_voto")) {
 
             handler.execute();
 
@@ -95,10 +92,8 @@ public class VotoDaoJDBC implements VotoDao {
 
     @Override
     public void update(Voto object) {
-        String query = "{call update_voto(?,?)}";
 
-
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_voto(?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdVoto());
             handler.execute();
 
@@ -109,8 +104,8 @@ public class VotoDaoJDBC implements VotoDao {
 
     @Override
     public void delete(Voto object) {
-        String delete = "{call delete_from_voto(?)}";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_voto(?)")) {
 
             handler.getStatement().setInt(1, object.getIdVoto());
             handler.execute();

@@ -32,9 +32,8 @@ public class TipologiaDaoJDBC implements TipologiaDao {
 
     @Override
     public void save(Tipologia object) {
-        String query = "{call save_tipologia(?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_tipologia(?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -45,10 +44,9 @@ public class TipologiaDaoJDBC implements TipologiaDao {
 
     @Override
     public Tipologia retrieve(Tipologia object) {
-        String query = "{call retrieve_by_id_from_tipologia(?)}";
         Tipologia tipologia = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_tipologia(?)")) {
             handler.getStatement().setInt(1, object.getIdTipologia());
             handler.execute();
 
@@ -67,11 +65,10 @@ public class TipologiaDaoJDBC implements TipologiaDao {
 
     @Override
     public List<Tipologia> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_tipologia";
         List<Tipologia> tipologie = null;
         Tipologia tipologia = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_tipologia")) {
 
             handler.execute();
 
@@ -94,10 +91,8 @@ public class TipologiaDaoJDBC implements TipologiaDao {
 
     @Override
     public void update(Tipologia object) {
-        String query = "{call update_tipologia(?,?)}";
 
-
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_tipologia(?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdTipologia());
             handler.execute();
 
@@ -108,8 +103,8 @@ public class TipologiaDaoJDBC implements TipologiaDao {
 
     @Override
     public void delete(Tipologia object) {
-        String delete = "{call delete_from_tipologia(?)}";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_tipologia(?)")) {
 
             handler.getStatement().setInt(1, object.getIdTipologia());
             handler.execute();
