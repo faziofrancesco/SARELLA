@@ -11,7 +11,7 @@ function addc(formName){
         processData: false,
         success:function(){
             alert("Camera Inserita correttamente");
-            window.location.replace("room-administration.jsp");
+            window.location.replace("/gestionecamere");
         },
         error:function(){
             alert("la camera non è stata inserita correttamente");

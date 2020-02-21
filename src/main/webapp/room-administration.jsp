@@ -119,22 +119,34 @@
                             <div class="form-row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 d-flex flex-row flex-wrap">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="email">Numero camera</label>
-                                        <input class="form-control item" type="email" id="email" placeholder="Il numero identificativo della camera" required=""></div>
+                                        <label for="updateRoomModalId">ID_camera</label>
+                                        <select id="updateRoomModalId" class="form-control" required="">
+                                            <optgroup label="Id_camera">
+                                                <c:forEach var= "id" items= "${id}" >
+                                                    <option value="${id}">${id}</option>
+                                                </c:forEach>
+                                            </optgroup>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="updateRoomModalType">Tipologia</label>
                                         <select id="updateRoomModalType"class="form-control" required="">
-                                            <optgroup label="This is a group">
-                                                <option value="12" selected="">This is item 1</option>
-                                                <option value="13">This is item 2</option>
-                                                <option value="14">This is item 3</option></optgroup></select></div>
+                                            <optgroup label="Tipologia">
+                                                <c:forEach items="${tip}" var="tipolgie">
+                                                <option value="${tipolgie.getIdTipologia()}">${tipolgie.getTipologia()}</option>
+                                                </c:forEach></optgroup>
+                                        </select>
+                                    </div>
                                     <div class="form-group">
                                         <label for="updateRoomModalNumP">Num. persone</label>
                                         <select id="updateRoomModalNumP" class="form-control" required="">
-                                            <optgroup label="This is a group">
-                                                <option value="12" selected="">This is item 1</option>
-                                                <option value="13">This is item 2</option>
-                                                <option value="14">This is item 3</option></optgroup></select></div>
+                                            <optgroup label="NumPersone">
+                                                <c:forEach var= "nump" items= "${nump}" >
+                                                <option value="${nump.getIdNumPersone()}">${nump.getNumPersone()}</option>
+                                                </c:forEach>
+                                            </optgroup>
+                                        </select>
+                                    </div>
                                 <div class="form-group">
                                     <label for="updateRoomModalImg">Immagine</label>
                                     <input class="form-control" enctype="multipart/form-data" name="img" id="updateRoomModalImg" type="file"></div>
@@ -163,7 +175,14 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <label for="email">Numero camera</label>
+                            <label for="deleteRoomModalId">ID_camera</label>
+                            <select id="deleteRoomModalId" class="form-control" required="">
+                                <optgroup label="Id_camera">
+                                    <c:forEach var= "id" items= "${id}" >
+                                        <option value="${id}">${id}</option>
+                                    </c:forEach>
+                                </optgroup>
+                            </select>
                         </div>
                     </form>
                 </div>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Camera;
 import model.Cliente;
 import model.NumPersone;
 import model.Tipologia;
@@ -30,6 +31,13 @@ public class GestioneCamere extends  HttpServlet{
             req.setAttribute("tip", t);
             List<NumPersone> np=DBManager.getInstance().getDAOFactory().getNumPersoneDao().retrieveAll();
             req.setAttribute("nump", np);
+            List<Camera> cm=DBManager.getInstance().getDAOFactory().getCameraDao().retrieveAll();
+            List<Integer>d=new ArrayList<Integer>();
+            for(int i=0;i<cm.size();i++)
+            {
+                d.add(cm.get(i).getIdCamera());
+            }
+            req.setAttribute("id",d);
             RequestDispatcher rd = req.getRequestDispatcher("room-administration.jsp");
             rd.include(req, resp);
         } catch(Exception e) {

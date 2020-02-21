@@ -91,7 +91,7 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public List<Camera> retrieveAll() {
-        List<Camera> camere = null;
+        List<Camera> camere = new ArrayList<Camera>();
         Camera camera = null;
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_camera")) {
@@ -101,7 +101,7 @@ public class CameraDaoJDBC implements CameraDao {
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
-                camere = new ArrayList<Camera>();
+
                 while (result.next()) {
                     camera = extractFrom(result);
                     camere.add(camera);
