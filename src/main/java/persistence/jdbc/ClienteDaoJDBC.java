@@ -166,4 +166,30 @@ public class ClienteDaoJDBC implements ClienteDao {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    @Override
+    public Boolean existusernameandpassword(String Username, String Password) {
+        String query="Select * from cliente where username=? and password=?";
+        Cliente utente = new Cliente();
+        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+            handler.getStatement().setString(1, Username);
+            handler.getStatement().setString(2, Password);
+
+            handler.execute();
+
+            if (handler.existsResultSet()) {
+
+                ResultSet result = handler.getResultSet();
+                result.next();
+                utente = extractTo(result);
+                return true;
+            }
+            else
+                return false;
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }

@@ -1,0 +1,43 @@
+package controller;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import persistence.DAOFactory;
+import persistence.DBManager;
+
+import java.io.IOException;
+import java.util.List;
+
+//FIXME: davvero dobbiamo fare così per ogni link?
+@WebServlet("/logout")
+public class Logout extends HttpServlet {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = -3499056463190953357L;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        req.getSession().setAttribute("logged", false);
+        req.getSession().removeAttribute("username");
+        resp.addCookie(new Cookie("logged", "false"));
+        resp.addCookie(new Cookie("admin", "false"));
+
+
+        req.getRequestDispatcher("/homepage").forward(req, resp);
+        // resp.sendRedirect(req.getHeader("referer"));
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setStatus(405); // Permission denied, only GET here
+    }
+}
+

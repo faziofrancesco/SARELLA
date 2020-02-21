@@ -29,7 +29,7 @@
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="rooms/rooms-catalog-page.html" style="color: rgb(134,138,143);" title="Rooms">Rooms</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/about-us.html" style="color: rgb(134,138,143);" title="About us">About us</a></td>
                                 <td class="text-center nav-item" role="presentation">
-                                    <% if(true) {%>
+                                    <% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))) {%>
                                     <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a>
                                     <%} else {%>
                                     <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="${username}" role="button">${username}</a>
@@ -40,10 +40,10 @@
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="products/products-catalog-page.html" style="color: rgb(134,138,143);" title="Products">Products</a></td>
                                 <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/contact-us.html" style="color: rgb(134,138,143);" title="Contacts">Contacts</a></td>
                                 <td class="text-center nav-item" role="presentation">
-                                    <% if(true) {%>
+                                    <% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))) {%>
                                     <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Sign Up" role="button" data-toggle="modal" data-target="#registrationModal">Sign Up</a>
                                     <%} else {%>
-                                    <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Log Out" role="button">Log Out</a>
+                                    <a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Log Out" role="button " href="/logout">Log Out</a>
                                     <%}%>
                             </tr>
                         </tbody>
@@ -59,8 +59,8 @@
                     <h4 class="modal-title">Login</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group"><label for="email">Username</label><input class="form-control item" type="email" id="email" placeholder="Your username"></div>
-                        <div class="form-group"><label for="password">Password</label><input class="form-control" type="password" id="password" placeholder="Your password"></div>
+                        <div class="form-group"><label for="Login-username">Username</label><input class="form-control item" type="text" id="Login-username" placeholder="Your username"></div>
+                        <div class="form-group"><label for="Login_password">Password</label><input class="form-control" type="password" id="Login_password" placeholder="Your password"></div>
                         <div class="form-group">
                             <div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox"><label class="form-check-label" for="checkbox">Remember me</label></div>
                         </div>
@@ -70,15 +70,13 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-
+                    <button class="btn btn-primary" type="button" id="btnLogin" onclick="loginUser(event)">Accedi</button></div>
                     <div class="g-signin2" data-onsuccess="onSignIn" ></div>
                     <script>
                         function onSignIn(googleUser) {
                             googleSignIn(googleUser);
                         }
                     </script>
-                    <button class="btn btn-primary" type="button">Accedi</button></div>
-
             </div>
         </div>
     </div>

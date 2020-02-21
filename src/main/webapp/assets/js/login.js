@@ -11,7 +11,24 @@ function signOut() {
         console.log('User signed out.');
     });
 }
+function loginUser(event){
+    $.ajax({
+        type: "POST",
+        url: "/normalLogin",
+        data: {
 
+            username : $("#Login-username").val(),
+            password : $("#Login_password").val(),
+        },
+        success:function(){
+            window.location.replace("/homepage");
+
+        },
+        error : function () {
+            alert("Login non valido");
+        }
+    });
+}
 function googleSignIn(googleUser) {
     $.ajax({
         type: "POST",
