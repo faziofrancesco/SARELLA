@@ -40,9 +40,8 @@ public class CommentoDaoJDBC implements CommentoDao {
 
     @Override
     public void save(Commento object) {
-        String query = "{call save_commento(?,?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_commento(?,?,?,?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -53,10 +52,9 @@ public class CommentoDaoJDBC implements CommentoDao {
 
     @Override
     public Commento retrieve(Commento object) {
-        String query = "{call retrieve_by_id_from_commento(?)}";
         Commento commento = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_commento(?)")) {
             handler.getStatement().setInt(1, object.getIdCommento());
             handler.execute();
 
@@ -75,11 +73,10 @@ public class CommentoDaoJDBC implements CommentoDao {
 
     @Override
     public List<Commento> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_commento";
         List<Commento> commenti = null;
         Commento commento = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_commento")) {
 
             handler.execute();
 
@@ -102,9 +99,8 @@ public class CommentoDaoJDBC implements CommentoDao {
 
     @Override
     public void update(Commento object) {
-        String query = "{call update_commento(?,?,?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_commento(?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdCommento());
             handler.execute();
 
@@ -115,9 +111,8 @@ public class CommentoDaoJDBC implements CommentoDao {
 
     @Override
     public void delete(Commento object) {
-        String delete = "{call delete_from_commento(?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_commento(?)")) {
 
             handler.getStatement().setInt(1, object.getIdCommento());
             handler.execute();

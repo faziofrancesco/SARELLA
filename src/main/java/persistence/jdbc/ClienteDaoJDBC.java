@@ -7,6 +7,7 @@ import persistence.ClienteDao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,9 +35,24 @@ public class ClienteDaoJDBC implements ClienteDao {
             index = 1;
         }
 
-        statement.setString(index + 1, object.getNome());
-        statement.setString(index + 2, object.getCognome());
-        statement.setDate(index + 3, object.getDataDiNascita());
+        if(object.getNome() != null) {
+            statement.setString(index + 1, object.getNome());
+        } else {
+            statement.setNull(index + 1, Types.VARCHAR);
+        }
+
+        if(object.getCognome() != null) {
+            statement.setString(index + 2, object.getCognome());
+        } else {
+            statement.setNull(index + 2, Types.VARCHAR);
+        }
+
+        if(object.getDataDiNascita() != null) {
+            statement.setDate(index + 3, object.getDataDiNascita());
+        } else {
+            statement.setNull(index + 3, Types.DATE);
+        }
+
         statement.setString(index + 4, object.getEmail());
         statement.setString(index + 5, object.getUsername());
         statement.setString(index + 6, object.getPassword());
@@ -44,9 +60,8 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public void save(Cliente object) {
-        String query = "INSERT INTO cliente(nome, cognome, data_di_nascita, e_mail, username, password) VALUES(?,?,?,?,?,?)";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_cliente(?,?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -57,10 +72,9 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public Cliente retrieve(Cliente object) {
-        String query = "{call retrieve_by_id_from_cliente(?)}";
         Cliente utente = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_cliente(?)")) {
             handler.getStatement().setInt(1, object.getIdCliente());
             handler.execute();
 
@@ -80,11 +94,11 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public List<Cliente> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_cliente";
+
         List<Cliente> utenti = null;
         Cliente utente = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_cliente")) {
 
             handler.execute();
 
@@ -107,9 +121,8 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public void update(Cliente object) {
-        String update = "{call update_cliente(?,?,?,?,?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_cliente(?,?,?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdCliente());
             handler.execute();
 
@@ -120,9 +133,8 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public void delete(Cliente object) {
-        String update = "{call delete_from_cliente(?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(update)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_cliente(?)")) {
 
             handler.getStatement().setInt(1, object.getIdCliente());
 

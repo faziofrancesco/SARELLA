@@ -7,6 +7,7 @@ import persistence.PagamentoDao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,16 +30,20 @@ public class PagamentoDaoJDBC implements PagamentoDao {
             index = 1;
         }
 
-        statement.setInt(index + 1, object.getIdMetodoPagamentoFk());
+        if(object.getIdMetodoPagamentoFk() != null) {
+            statement.setInt(index + 1, object.getIdMetodoPagamentoFk());
+        } else {
+            statement.setNull(index + 1, Types.INTEGER);
+        }
+
         statement.setBigDecimal(index + 2, object.getImporto());
         statement.setTimestamp(index + 3, object.getDataPagamento());
     }
 
     @Override
     public void save(Pagamento object) {
-        String query = "{call save_pagamento(?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_pagamento(?,?,?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -49,10 +54,9 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 
     @Override
     public Pagamento retrieve(Pagamento object) {
-        String query = "{call retrieve_by_id_from_pagamento(?)}";
         Pagamento pagamento = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_pagamento(?)")) {
             handler.getStatement().setInt(1, object.getIdPagamento());
             handler.execute();
 
@@ -71,11 +75,10 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 
     @Override
     public List<Pagamento> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_pagamento";
         List<Pagamento> pagamenti = null;
         Pagamento pagamento = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_pagamento")) {
 
             handler.execute();
 
@@ -98,9 +101,8 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 
     @Override
     public void update(Pagamento object) {
-        String query = "{call update_pagamento(?,?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_pagamento(?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdPagamento());
             handler.execute();
 
@@ -111,8 +113,8 @@ public class PagamentoDaoJDBC implements PagamentoDao {
 
     @Override
     public void delete(Pagamento object) {
-        String delete = "{call delete_from_pagamento(?)}";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_pagamento(?)")) {
             handler.getStatement().setInt(1, object.getIdPagamento());
             handler.execute();
 

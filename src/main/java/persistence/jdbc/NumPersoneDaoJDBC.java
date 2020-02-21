@@ -31,9 +31,8 @@ public class NumPersoneDaoJDBC implements NumPersoneDao {
 
     @Override
     public void save(NumPersone object) {
-        String query = "{call save_num_persone(?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_num_persone(?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -44,10 +43,10 @@ public class NumPersoneDaoJDBC implements NumPersoneDao {
 
     @Override
     public NumPersone retrieve(NumPersone object) {
-        String query = "{call retrieve_by_id_from_nump(?)}";
+
         NumPersone numpersone = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_nump(?)")) {
             handler.getStatement().setInt(1, object.getIdNumPersone());
 
             handler.execute();
@@ -66,11 +65,11 @@ public class NumPersoneDaoJDBC implements NumPersoneDao {
 
     @Override
     public List<NumPersone> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_nump";
+
         List<NumPersone> lnumpersone = null;
         NumPersone numpersone = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_nump")) {
 
             handler.execute();
 
@@ -93,9 +92,8 @@ public class NumPersoneDaoJDBC implements NumPersoneDao {
 
     @Override
     public void update(NumPersone object) {
-        String query = "{call update_num_persone(?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_num_persone(?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdNumPersone());
             handler.execute();
 
@@ -106,8 +104,8 @@ public class NumPersoneDaoJDBC implements NumPersoneDao {
 
     @Override
     public void delete(NumPersone object) {
-        String delete = "{call delete_from_num_persone(?)}";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_num_persone(?)")) {
 
             handler.getStatement().setInt(1, object.getIdNumPersone());
 

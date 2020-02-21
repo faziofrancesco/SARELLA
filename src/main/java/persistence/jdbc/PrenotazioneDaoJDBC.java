@@ -38,10 +38,8 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
     @Override
     public void save(Prenotazione object) {
-        String query = "{call save_prenotazione(?,?,?,?)}";
 
-
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_prenotazione(?,?,?,?)")) {
             insertInto(object, handler.getStatement(), null);
             handler.execute();
 
@@ -52,10 +50,9 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
     @Override
     public Prenotazione retrieve(Prenotazione object) {
-        String query = "{call retrieve_by_id_from_prenotazione(?)}";
         Prenotazione prenotazione = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_prenotazione(?)")) {
             handler.getStatement().setInt(1, object.getIdPrenotazione());
             handler.execute();
 
@@ -74,11 +71,10 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
     @Override
     public List<Prenotazione> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_prenotazione";
         List<Prenotazione> prenotazioni = null;
         Prenotazione prenotazione = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_prenotazione")) {
 
             handler.execute();
 
@@ -101,9 +97,8 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
     @Override
     public void update(Prenotazione object) {
-        String query = "{call update_prenotazione(?,?,?,?,?)}";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_prenotazione(?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdPrenotazione());
             handler.execute();
 
@@ -114,8 +109,8 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
     @Override
     public void delete(Prenotazione object) {
-        String delete = "{call delete_from_prenotazione(?)}";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_prenotazione(?)")) {
             handler.getStatement().setInt(1, object.getIdPrenotazione());
             handler.execute();
 

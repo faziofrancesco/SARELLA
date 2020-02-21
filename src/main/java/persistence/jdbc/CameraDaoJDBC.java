@@ -7,6 +7,7 @@ import persistence.CameraDao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,17 +34,32 @@ public class CameraDaoJDBC implements CameraDao {
             index = 1;
         }
 
-        statement.setInt(index + 1, object.getTipologia());
-        statement.setInt(index + 2, object.getNumPersone());
+        if(object.getTipologia() != null) {
+            statement.setInt(index + 1, object.getTipologia());
+        } else {
+            statement.setNull(index + 1, Types.INTEGER);
+        }
+
+        if(object.getNumPersone() != null) {
+            statement.setInt(index + 2, object.getNumPersone());
+        } else {
+            statement.setNull(index + 2, Types.INTEGER);
+        }
+
         statement.setString(index + 3, object.getDescrizione());
-        statement.setString(index + 4, object.getImagePath());
         statement.setBigDecimal(index + 5, object.getPrezzo());
+
+        if(object.getImagePath() != null) {
+            statement.setString(index + 4, object.getImagePath());
+        } else {
+            statement.setNull(index + 4, Types.VARCHAR);
+        }
     }
 
     @Override
     public void save(Camera object) {
-        String query="INSERT INTO camera(id_camera, fk_tipologia, fk_nump, descrizione, image_path, prezzo)VALUES(?,?,?,?,?,?)";
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_camera(?,?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdCamera());
             handler.execute();
 
@@ -54,10 +70,9 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public Camera retrieve(Camera object) {
-        String query = "{call retrieve_by_id_from_camera(?)}";
         Camera camera = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_camera(?)")) {
             handler.getStatement().setInt(1, object.getIdCamera());
             handler.execute();
 
@@ -76,17 +91,17 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public List<Camera> retrieveAll() {
-        String query = "SELECT * FROM retrieve_all_from_camera";
-        List<Camera>camere = new ArrayList<Camera>();
+        List<Camera> camere = null;
         Camera camera = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_all_from_camera")) {
 
             handler.execute();
 
             if (handler.existsResultSet()) {
 
                 ResultSet result = handler.getResultSet();
+                camere = new ArrayList<Camera>();
                 while (result.next()) {
                     camera = extractFrom(result);
                     camere.add(camera);
@@ -102,9 +117,8 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public void update(Camera object) {
-        String query = "update camera set  fk_tipologia=?, fk_nump=?, descrizione=?, image_path=?, prezzo=? where id_camera=?";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_camera(?,?,?,?,?,?)")) {
             insertInto(object, handler.getStatement(), object.getIdCamera());
             handler.execute();
 
@@ -115,15 +129,14 @@ public class CameraDaoJDBC implements CameraDao {
 
     @Override
     public void delete(Camera object) {
-        String delete = "delete from camera where id_camera=?";
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler(delete)) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT delete_from_camera(?)")) {
 
             handler.getStatement().setInt(1, object.getIdCamera());
             handler.execute();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new PersistenceException(e.getMessage());
         }
     }
 }
