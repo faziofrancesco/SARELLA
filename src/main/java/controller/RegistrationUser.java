@@ -26,21 +26,26 @@ public class RegistrationUser extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("name");
-        String cognome = request.getParameter("surname");
-        String data = request.getParameter("datanascita");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        Cliente cliente = new Cliente();
-        cliente.setNome(name);
-        cliente.setCognome(cognome);
-        cliente.setDataDiNascita(Date.valueOf(data));
-        cliente.setEmail(email);
-        cliente.setUsername(username);
-        cliente.setPassword(password);
-        Dao<Cliente> userdao = DBManager.getInstance().getDAOFactory().getClienteDao();
-        userdao.save(cliente);
-        response.setStatus(201);
+        try {
+            String name = request.getParameter("name");
+            String cognome = request.getParameter("surname");
+            String data = request.getParameter("datanascita");
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            String email = request.getParameter("email");
+            Cliente cliente = new Cliente();
+            cliente.setNome(name);
+            cliente.setCognome(cognome);
+            cliente.setDataDiNascita(Date.valueOf(data));
+            cliente.setEmail(email);
+            cliente.setUsername(username);
+            cliente.setPassword(password);
+            Dao<Cliente> userdao = DBManager.getInstance().getDAOFactory().getClienteDao();
+            userdao.save(cliente);
+            response.setStatus(201);
+        } catch(Exception e) {
+            e.printStackTrace();
+            response.setStatus(500);
+        }
     }
 }

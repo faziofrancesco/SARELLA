@@ -34,7 +34,7 @@
                                 style="color: rgb(134,138,143);" title="Home">Home</a></td>
                         <td class="text-center nav-item" role="presentation"><a
                                 class="text-center d-inline-block small-padding index-a"
-                                href="rooms/rooms-catalog-page.html" style="color: rgb(134,138,143);" title="Rooms">Rooms</a>
+                                href="show_rooms" style="color: rgb(134,138,143);" title="Rooms">Rooms</a>
                         </td>
                         <td class="text-center nav-item" role="presentation"><a
                                 class="text-center d-inline-block small-padding index-a" href="infos/about-us.html"
@@ -45,7 +45,7 @@
                                title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a>
                                 <%} else {%>
                             <a class="text-center border rounded d-inline-block small-padding btn btn-info"
-                               title="${username}" role="button">${username}</a>
+                               title="${request.getParameter("username")}" role="button">${request.getParameter("username")}</a>
                                 <% }%>
                     </tr>
                     <tr>
@@ -197,7 +197,7 @@
                         aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="regForm">
                     <div class="form-group"><label for="reg-name">Nome</label><input class="form-control item"
                                                                                      type="text" id="reg-name"
                                                                                      placeholder="Your name"></div>
@@ -223,7 +223,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="btnregistration" onclick="registerUser(event) ">
+                <button class="btn btn-primary" type="button" id="btnregistration" onclick="registerUser() ">
                     Procedi alla registrazione
                 </button>
             </div>
