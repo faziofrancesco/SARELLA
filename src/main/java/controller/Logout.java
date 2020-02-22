@@ -13,7 +13,6 @@ import persistence.DBManager;
 import java.io.IOException;
 import java.util.List;
 
-//FIXME: davvero dobbiamo fare così per ogni link?
 @WebServlet("/logout")
 public class Logout extends HttpServlet {
 

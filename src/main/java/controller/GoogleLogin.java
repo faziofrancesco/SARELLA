@@ -28,8 +28,7 @@ public class GoogleLogin extends HttpServlet {
             resp.getOutputStream().print(1);
         } else {
             Cliente u = new Cliente();
-            u.setEmail(email);
-            u.setNome(name);
+
 
             Dao<Cliente> userdao = DBManager.getInstance().getDAOFactory().getClienteDao();
             userdao.save(u);
