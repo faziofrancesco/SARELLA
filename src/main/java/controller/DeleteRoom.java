@@ -1,22 +1,18 @@
 package controller;
 
-import java.io.IOException;
+import model.Camera;
+import persistence.DBManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import model.Camera;
-import persistence.DBManager;
+import java.io.IOException;
 
 @WebServlet(value = "/deleterooms_servlet", name = "deleterooms_servlet")
 public class DeleteRoom extends HttpServlet {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 224905303019449713L;
 
     @Override
@@ -25,11 +21,17 @@ public class DeleteRoom extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 
-        String id = req.getParameter("Id");
-        Camera c = new Camera();
-        c.setIdCamera(Integer.parseInt(id));
-        DBManager.getInstance().getDAOFactory().getCameraDao().delete(c);
+        try {
+            String id = req.getParameter("Id");
+            Camera c = new Camera();
+            c.setIdCamera(Integer.parseInt(id));
+            DBManager.getInstance().getDAOFactory().getCameraDao().delete(c);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            resp.setStatus(500);
+        }
     }
 }

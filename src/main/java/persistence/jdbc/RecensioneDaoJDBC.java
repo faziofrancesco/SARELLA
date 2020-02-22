@@ -26,7 +26,7 @@ public class RecensioneDaoJDBC implements RecensioneDao {
     private void insertInto(Recensione object, PreparedStatement statement, Integer id) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }

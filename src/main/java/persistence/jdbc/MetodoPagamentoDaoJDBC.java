@@ -1,8 +1,8 @@
 package persistence.jdbc;
 
 import model.MetodoPagamento;
-import persistence.PersistenceException;
 import persistence.MetodoPagamentoDao;
+import persistence.PersistenceException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +26,7 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
     private void insertInto(MetodoPagamento object, PreparedStatement statement, Integer id) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }

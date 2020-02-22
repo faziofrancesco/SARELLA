@@ -15,7 +15,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.nio.file.Paths;
 
-@WebServlet(value = "/rooms_servlet", name = "rooms_servlet")
+@WebServlet(value = "/addrooms_servlet", name = "addrooms_servlet")
 @MultipartConfig
 public class AddRoom extends HttpServlet {
 
@@ -29,28 +29,28 @@ public class AddRoom extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 
-        try{
-            String id = req.getParameter("id");
-            String descrizione = req.getParameter("descrizione");
-            String prezzo = req.getParameter("prezzo");
+        try {
+            String id = req.getParameter("addRoomFromId");
+            String descrizione = req.getParameter("addRoomFormDesc");
+            String prezzo = req.getParameter("addRoomFormPrice");
 
             Camera r = new Camera();
             r.setIdCamera(Integer.parseInt(id));
             r.setPrezzo(new BigDecimal(prezzo));
             r.setDescrizione(descrizione);
 
-            String numMaxPersone = req.getParameter("numpersone");
-            if(numMaxPersone!=null) {
+            String numMaxPersone = req.getParameter("addRoomFormNumPersone");
+            if (numMaxPersone != null) {
                 r.setNumPersone(Integer.parseInt(numMaxPersone));
             }
 
-            String tipo = req.getParameter("tipo");
-            if(tipo != null) {
+            String tipo = req.getParameter("addRoomFormType");
+            if (tipo != null) {
                 r.setTipologia(Integer.parseInt(tipo));
             }
 
-            Part img = req.getPart("img");
-            if(img != null) {
+            Part img = req.getPart("addRoomFormImg");
+            if (img != null) {
                 String filename = Paths.get(img.getSubmittedFileName()).getFileName().toString();
                 InputStream fileContent = img.getInputStream();
                 r.setImagePath(filename);
@@ -60,7 +60,7 @@ public class AddRoom extends HttpServlet {
 
             resp.setStatus(201);
 
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             resp.setStatus(500);
         }

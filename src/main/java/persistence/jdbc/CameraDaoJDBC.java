@@ -1,8 +1,8 @@
 package persistence.jdbc;
 
 import model.Camera;
-import persistence.PersistenceException;
 import persistence.CameraDao;
+import persistence.PersistenceException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,30 +26,48 @@ public class CameraDaoJDBC implements CameraDao {
 
     }
 
-    private void insertInto(Camera object, PreparedStatement statement, Integer id) throws SQLException {
+    private void insertInto(Camera object, PreparedStatement statement, Integer id, boolean keepPreviousValues) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }
 
-        if(object.getTipologia() != null) {
+        Camera old = null;
+        if (keepPreviousValues) {
+            old = retrieve(object);
+        }
+
+        if (object.getTipologia() != null) {
             statement.setInt(index + 1, object.getTipologia());
-        } else {
+        } else if (!keepPreviousValues) {
             statement.setNull(index + 1, Types.INTEGER);
-        }
-
-        if(object.getNumPersone() != null) {
-            statement.setInt(index + 2, object.getNumPersone());
         } else {
-            statement.setNull(index + 2, Types.INTEGER);
+            statement.setInt(index + 1, old.getTipologia());
         }
 
-        statement.setString(index + 3, object.getDescrizione());
-        statement.setBigDecimal(index + 5, object.getPrezzo());
+        if (object.getNumPersone() != null) {
+            statement.setInt(index + 2, object.getNumPersone());
+        } else if (!keepPreviousValues) {
+            statement.setNull(index + 2, Types.INTEGER);
+        } else {
+            statement.setInt(index + 2, old.getNumPersone());
+        }
 
-        if(object.getImagePath() != null) {
+        if (object.getNumPersone() != null) {
+            statement.setString(index + 3, object.getDescrizione());
+        } else if (keepPreviousValues) {
+            statement.setString(index + 3, old.getDescrizione());
+        }
+
+        if (object.getPrezzo() != null) {
+            statement.setBigDecimal(index + 5, object.getPrezzo());
+        } else if (keepPreviousValues) {
+            statement.setBigDecimal(index + 5, old.getPrezzo());
+        }
+
+        if (object.getImagePath() != null) {
             statement.setString(index + 4, object.getImagePath());
         } else {
             statement.setNull(index + 4, Types.VARCHAR);
@@ -60,7 +78,7 @@ public class CameraDaoJDBC implements CameraDao {
     public void save(Camera object) {
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT save_camera(?,?,?,?,?,?)")) {
-            insertInto(object, handler.getStatement(), object.getIdCamera());
+            insertInto(object, handler.getStatement(), object.getIdCamera(), false);
             handler.execute();
 
         } catch (SQLException e) {
@@ -119,7 +137,7 @@ public class CameraDaoJDBC implements CameraDao {
     public void update(Camera object) {
 
         try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT update_camera(?,?,?,?,?,?)")) {
-            insertInto(object, handler.getStatement(), object.getIdCamera());
+            insertInto(object, handler.getStatement(), object.getIdCamera(), true);
             handler.execute();
 
         } catch (SQLException e) {

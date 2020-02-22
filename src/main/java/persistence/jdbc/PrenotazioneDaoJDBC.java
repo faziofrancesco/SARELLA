@@ -24,7 +24,7 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
     private void insertInto(Prenotazione object, PreparedStatement statement, Integer id) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }

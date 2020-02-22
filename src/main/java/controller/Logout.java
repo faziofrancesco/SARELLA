@@ -6,12 +6,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import persistence.DAOFactory;
-import persistence.DBManager;
-
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet("/logout")
 public class Logout extends HttpServlet {

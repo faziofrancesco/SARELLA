@@ -57,7 +57,7 @@ public class JDBCQueryHandler implements AutoCloseable {
     }
 
     public void execute() throws SQLException {
-        if(preparedStatement.execute())
+        if (preparedStatement.execute())
             resultSet = preparedStatement.getResultSet();
     }
 }

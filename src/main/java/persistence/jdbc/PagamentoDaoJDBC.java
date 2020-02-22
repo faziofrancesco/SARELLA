@@ -1,8 +1,8 @@
 package persistence.jdbc;
 
 import model.Pagamento;
-import persistence.PersistenceException;
 import persistence.PagamentoDao;
+import persistence.PersistenceException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,12 +25,12 @@ public class PagamentoDaoJDBC implements PagamentoDao {
     private void insertInto(Pagamento object, PreparedStatement statement, Integer id) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }
 
-        if(object.getIdMetodoPagamentoFk() != null) {
+        if (object.getIdMetodoPagamentoFk() != null) {
             statement.setInt(index + 1, object.getIdMetodoPagamentoFk());
         } else {
             statement.setNull(index + 1, Types.INTEGER);

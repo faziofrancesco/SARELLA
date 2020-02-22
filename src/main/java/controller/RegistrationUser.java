@@ -32,7 +32,7 @@ public class RegistrationUser extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        Cliente cliente=new Cliente();
+        Cliente cliente = new Cliente();
         cliente.setNome(name);
         cliente.setCognome(cognome);
         cliente.setDataDiNascita(Date.valueOf(data));

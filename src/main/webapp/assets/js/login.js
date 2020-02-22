@@ -1,34 +1,35 @@
-
 function onLoad() {
-    gapi.load('auth2', function() {
+    gapi.load('auth2', function () {
         gapi.auth2.init();
     });
 }
 
 function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
+    let auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
     });
 }
-function loginUser(event){
+
+function loginUser(event) {
     $.ajax({
         type: "POST",
         url: "/normalLogin",
         data: {
 
-            username : $("#Login-username").val(),
-            password : $("#Login_password").val(),
+            username: $("#Login-username").val(),
+            password: $("#Login_password").val(),
         },
-        success:function(){
+        success: function () {
             window.location.replace("/homepage");
 
         },
-        error : function () {
+        error: function () {
             alert("Login non valido");
         }
     });
 }
+
 function googleSignIn(googleUser) {
     $.ajax({
         type: "POST",
