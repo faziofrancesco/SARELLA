@@ -1,15 +1,25 @@
-function onLoad() {
-    gapi.load('auth2', function () {
-        gapi.auth2.init();
-    });
-}
 
-function signOut() {
+
+/*function signOut() {
     let auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         console.log('User signed out.');
     });
-}
+    $.ajax({
+        type: "GET",
+        url: "/logout",
+        data: {
+
+        },
+        success: function () {
+            window.location.replace("/homepage");
+
+        },
+        error: function () {
+            alert("Logout non eseguito");
+        }
+    });
+}*/
 
 function loginUser(event) {
     $.ajax({
@@ -31,31 +41,20 @@ function loginUser(event) {
 }
 
 function googleSignIn(googleUser) {
-    $.ajax({
-        type: "POST",
-        url: "/googleLogin",
-        data: {
-            token: googleUser.getAuthResponse().id_token
-        },
-        success: function () {
+
             $.ajax({
                 type: "POST",
-                url: "/login",
+                url: "/googleLogin",
                 data: {
                     email: googleUser.getBasicProfile().getEmail(),
-                    nome: googleUser.getBasicProfile().getName()
+                    nome: googleUser.getBasicProfile().getName(0)
                 },
                 success: function () {
-                    window.location.replace("index.jsp");
+                    window.location.replace("/homepage");
                 },
                 error: function () {
                     alert("Something has gone wrong with google login");
                 }
             });
-        },
-        error: function () {
-            alert("NOPE");
-            //TODO: da gestire se l'email è già presente nel database
-        }
-    });
+
 }

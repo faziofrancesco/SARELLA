@@ -65,9 +65,25 @@
                                title="Sign Up" role="button" data-toggle="modal" data-target="#registrationModal">Sign
                                 Up</a>
                                 <%} else {%>
+                                <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))) {%>
                             <a class="text-center border rounded d-inline-block small-padding btn btn-info"
-                               title="Log Out" role="button " href="logout">Log Out</a>
-                                <%}%>
+                               title="Sign Up" role="button" data-toggle="modal"
+                               data-target="#registrationModal">Sign
+                                Up</a>
+                                <%}
+                                     else {%>
+                                    <a href="/logout" onclick="signOut();">Sign out with Google</a>
+                                    <script>
+                                        function signOut() {
+                                            var auth2 = gapi.auth2.getAuthInstance();
+                                            auth2.signOut().then(function () {
+                                                console.log('User signed out.');
+
+                                            });
+                                        }
+                                    </script>
+
+                                <%}}%>
                     </tr>
                     </tbody>
                 </table>
@@ -112,15 +128,18 @@
                 </form>
             </div>
             <div class="modal-footer">
+
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <script>
+                    <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))){%>
+                    function onSignIn(googleUser) {
+                        googleSignIn(googleUser);}
+                   <%}%>
+                </script>
+
+            </div>
                 <button class="btn btn-primary" type="button" id="btnLogin" onclick="loginUser(event)">Accedi</button>
             </div>
-            <div class="g-signin2" data-onsuccess="onSignIn"></div>
-            <script>
-                function onSignIn(googleUser) {
-                    googleSignIn(googleUser);
-                }
-            </script>
-        </div>
     </div>
 </div>
 <div class="modal fade" role="dialog" tabindex="-1" id="retrievalModal">

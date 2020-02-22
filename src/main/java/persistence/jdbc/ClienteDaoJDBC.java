@@ -154,7 +154,7 @@ public class ClienteDaoJDBC implements ClienteDao {
             handler.execute();
 
             if (handler.existsResultSet()) {
-
+                utente = new Cliente();
                 ResultSet result = handler.getResultSet();
                 result.next();
                 utente = extractTo(result);
@@ -168,9 +168,9 @@ public class ClienteDaoJDBC implements ClienteDao {
     }
 
     @Override
-    public Boolean existusernameandpassword(String Username, String Password) {
+    public Cliente existusernameandpassword(String Username, String Password) {
         String query = "Select * from cliente where username=? and password=?";
-        Cliente utente = new Cliente();
+        Cliente utente = null;
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setString(1, Username);
             handler.getStatement().setString(2, Password);
@@ -179,13 +179,14 @@ public class ClienteDaoJDBC implements ClienteDao {
 
             if (handler.existsResultSet()) {
 
+                utente = new Cliente();
                 ResultSet result = handler.getResultSet();
                 result.next();
                 utente = extractTo(result);
-                return true;
-            } else
-                return false;
 
+            }
+
+                return utente;
 
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());

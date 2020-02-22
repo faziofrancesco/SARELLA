@@ -1,11 +1,13 @@
 package controller;
 
 import model.Cliente;
+import model.GoogleUser;
 import persistence.DBManager;
 import persistence.Dao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,21 +21,37 @@ public class GoogleLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
-        String name = req.getParameter("name");
+        String name = req.getParameter("nome");
         Cliente user = DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByEmail(email);
-        System.out.println(email);
         if (user != null) {
-            req.getSession().setAttribute("user", user);
-            req.getSession().setAttribute("firstLogin", true);
+            req.getSession().setAttribute("userGoogle",true);
+            resp.addCookie(new Cookie("userGoogle", "true"));
+            req.getSession().setAttribute("logged", true);
+            resp.addCookie(new Cookie("logged", "true"));
+            req.setAttribute("username", name);
+            req.getSession().setAttribute("username",name);
+            resp.setStatus(201);
             resp.getOutputStream().print(1);
         } else {
             Cliente u = new Cliente();
-
-
+            u.setUsername(name);
+            u.setEmail(email);
+            u.setPassword("*Tensa1.,");
             Dao<Cliente> userdao = DBManager.getInstance().getDAOFactory().getClienteDao();
             userdao.save(u);
-            req.getSession().setAttribute("user", user);
-            req.getSession().setAttribute("firstLogin", true);
+            Cliente cl=DBManager.getInstance().getDAOFactory().getClienteDao().existusernameandpassword(name,"*Tensa1.,");
+            Dao<GoogleUser> usergoogle = DBManager.getInstance().getDAOFactory().getGoogleUserDao();
+            GoogleUser gu=new GoogleUser();
+            gu.setFk_cliente(cl.getIdCliente());
+            usergoogle.save(gu);
+            req.getSession().setAttribute("userGoogle",true);
+            resp.addCookie(new Cookie("userGoogle", "true"));
+            req.getSession().setAttribute("logged", true);
+            resp.addCookie(new Cookie("logged", "true"));
+            req.setAttribute("username", name);
+            req.getSession().setAttribute("username",name);
+
+            resp.setStatus(201);
             resp.getOutputStream().print(1);
         }
     }
