@@ -1,8 +1,8 @@
 package persistence.jdbc;
 
 import model.NumPersone;
-import persistence.PersistenceException;
 import persistence.NumPersoneDao;
+import persistence.PersistenceException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +21,7 @@ public class NumPersoneDaoJDBC implements NumPersoneDao {
     private void insertInto(NumPersone object, PreparedStatement statement, Integer id) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }

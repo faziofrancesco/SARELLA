@@ -1,23 +1,23 @@
-function registerUser(event){
+function registerUser(event) {
     $.ajax({
         type: "POST",
         url: "/registrationUser",
         async: false,
         data: {
-            name : $("#reg-name").val(),
+            name: $("#reg-name").val(),
             surname: $("#reg-surname").val(),
-            datanascita : $("#reg-date").val(),
-            email : $("#reg-email").val(),
-            username : $("#reg-username").val(),
-            password : $("#reg-password").val(),
+            datanascita: $("#reg-date").val(),
+            email: $("#reg-email").val(),
+            username: $("#reg-username").val(),
+            password: $("#reg-password").val(),
         },
-        success:function(){
+        success: function () {
             $("#registrationModal").modal("hide");
             $(".modal-backdrop").remove();
             $("#loginModal").modal("show");
 
         },
-        error : function () {
+        error: function () {
             alert("ERRORE NELLA REGISTRAZIONE");
         }
     });

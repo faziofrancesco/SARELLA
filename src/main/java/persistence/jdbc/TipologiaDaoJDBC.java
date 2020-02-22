@@ -22,7 +22,7 @@ public class TipologiaDaoJDBC implements TipologiaDao {
     private void insertInto(Tipologia object, PreparedStatement statement, Integer id) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }

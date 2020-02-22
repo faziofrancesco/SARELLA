@@ -1,8 +1,8 @@
 package persistence.jdbc;
 
 import model.Ordine;
-import persistence.PersistenceException;
 import persistence.OrdineDao;
+import persistence.PersistenceException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,16 +24,16 @@ public class OrdineDaoJDBC implements OrdineDao {
     private void insertInto(Ordine object, PreparedStatement statement, Integer id) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }
 
         statement.setInt(index + 1, object.getIdClienteFk());
-        if(object.getIdPagamentoFk() != null) {
+        if (object.getIdPagamentoFk() != null) {
             statement.setInt(index + 2, object.getIdPagamentoFk());
         } else {
-            statement.setNull(index +2, Types.INTEGER);
+            statement.setNull(index + 2, Types.INTEGER);
         }
     }
 

@@ -1,8 +1,8 @@
 package persistence.jdbc;
 
 import model.Cliente;
-import persistence.PersistenceException;
 import persistence.ClienteDao;
+import persistence.PersistenceException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,24 +30,24 @@ public class ClienteDaoJDBC implements ClienteDao {
     private void insertInto(Cliente object, PreparedStatement statement, Integer id) throws SQLException {
 
         int index = 0;
-        if(id != null) {
+        if (id != null) {
             statement.setInt(1, id);
             index = 1;
         }
 
-        if(object.getNome() != null) {
+        if (object.getNome() != null) {
             statement.setString(index + 1, object.getNome());
         } else {
             statement.setNull(index + 1, Types.VARCHAR);
         }
 
-        if(object.getCognome() != null) {
+        if (object.getCognome() != null) {
             statement.setString(index + 2, object.getCognome());
         } else {
             statement.setNull(index + 2, Types.VARCHAR);
         }
 
-        if(object.getDataDiNascita() != null) {
+        if (object.getDataDiNascita() != null) {
             statement.setDate(index + 3, object.getDataDiNascita());
         } else {
             statement.setNull(index + 3, Types.DATE);
@@ -148,7 +148,7 @@ public class ClienteDaoJDBC implements ClienteDao {
     @Override
     public Cliente retrieveByEmail(String email) {
         Cliente utente = null;
-        String query="select * from cliente where e_mail=?";
+        String query = "select * from cliente where e_mail=?";
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setString(1, email);
             handler.execute();
@@ -169,7 +169,7 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public Boolean existusernameandpassword(String Username, String Password) {
-        String query="Select * from cliente where username=? and password=?";
+        String query = "Select * from cliente where username=? and password=?";
         Cliente utente = new Cliente();
         try (JDBCQueryHandler handler = new JDBCQueryHandler(query)) {
             handler.getStatement().setString(1, Username);
@@ -183,8 +183,7 @@ public class ClienteDaoJDBC implements ClienteDao {
                 result.next();
                 utente = extractTo(result);
                 return true;
-            }
-            else
+            } else
                 return false;
 
 
