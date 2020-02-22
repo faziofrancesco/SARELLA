@@ -1,16 +1,13 @@
-function registerUser(event) {
+function registerUser() {
+
+    let form = $('#regForm')[0];
+    let formData = new FormData(form);
+
     $.ajax({
         type: "POST",
-        url: "/registrationUser",
+        url: "registrationUser",
         async: false,
-        data: {
-            name: $("#reg-name").val(),
-            surname: $("#reg-surname").val(),
-            datanascita: $("#reg-date").val(),
-            email: $("#reg-email").val(),
-            username: $("#reg-username").val(),
-            password: $("#reg-password").val(),
-        },
+        data: formData,
         success: function () {
             $("#registrationModal").modal("hide");
             $(".modal-backdrop").remove();

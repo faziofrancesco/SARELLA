@@ -1,4 +1,4 @@
-package persistence.jdbc;
+package persistence;
 
 import model.GoogleUser;
 import persistence.Dao;

@@ -1,7 +1,5 @@
 package persistence;
 
-import persistence.jdbc.GoogleUserDao;
-
 public abstract class DAOFactory {
 
     public abstract ClienteDao getClienteDao();
