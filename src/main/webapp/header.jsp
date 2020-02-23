@@ -11,7 +11,9 @@
     <%@include file="include.jsp" %>
     <script type="text/javascript" src="assets/js/login.js"></script>
     <script type="text/javascript" src="assets/js/user.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="assets/css/calendar.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/calendar.css">
+    <script type="text/javascript" src="assets/js/calendar.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
@@ -44,8 +46,15 @@
                             <a class="text-center border rounded d-inline-block small-padding btn btn-info"
                                title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a>
                                 <%} else {%>
-                            <a class="text-center border rounded d-inline-block small-padding btn btn-info"
-                               title="${request.getParameter("username")}" role="button">${request.getParameter("username")}</a>
+                                    <div class="dropdown">
+                                        <li><a onclick="myFunction()" class="text-center border rounded d-inline-block small-padding btn btn-info"
+                                           title="${username}" role="button">${username}</a></li>
+                                        <div id="myDropdown" class="dropdown-content">
+                                            <a href="#">Storico Ordini</a>
+                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Eventi</button>
+                                        </div>
+                                    </div>
+
                                 <% }%>
                     </tr>
                     <tr>
@@ -91,6 +100,26 @@
         </div>
     </div>
 </nav>
+
+
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Eventi Agriturismo</h4>
+            </div>
+            <div class="modal-body">
+                <iframe id="videoContainer" width="750" height="400" src="calendar.jsp" frameborder="100" allowfullscreen></iframe>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="modal fade" role="dialog" tabindex="-1" id="loginModal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
