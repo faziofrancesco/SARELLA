@@ -13,6 +13,7 @@
     <script type="text/javascript" src="assets/js/user.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/rooms.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
                                 style="color: rgb(134,138,143);" title="Home">Home</a></td>
                         <td class="text-center nav-item" role="presentation"><a
                                 class="text-center d-inline-block small-padding index-a"
-                                href="show_rooms" style="color: rgb(134,138,143);" title="Rooms">Rooms</a>
+                                data-toggle="modal" data-target="#roomsModal" style="color: rgb(134,138,143);" title="Rooms">Rooms</a>
                         </td>
                         <td class="text-center nav-item" role="presentation"><a
                                 class="text-center d-inline-block small-padding index-a" href="infos/about-us.html"
@@ -230,6 +231,32 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" role="dialog" tabindex="-1" id="roomsModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Scegli il periodo di permanenza</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <form id="roomForm" method="get" action="rooms-handler">
+                <div id="andata" class="form-group">
+                    <label for="arrivalDate" title="Data di partenza"> Data Check-In</label>
+                    <input type="date" id="arrivalDate" name="arrivalDate" required="" class="form-control item">
+                </div>
+                <div id="ritorno" class="form-group">
+                    <label for="departureDate" title="Data di ritorno"> Data Check-Out </label>
+                    <input type="date" id="departureDate" name="departureDate" required="" class="form-control item">
+                </div>
+                    <input type="hidden" id="target" name="target" value="show">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" onclick="showRooms('#roomForm')">Cerca una camera</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
