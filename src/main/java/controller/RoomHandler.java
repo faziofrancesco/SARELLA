@@ -51,7 +51,7 @@ public class RoomHandler extends HttpServlet {
             Date ritorno = Date.valueOf(req.getParameter("departureDate"));
             cm = f.getCameraDao().retrieveInRange(andata, ritorno);
         }
-        req.setAttribute("id", cm);
+        req.setAttribute("prods", cm);
     }
 
     private void loadSingleRoom(HttpServletRequest req, HttpServletResponse resp) throws PersistenceException, NullPointerException {

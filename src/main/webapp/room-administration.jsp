@@ -155,8 +155,8 @@
                                     <select id="updateRoomModalId" name="updateRoomFormId" class="form-control"
                                             required="">
                                         <optgroup label="Id_camera">
-                                            <c:forEach var="id" items="${id}">
-                                                <option value="${id}">${id}</option>
+                                            <c:forEach var="prods" items="${prods}">
+                                                <option value="${prods.getIdCamera()}">${prods.getIdCamera()}</option>
                                             </c:forEach>
                                         </optgroup>
                                     </select>

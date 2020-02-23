@@ -82,7 +82,7 @@
                                 <c:forEach items="${prods}" var="prods">
                                     <div class="clean-product-item">
                                         <div class="image">
-                                            <a class="d-lg-flex justify-content-lg-center align-items-lg-center" href="rooms?target=single&id=${prods.getIdCamera()}">
+                                            <a class="d-lg-flex justify-content-lg-center align-items-lg-center" href="rooms-handler?target=single&id=${prods.getIdCamera()}">
                                                 <img class="img-fluid d-flex d-lg-flex justify-content-lg-center align-items-lg-center" src="${prods.getImagePath()}">
                                             </a>
                                         </div>
