@@ -4,10 +4,7 @@ import model.Camera;
 import persistence.CameraDao;
 import persistence.PersistenceException;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -154,6 +151,35 @@ public class CameraDaoJDBC implements CameraDao {
             handler.execute();
 
         } catch (SQLException e) {
+            throw new PersistenceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Camera> retrieveInRange(Date min, Date max) {
+
+        List<Camera> camere = null;
+        Camera camera = null;
+        try(JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_by_date_range_from_camera(?,?)")) {
+
+            handler.getStatement().setDate(1, min);
+            handler.getStatement().setDate(2, max);
+            handler.execute();
+
+            if (handler.existsResultSet()) {
+
+                camere = new ArrayList<>();
+                ResultSet result = handler.getResultSet();
+
+                while (result.next()) {
+                    camera = extractFrom(result);
+                    camere.add(camera);
+                }
+            }
+
+            return camere;
+
+        } catch(SQLException e) {
             throw new PersistenceException(e.getMessage());
         }
     }
