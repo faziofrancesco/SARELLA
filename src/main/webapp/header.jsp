@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/calendar.css">
     <script type="text/javascript" src="assets/js/rooms.js"></script>
     <script type="text/javascript" src="assets/js/calendar.js"></script>
+    <script type="text/javascript" src="assets/js/retrievecredentials.js"></script>
+
 </head>
 
 <body>
@@ -183,22 +185,22 @@
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="tab-1">
                             <form>
-                                <div class="form-group"><label for="email">E-mail</label><input
-                                        class="form-control item" type="email" id="email" placeholder="Your e-mail">
-                                    <button class="btn btn-primary" type="button" style="margin-top: 5%;">Invia
+                                <div class="form-group"><label for="retrieve-username">E-mail</label><input
+                                        class="form-control item" type="email" id="retrieve-username" placeholder="Your e-mail">
+                                    <button class="btn btn-primary" type="button" style="margin-top: 5%;" id="retrieve-usernamebt" onclick="retrieveusername(event)">Invia
                                         informazioni
                                     </button>
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane" role="tabpanel" id="tab-2">
+                        <div class="tab-pane active" role="tabpanel" id="tab-2">
                             <form>
-                                <div class="form-group"><label for="email">Username</label><input
-                                        class="form-control item" type="email" id="email" placeholder="Your username">
+                                <div class="form-group"><label for="emailemail">Username</label><input
+                                        class="form-control item" type="email" id="emailemail" placeholder="Your email">
                                 </div>
-                                <div class="form-group"><label for="password">Password</label><input
-                                        class="form-control" type="password" id="password" placeholder="Your password">
-                                    <button class="btn btn-primary" type="button" style="margin-top: 5%;">Invia
+                                <div class="form-group"><label for="userpass">username</label><input
+                                        class="form-control" type="text" id="userpass" placeholder="Your username">
+                                    <button class="btn btn-primary" type="button" style="margin-top: 5%;"  id="retrieve-passwordbt" onclick="retrievepassword(event)">Invia
                                         informazioni
                                     </button>
                                 </div>
