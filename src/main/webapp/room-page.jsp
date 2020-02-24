@@ -44,13 +44,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="../assets/img/tech_TOREMOVE/image1.jpg"><img class="img-fluid d-block mx-auto" src="../assets/img/tech_TOREMOVE/image1.jpg"></a><a href="../assets/img/tech_TOREMOVE/image1.jpg"><img class="img-fluid d-block mx-auto" src="../assets/img/tech_TOREMOVE/image1.jpg"></a><a href="../assets/img/tech_TOREMOVE/image1.jpg"><img class="img-fluid d-block mx-auto" src="../assets/img/tech_TOREMOVE/image1.jpg"></a></div>
+                                    <div class="sp-wrap"><a href="assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image1.jpg"></a><a href="assets/img/tech_TOREMOVE/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image1.jpg"></a><a href="assets/img/tech_TOREMOVE/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image1.jpg"></a></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="info">
                                     <h3>Lorem Ipsum</h3>
-                                    <div class="d-none rating"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-half-empty.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                    <div class="d-none rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
                                     <div class="price">
                                         <h3>$300.00</h3>
                                     </div><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button>
@@ -74,7 +74,7 @@
                                         elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <figure class="figure"><img class="img-fluid figure-img" src="../assets/img/tech_TOREMOVE/image3.png"></figure>
+                                            <figure class="figure"><img class="img-fluid figure-img" src="assets/img/tech_TOREMOVE/image3.png"></figure>
                                         </div>
                                         <div class="col-md-7">
                                             <h4>Lorem Ipsum</h4>
@@ -118,14 +118,14 @@
                                 <div class="tab-pane fade show" role="tabpanel" id="reviews">
                                     <div class="reviews">
                                         <div class="review-item">
-                                            <div class="rating"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
                                             <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                         </div>
                                     </div>
                                     <div class="reviews">
                                         <div class="review-item">
-                                            <div class="rating"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
                                             <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                         </div>
@@ -165,9 +165,9 @@
                                 </div>
                                 <div class="col-sm-6 col-lg-4">
                                     <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="../assets/img/tech_TOREMOVE/image2.jpg"></a></div>
+                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image2.jpg"></a></div>
                                         <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="d-none rating"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-half-empty.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                            <div class="d-none rating"><img src="../assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-half-empty.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
                                             <h4>$300</h4>
                                         </div>
                                     </div>
@@ -181,11 +181,11 @@
     </main>
 
 <%@ include file="footer.jsp" %>
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="../assets/js/smoothproducts.min.js"></script>
-    <script src="../assets/js/theme.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>

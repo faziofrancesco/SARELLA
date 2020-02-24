@@ -24,14 +24,13 @@
 function loginUser(event) {
     $.ajax({
         type: "POST",
-        url: "/normalLogin",
+        url: "normalLogin",
         data: {
-
             username: $("#Login-username").val(),
-            password: $("#Login_password").val(),
+            password: $("#Login-password").val(),
         },
         success: function () {
-            window.location.replace("/homepage");
+            window.location.replace("homepage");
 
         },
         error: function () {
@@ -50,7 +49,7 @@ function googleSignIn(googleUser) {
                     nome: googleUser.getBasicProfile().getName(0)
                 },
                 success: function () {
-                    window.location.replace("/homepage");
+                    window.location.replace("homepage");
                 },
                 error: function () {
                     alert("Something has gone wrong with google login");

@@ -1,6 +1,6 @@
-function registerUser() {
+function registerUser(formName) {
 
-    let form = $('#regForm')[0];
+    let form = $(formName)[0];
     let formData = new FormData(form);
 
     $.ajax({
@@ -8,6 +8,8 @@ function registerUser() {
         url: "registrationUser",
         async: false,
         data: formData,
+        processData: false,
+        contentType: false,
         success: function () {
             $("#registrationModal").modal("hide");
             $(".modal-backdrop").remove();
@@ -35,4 +37,4 @@ window.onclick = function(event) {
             }
         }
     }
-}
+};

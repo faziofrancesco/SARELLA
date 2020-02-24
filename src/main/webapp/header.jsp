@@ -13,9 +13,8 @@
     <script type="text/javascript" src="assets/js/user.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/css/calendar.css">
     <link rel="stylesheet" type="text/css" href="assets/css/calendar.css">
-    <script type="text/javascript" src="assets/js/calendar.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/rooms.js"></script>
+    <script type="text/javascript" src="assets/js/calendar.js"></script>
 </head>
 
 <body>
@@ -24,7 +23,7 @@
         <p class="align-self-center navbar-brand logo" id="header-title"
            style="padding-left: 5px;padding-right: 5px;margin-right: 0;margin-bottom: 12px;">Agriturismo Sarella</p>
         <button data-toggle="collapse" class="navbar-toggler align-self-center" data-target="#navcol-1"
-                style="min-height: 50.8;height: 50.8px;margin-bottom: 12px;margin-right: 0;"><span class="sr-only">Toggle navigation</span><span
+                style="min-height: 50px;height: 50px;margin-bottom: 12px;margin-right: 0px;"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon align-self-center"></span></button>
         <div
                 class="collapse navbar-collapse" id="navcol-1">
@@ -40,34 +39,32 @@
                                 data-toggle="modal" data-target="#roomsModal" style="color: rgb(134,138,143);" title="Rooms">Rooms</a>
                         </td>
                         <td class="text-center nav-item" role="presentation"><a
-                                class="text-center d-inline-block small-padding index-a" href="infos/about-us.html"
+                                class="text-center d-inline-block small-padding index-a" href="#"
                                 style="color: rgb(134,138,143);" title="About us">About us</a></td>
                         <td class="text-center nav-item" role="presentation">
                                 <% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))) {%>
                             <a class="text-center border rounded d-inline-block small-padding btn btn-info"
                                title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a>
                                 <%} else {%>
-                                    <div class="dropdown">
-                                        <li><a onclick="myFunction()" class="text-center border rounded d-inline-block small-padding btn btn-info"
-                                           title="${username}" role="button">${username}</a></li>
-                                        <div id="myDropdown" class="dropdown-content">
-                                            <a href="#">Storico Ordini</a>
-                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Eventi</button>
+                                    <div class="dropdown show">
+                                        <a data-toggle="dropdown" aria-expanded="true" class="dropdown-toggle text-center border rounded d-inline-block small-padding btn btn-info" href="#">${username} </a>
+                                        <div role="menu" class="dropdown-menu" style="z-index:100">
+                                            <a role="presentation" class="dropdown-item" href="#">Storico Ordini</a>
+                                            <a role="presentation" class="dropdown-item" data-toggle="modal" data-target="#myModal">Eventi</a>
                                         </div>
                                     </div>
-
                                 <% }%>
                     </tr>
                     <tr>
                         <td class="text-center nav-item" role="presentation"><a
-                                class="text-center d-inline-block small-padding index-a" href="blog-post-list.html"
+                                class="text-center d-inline-block small-padding index-a" href="#"
                                 style="color: rgb(134,138,143);" title="Blog">Blog</a></td>
                         <td class="text-center nav-item" role="presentation"><a
                                 class="text-center d-inline-block small-padding index-a"
-                                href="products/products-catalog-page.html" style="color: rgb(134,138,143);"
+                                href="#" style="color: rgb(134,138,143);"
                                 title="Products">Products</a></td>
                         <td class="text-center nav-item" role="presentation"><a
-                                class="text-center d-inline-block small-padding index-a" href="infos/contact-us.html"
+                                class="text-center d-inline-block small-padding index-a" href="#"
                                 style="color: rgb(134,138,143);" title="Contacts">Contacts</a></td>
                         <td class="text-center nav-item" role="presentation">
                                 <% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))) {%>
@@ -82,7 +79,7 @@
                                 Up</a>
                                 <%}
                                      else {%>
-                                    <a href="/logout" onclick="signOut();">Sign out with Google</a>
+                                    <a href="logout" onclick="signOut();">Sign out with Google</a>
                                     <script>
                                         function signOut() {
                                             var auth2 = gapi.auth2.getAuthInstance();
@@ -102,8 +99,6 @@
     </div>
 </nav>
 
-
-</div>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -131,24 +126,22 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group"><label for="Login-username">Username</label><input class="form-control item"
-                                                                                               type="text"
-                                                                                               id="Login-username"
-                                                                                               placeholder="Your username">
+                    <div class="form-group">
+                        <label for="Login-username">Username</label>
+                        <input class="form-control item" type="text" id="Login-username" placeholder="Your username">
                     </div>
-                    <div class="form-group"><label for="Login_password">Password</label><input class="form-control"
-                                                                                               type="password"
-                                                                                               id="Login_password"
-                                                                                               placeholder="Your password">
+                    <div class="form-group">
+                        <label for="Login-password">Password</label>
+                        <input class="form-control item" type="password" id="Login-password" placeholder="Your password">
                     </div>
                     <div class="form-group">
                         <div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox"><label
                                 class="form-check-label" for="checkbox">Remember me</label></div>
                     </div>
-                    <div class="form-group"><label for="password"
-                                                   style="padding: 0px;padding-left: 0px;padding-right: 0px;">Don't have
-                        an account yet?&nbsp;</label><a href="#" data-toggle="modal" data-target="#registrationModal">Create
-                        an account</a></div>
+                    <div class="form-group">
+                        <label for="password" style="padding: 0px;padding-left: 0px;padding-right: 0px;">Don't have an account yet?&nbsp;</label>
+                        <a href="#" data-toggle="modal" data-target="#registrationModal">Create an account</a>
+                    </div>
                     <div class="form-group d-xl-flex flex-shrink-1 align-items-xl-center"
                          style="margin-bottom: 0px;height: 32px;"><a class="text-left d-xl-flex align-items-xl-center"
                                                                      style="height: 32px;width: 466px;"
@@ -163,7 +156,8 @@
                 <script>
                     <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))){%>
                     function onSignIn(googleUser) {
-                        googleSignIn(googleUser);}
+                        googleSignIn(googleUser);
+                    }
                    <%}%>
                 </script>
 
@@ -227,33 +221,33 @@
                         aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-                <form id="regForm">
-                    <div class="form-group"><label for="reg-name">Nome</label><input class="form-control item"
-                                                                                     type="text" id="reg-name"
-                                                                                     placeholder="Your name"></div>
-                    <div class="form-group"><label for="reg-surname">Cognome</label><input class="form-control item"
-                                                                                           type="text" id="reg-surname"
-                                                                                           placeholder="Your surname">
+                <form id="regForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="reg-name">Nome</label>
+                        <input class="form-control item" type="text" id="reg-name" name="reg-name" placeholder="Your name">
                     </div>
-                    <div class="form-group"><label for="reg-date">Data di nascita</label><input
-                            class="form-control item" id="reg-date" type="date"></div>
-                    <div class="form-group"><label for="reg-username">Username</label><input class="form-control item"
-                                                                                             type="text"
-                                                                                             id="reg-username"
-                                                                                             placeholder="Your Username">
+                    <div class="form-group">
+                        <label for="reg-surname">Cognome</label>
+                        <input class="form-control item" type="text" id="reg-surname" name="reg-surname" placeholder="Your surname">
                     </div>
-                    <div class="form-group"><label for="reg-password">Password</label><input class="form-control item"
-                                                                                             type="password"
-                                                                                             id="reg-password"
-                                                                                             placeholder="Your password">
+                    <div class="form-group">
+                        <label for="reg-date">Data di nascita</label>
+                        <input class="form-control item" id="reg-date" name="reg-date" type="date" required=""></div>
+                    <div class="form-group">
+                        <label for="reg-username">Username</label>
+                        <input class="form-control item" type="text" id="reg-username" name="reg-username" placeholder="Your Username" required="">
                     </div>
-                    <div class="form-group"><label for="reg-email">Email</label><input class="form-control item"
-                                                                                       type="email" id="reg-email"
-                                                                                       placeholder="Your e-mail"></div>
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input class="form-control item" type="password" name="reg-password" id="reg-password" placeholder="Your password" required="">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">Email</label>
+                        <input class="form-control item" type="email" id="reg-email" name="reg-email" placeholder="Your e-mail" required=""></div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="btnregistration" onclick="registerUser() ">
+                <button class="btn btn-primary" type="button" id="btnregistration" onclick="registerUser('#regForm')">
                     Procedi alla registrazione
                 </button>
             </div>
@@ -288,7 +282,6 @@
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
 <script src="assets/js/smoothproducts.min.js"></script>
 <script src="assets/js/theme.js"></script>
 </body>
