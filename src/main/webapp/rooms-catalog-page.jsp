@@ -86,7 +86,7 @@
                                                 <img class="img-fluid d-flex d-lg-flex justify-content-lg-center align-items-lg-center" src="${prods.getImagePath()}">
                                             </a>
                                         </div>
-                                        <div class="product-name"><a href="#">${prods.getIdCamera()}</a></div>
+                                        <div class="product-name"><a href="#">Camera n. ${prods.getIdCamera()}</a></div>
                                         <div class="about">
                                             <div class="rating">
                                                 <img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
@@ -115,11 +115,11 @@
 
 <%@ include file="footer.jsp" %>
 
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script src="../assets/js/smoothproducts.min.js"></script>
-    <script src="../assets/js/theme.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
 </body>
 
 </html>

@@ -12,13 +12,17 @@ import java.io.IOException;
 
 @WebServlet(value = "/normalLogin", name = "normalLogin")
 public class NormalLogin extends HttpServlet {
+
     private static final long serialVersionUID = 1719454196023301003L;
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+
+        System.out.println(username + " " + password);
+
         if (DBManager.getInstance().getDAOFactory().getClienteDao().existusernameandpassword(username, password)!=null) {
+
             req.getSession().setAttribute("logged", true);
             resp.addCookie(new Cookie("logged", "true"));
             req.setAttribute("username", username);

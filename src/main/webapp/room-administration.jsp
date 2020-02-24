@@ -79,7 +79,7 @@
                         aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-                <form id="addRoomForm">
+                <form id="addRoomForm" enctype="multipart/form-data">
                     <div>
                         <div class="form-row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 d-flex flex-row flex-wrap">
                             <div class="col">
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="addRoomModalImg">Immagine</label>
-                                    <input class="form-control" name="addRoomFormImg" enctype="multipart/form-data"
+                                    <input class="form-control" name="addRoomFormImg"
                                            id="addRoomModalImg" type="file"></div>
                                 <div class="form-group">
                                     <label for="addRoomModalPrice">Prezzo</label>
@@ -146,7 +146,7 @@
                         aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-                <form id="updateRoomForm">
+                <form id="updateRoomForm" enctype="multipart/form-data">
                     <div>
                         <div class="form-row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 d-flex flex-row flex-wrap">
                             <div class="col">
@@ -182,7 +182,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="updateRoomModalImg">Immagine</label>
-                                    <input class="form-control" enctype="multipart/form-data" name="updateRoomFormImg"
+                                    <input class="form-control" name="updateRoomFormImg"
                                            id="updateRoomModalImg" type="file"></div>
                                 <div class="form-group">
                                     <label for="updateRoomModalPrice">Prezzo</label>
