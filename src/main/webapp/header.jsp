@@ -194,7 +194,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane active" role="tabpanel" id="tab-2">
+                        <div class="tab-pane" role="tabpanel" id="tab-2">
                             <form>
                                 <div class="form-group"><label for="emailemail">Username</label><input
                                         class="form-control item" type="email" id="emailemail" placeholder="Your email">
