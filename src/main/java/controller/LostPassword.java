@@ -46,8 +46,8 @@ public class LostPassword extends HttpServlet {
         props.put("mail.debug", "true");
         props.put("mail.store.protocol", "pop3");
         props.put("mail.transport.protocol", "smtp");
-        final String username = "emaildamettere@gmail.com";//
-        final String password = "*******";
+        final String username = "sarella979797@gmail.com";//
+        final String password = "*Francesco1.,";
         try{
             Session session = Session.getDefaultInstance(props,
                     new Authenticator(){
@@ -57,7 +57,7 @@ public class LostPassword extends HttpServlet {
 
             Message msg = new MimeMessage(session);
 
-            msg.setFrom(new InternetAddress("riuzaki9797@gmail.com"));
+            msg.setFrom(new InternetAddress("sarella979797@gmail.com"));
             msg.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email,false));
             msg.setSubject("recupero password:)");
