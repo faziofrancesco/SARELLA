@@ -69,16 +69,12 @@
                         <td class="text-center nav-item" role="presentation">
                                 <% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))) {%>
                             <a class="text-center border rounded d-inline-block small-padding btn btn-info"
-                               title="Sign Up" role="button" data-toggle="modal" data-target="#registrationModal">Sign
-                                Up</a>
+                               title="Sign Up" role="button" data-toggle="modal" data-target="#registrationModal">Sign Up</a>
                                 <%} else {%>
                                 <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))) {%>
                             <a class="text-center border rounded d-inline-block small-padding btn btn-info"
-                               title="Sign Up" role="button" data-toggle="modal"
-                               data-target="#registrationModal">Sign
-                                Up</a>
-                                <%}
-                                     else {%>
+                               title="Sign Out" role="button" href="logout">Sign Out</a>
+                                <%} else {%>
                                     <a href="logout" onclick="signOut();">Sign out with Google</a>
                                     <script>
                                         function signOut() {
@@ -90,7 +86,8 @@
                                         }
                                     </script>
 
-                                <%}}%>
+                                <%}
+                                }%>
                     </tr>
                     </tbody>
                 </table>
