@@ -46,8 +46,8 @@ public class LostPassword extends HttpServlet {
         props.put("mail.debug", "true");
         props.put("mail.store.protocol", "pop3");
         props.put("mail.transport.protocol", "smtp");
-        final String username = "riuzaki9797@gmail.com";//
-        final String password = "*Francesco1.,";
+        final String username = "emaildamettere@gmail.com";//
+        final String password = "*******";
         try{
             Session session = Session.getDefaultInstance(props,
                     new Authenticator(){
