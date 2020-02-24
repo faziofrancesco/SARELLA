@@ -87,7 +87,7 @@ public class CameraDaoJDBC implements CameraDao {
     public Camera retrieve(Camera object) {
         Camera camera = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_camera(?)")) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * from retrieve_by_id_from_camera(?)")) {
             handler.getStatement().setInt(1, object.getIdCamera());
             handler.execute();
 
