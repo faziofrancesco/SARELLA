@@ -50,9 +50,10 @@
                                 <%} else {%>
                                     <div class="dropdown show" style="position:absolute; z-index:100">
                                         <a data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" href="#"
-                                           class="dropdown-toggle text-center border rounded d-inline-block small-padding btn btn-info">${username} </a>
+                                           class="dropdown-toggle text-center border rounded d-inline-block small-padding btn btn-info">${username}</a>
                                         <div role="menu" class="dropdown-menu">
-                                            <a role="presentation" class="dropdown-item" href="#">Storico Ordini</a>
+                                            <a role="presentation" class="dropdown-item" href="service-page.jsp">Vai al profilo</a>
+                                            <a role="presentation" class="dropdown-item" href="#">Carrello</a>
                                             <a role="presentation" class="dropdown-item" data-toggle="modal" data-target="#myModal">Eventi</a>
                                         </div>
                                     </div>
