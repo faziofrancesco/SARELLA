@@ -13,6 +13,8 @@
 <body>
 <%@include file="header.jsp" %>
 
+<div style="width:100%; height:15%"></div>
+
 <main class="page landing-page">
     <section class="clean-block clean-hero"
              style="background-image:url(assets/img/tech/image4.jpg);color:rgba(9, 162, 255, 0.80);">

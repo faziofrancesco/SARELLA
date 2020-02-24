@@ -14,6 +14,8 @@
 <body>
 <%@ include file="header.jsp" %>
 
+<div style="width:100%; height:15%"></div>
+
     <main class="page catalog-page">
         <section class="clean-block clean-catalog dark">
             <div class="container">
@@ -91,7 +93,7 @@
                                             <div class="rating">
                                                 <img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
                                             <div class="price">
-                                                <h3>${prods.getPrezzo()}</h3>
+                                                <h3>$ ${prods.getPrezzo()}</h3>
                                             </div>
                                         </div>
                                     </div>

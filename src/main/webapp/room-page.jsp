@@ -15,6 +15,8 @@
 <body>
 <%@ include file="header.jsp" %>
 
+<div style="width:100%; height:15%"></div>
+
     <main class="page product-page">
         <div class="modal fade" role="dialog" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -118,21 +120,21 @@
                                 <div class="tab-pane fade show" role="tabpanel" id="reviews">
                                     <div class="reviews">
                                         <div class="review-item">
-                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-empty.svg"></div>
                                             <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                         </div>
                                     </div>
                                     <div class="reviews">
                                         <div class="review-item">
-                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-empty.svg"></div>
                                             <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                         </div>
                                     </div>
                                     <div class="reviews">
                                         <div class="review-item">
-                                            <div class="rating"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-empty.svg"></div>
                                             <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                                         </div>
@@ -147,18 +149,9 @@
                             <div class="row justify-content-center">
                                 <div class="col-sm-6 col-lg-4">
                                     <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="../assets/img/tech_TOREMOVE/image2.jpg"></a></div>
+                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image2.jpg"></a></div>
                                         <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="d-none rating"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-half-empty.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="../assets/img/tech_TOREMOVE/image2.jpg"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="d-none rating"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img class="d-none" src="../assets/img/rooms/star-half-empty.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                            <div class="d-none rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
                                             <h4>$300</h4>
                                         </div>
                                     </div>
@@ -167,7 +160,16 @@
                                     <div class="clean-related-item">
                                         <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image2.jpg"></a></div>
                                         <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="d-none rating"><img src="../assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="../assets/img/rooms/star.svg"><img src="../assets/img/rooms/star-half-empty.svg"><img src="../assets/img/rooms/star-empty.svg"></div>
+                                            <div class="d-none rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img class="d-none" src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
+                                            <h4>$300</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="clean-related-item">
+                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image2.jpg"></a></div>
+                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
+                                            <div class="d-none rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
                                             <h4>$300</h4>
                                         </div>
                                     </div>
