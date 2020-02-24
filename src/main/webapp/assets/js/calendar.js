@@ -702,7 +702,7 @@ window.formatGoogleCalendar = (() => {
         }
 
         return isSame;
-    }
+    };
 
     //Get all necessary data (dates, location, summary, description) and creates a list item
     const transformationList = (result, tagName, format) => {
