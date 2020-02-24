@@ -46,9 +46,10 @@
                             <a class="text-center border rounded d-inline-block small-padding btn btn-info"
                                title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a>
                                 <%} else {%>
-                                    <div class="dropdown show">
-                                        <a data-toggle="dropdown" aria-expanded="true" class="dropdown-toggle text-center border rounded d-inline-block small-padding btn btn-info" href="#">${username} </a>
-                                        <div role="menu" class="dropdown-menu" style="z-index:100">
+                                    <div class="dropdown show" style="position:absolute; z-index:100">
+                                        <a data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" href="#"
+                                           class="dropdown-toggle text-center border rounded d-inline-block small-padding btn btn-info">${username} </a>
+                                        <div role="menu" class="dropdown-menu">
                                             <a role="presentation" class="dropdown-item" href="#">Storico Ordini</a>
                                             <a role="presentation" class="dropdown-item" data-toggle="modal" data-target="#myModal">Eventi</a>
                                         </div>
