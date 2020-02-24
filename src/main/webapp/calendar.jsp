@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -24,7 +26,7 @@
     </div>
     <div id="calendar" class="fc-calendar-container"></div>
 </div>
-</div><!-- /container -->
+<!-- /container -->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/calendar.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/calendar.css">
