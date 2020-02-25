@@ -30,5 +30,7 @@
     <p><button id="addToCalendar" style="visibility: hidden">Add to Google Calendar</button></p>
 </div>
 <!--Add a button for the user to click to initiate auth sequence -->
+<script src="assets/js/calendarevent.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 </body>
 </html>

@@ -50,7 +50,7 @@ function delc(formName) {
         url: "deleterooms_servlet",
         data: formData,
         contentType: false,
-        processData: false,
+        processData:false,
         success: function () {
             alert("Camera eliminata correttamente");
             window.location.replace("rooms-handler?target=admin");

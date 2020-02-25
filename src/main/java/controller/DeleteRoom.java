@@ -26,7 +26,8 @@ public class DeleteRoom extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 
         try {
-            String id = req.getParameter("deleteRoomModalId");
+            String id = req.getParameter("deleteRoomModalId" +
+                    "");
             Camera c = new Camera();
             c.setIdCamera(Integer.parseInt(id));
             DBManager.getInstance().getDAOFactory().getCameraDao().delete(c);
