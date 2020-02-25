@@ -10,6 +10,8 @@
     <title>Product - Agriturismo Sarella</title>
     <meta name="description" content="I cinghiali lo amano, i sanpietresi lo temono.">
     <%@ include file="include.jsp" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -67,78 +69,48 @@
                     <div class="product-info">
                         <div>
                             <ul class="nav nav-tabs" id="myTab">
-                                <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" id="description-tab" href="#description">Description</a></li>
                                 <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" id="reviews-tab" href="#reviews">Reviews</a></li>
                             </ul>
                             <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane active fade show description" role="tabpanel" id="description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <figure class="figure"><img class="img-fluid figure-img" src="assets/img/tech_TOREMOVE/image3.png"></figure>
-                                        </div>
-                                        <div class="col-md-7">
-                                            <h4>Lorem Ipsum</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-7 right">
-                                            <h4>Lorem Ipsum</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <figure class="figure"><img class="img-fluid figure-img" src="../assets/img/tech_TOREMOVE/image3.png"></figure>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade show specifications" role="tabpanel" id="specifications">
-                                    <div class="table-responsive table-bordered">
-                                        <table class="table table-bordered">
-                                            <tbody>
-                                                <tr>
-                                                    <td class="stat">Display</td>
-                                                    <td>5.2"</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="stat">Camera</td>
-                                                    <td>12MP</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="stat">RAM</td>
-                                                    <td>4GB</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="stat">OS</td>
-                                                    <td>iOS</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
                                 <div class="tab-pane fade show" role="tabpanel" id="reviews">
+                                <c:forEach items="${reviews}" var="reviews">
                                     <div class="reviews">
                                         <div class="review-item">
-                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-empty.svg"></div>
-                                            <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                            <div class="rating">
+                                                <c:choose>
+                                                    <c:when test="${reviews.getVoto() >= 1}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+
+                                                <c:choose>
+                                                    <c:when test="${reviews.getVoto() >= 2}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+
+                                                <c:choose>
+                                                    <c:when test="${reviews.getVoto() >= 3}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+
+                                                <c:choose>
+                                                    <c:when test="${reviews.getVoto() >= 4}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+
+                                                <c:choose>
+                                                    <c:when test="${reviews.getVoto() >= 5}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+                                            </div>
+                                            <h4>Incredible product</h4>
+                                            <span class="text-muted">
+                                                <a href="#">${reviews.getIdClienteFk()}</a>
+                                                    ${reviews.getDataRecensione()}
+                                            </span>
+                                            <p>${reviews.getDescrizione()}.</p>
                                         </div>
                                     </div>
-                                    <div class="reviews">
-                                        <div class="review-item">
-                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-empty.svg"></div>
-                                            <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </div>
-                                    <div class="reviews">
-                                        <div class="review-item">
-                                            <div class="rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-empty.svg"></div>
-                                            <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                        </div>
-                                    </div>
+                                </c:forEach>
                                 </div>
                             </div>
                         </div>
