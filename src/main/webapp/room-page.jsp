@@ -48,19 +48,28 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="gallery">
-                                    <div class="sp-wrap"><a href="assets/img/tech/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image1.jpg"></a><a href="assets/img/tech_TOREMOVE/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image1.jpg"></a><a href="assets/img/tech_TOREMOVE/image1.jpg"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image1.jpg"></a></div>
+                                    <div class="sp-wrap">
+                                        <a href="images/${room.getImagePath()}">
+                                            <img class="img-fluid d-block mx-auto" src="images/${room.getImagePath()}">
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="info">
-                                    <h3>Lorem Ipsum</h3>
-                                    <div class="d-none rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
+                                    <h3>Camera no. ${room.getIdCamera()}</h3>
+                                    <div class="rating">
+                                        <img src="assets/img/rooms/star.svg">
+                                        <img src="assets/img/rooms/star.svg">
+                                        <img src="assets/img/rooms/star.svg">
+                                        <img src="assets/img/rooms/star-half-empty.svg">
+                                        <img src="assets/img/rooms/star-empty.svg">
+                                    </div>
                                     <div class="price">
-                                        <h3>$300.00</h3>
+                                        <h3>$ ${room.getPrezzo()}</h3>
                                     </div><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button>
                                     <div class="summary">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Vestibulum diam risus, sagittis at fringilla at, pulvinar vel risus. Vestibulum dignissim
-                                            eu nulla eu imperdiet. Morbi mollis tellus a nunc vestibulum consequat. Quisque tristique elit et nibh dapibus sodales. Nam sollicitudin a urna sed iaculis.</p>
+                                        <p>${room.getDescrizione()}</p>
                                     </div>
                                 </div>
                             </div>
@@ -111,40 +120,6 @@
                                         </div>
                                     </div>
                                 </c:forEach>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="clean-related-items">
-                        <h3>Related Products</h3>
-                        <div class="items">
-                            <div class="row justify-content-center">
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image2.jpg"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="d-none rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image2.jpg"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="d-none rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img class="d-none" src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 col-lg-4">
-                                    <div class="clean-related-item">
-                                        <div class="image"><a href="#"><img class="img-fluid d-block mx-auto" src="assets/img/tech_TOREMOVE/image2.jpg"></a></div>
-                                        <div class="related-name"><a href="#">Lorem Ipsum dolor</a>
-                                            <div class="d-none rating"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
-                                            <h4>$300</h4>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
