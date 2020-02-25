@@ -137,8 +137,9 @@
                         aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
+
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))){%>
-                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
                     <script>
                         function onSignIn(googleUser) {
                             googleSignIn(googleUser);
