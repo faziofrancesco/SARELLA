@@ -27,9 +27,6 @@
     <script src="assets/js/theme.js"></script>
     <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
-    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-    <meta name="google-signin-client_id" content="602416974316-iv76p5524v5q0rht3eg8h87kflrf03od.apps.googleusercontent.com">
-    <meta name="google-signin-scope" content="profile email">
     <script src="assets/js/header.js"></script>
 </head>
 
@@ -140,6 +137,15 @@
                         aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
+                <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))){%>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                    <script>
+                        function onSignIn(googleUser) {
+                            googleSignIn(googleUser);
+                        }
+                    </script>
+                <%}%>
+
                 <form>
                     <div class="form-group">
                         <label for="Login-username">Username</label>
@@ -154,8 +160,8 @@
                                 class="form-check-label" for="checkbox">Remember me</label></div>
                     </div>
                     <div class="form-group">
-                        <label for="password" style="padding: 0px;padding-left: 0px;padding-right: 0px;">Don't have an account yet?&nbsp;</label>
-                        <a href="#" data-toggle="modal" data-target="#registrationModal">Create an account</a>
+                        <label for="createAccount" style="padding: 0px;padding-left: 0px;padding-right: 0px;">Don't have an account yet?&nbsp;</label>
+                        <a id="createAccount" href="#" data-toggle="modal" data-target="#registrationModal">Create an account</a>
                     </div>
                     <div class="form-group d-xl-flex flex-shrink-1 align-items-xl-center"
                          style="margin-bottom: 0px;height: 32px;"><a class="text-left d-xl-flex align-items-xl-center"
@@ -166,18 +172,9 @@
                 </form>
             </div>
             <div class="modal-footer">
-
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                <script>
-                    <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))){%>
-                    function onSignIn(googleUser) {
-                        googleSignIn(googleUser);
-                    }
-                   <%}%>
-                </script>
-
-            </div>
                 <button class="btn btn-primary" type="button" id="btnLogin" onclick="loginUser(event)">Accedi</button>
+            </div>
+
             </div>
     </div>
 </div>
@@ -298,6 +295,7 @@
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/smoothproducts.min.js"></script>
 <script src="assets/js/theme.js"></script>
+<script src="assets/js/header.js"></script>
 </body>
 
 </html>
