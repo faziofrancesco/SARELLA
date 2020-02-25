@@ -30,7 +30,7 @@ public class NormalLogin extends HttpServlet {
                 resp.addCookie(new Cookie("logged", "true"));
                 req.setAttribute("username", username);
                 req.getSession().setAttribute("username", username);
-                if(check){
+                if(check==true){
                     req.getSession().setAttribute("admin", true);
                     resp.addCookie(new Cookie("admin", "true"));
                 }
