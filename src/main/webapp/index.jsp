@@ -17,11 +17,10 @@
 
 <main class="page landing-page">
     <section class="clean-block clean-hero"
-             style="background-image:url(assets/img/tech/image4.jpg);color:rgba(9, 162, 255, 0.80);">
+             style="background-image:url(assets/img/tech/image10.jpg);color:rgba(242, 243, 244, 0.80);">
         <div class="text">
             <h2>Agriturismo Sarella</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis
-                vitae leo.</p>
+            <p>I cinghiali lo amano, i sanpietresi lo temono.</p>
             <button class="btn btn-outline-light btn-lg" type="button">Learn More</button>
         </div>
     </section>
@@ -33,7 +32,7 @@
                     mattis vitae leo.</p>
             </div>
             <div class="row align-items-center">
-                <div class="col-md-6"><img class="img-thumbnail" src="assets/img/scenery/image5.jpg"></div>
+                <div class="col-md-6"><img class="img-thumbnail" src="assets/img/scenery/image12.jpg"></div>
                 <div class="col-md-6">
                     <h3>Lorem impsum dolor sit amet</h3>
                     <div class="getting-started-info">
@@ -45,51 +44,19 @@
             </div>
         </div>
     </section>
-    <section class="clean-block features">
-        <div class="container">
-            <div class="block-heading">
-                <h2 class="text-info">Features</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in,
-                    mattis vitae leo.</p>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-5 feature-box"><i class="icon-star icon"></i>
-                    <h4>Bootstrap 4</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in,
-                        mattis vitae leo.</p>
-                </div>
-                <div class="col-md-5 feature-box"><i class="icon-pencil icon"></i>
-                    <h4>Customizable</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in,
-                        mattis vitae leo.</p>
-                </div>
-                <div class="col-md-5 feature-box"><i class="icon-screen-smartphone icon"></i>
-                    <h4>Responsive</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in,
-                        mattis vitae leo.</p>
-                </div>
-                <div class="col-md-5 feature-box"><i class="icon-refresh icon"></i>
-                    <h4>All Browser Compatibility</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in,
-                        mattis vitae leo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="clean-block slider dark">
         <div class="container">
             <div class="block-heading">
                 <h2 class="text-info">Slider</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in,
-                    mattis vitae leo.</p>
+                <p>book gallery.</p>
             </div>
             <div class="carousel slide" data-ride="carousel" id="carousel-1">
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/scenery/image1.jpg"
+                    <div class="carousel-item active"><img class="w-100 d-block" src="assets/img/scenery/image11.jpg"
                                                            alt="Slide Image"></div>
-                    <div class="carousel-item"><img class="w-100 d-block" src="assets/img/scenery/image4.jpg"
+                    <div class="carousel-item"><img class="w-100 d-block" src="assets/img/scenery/image13.jpg"
                                                     alt="Slide Image"></div>
-                    <div class="carousel-item"><img class="w-100 d-block" src="assets/img/scenery/image6.jpg"
+                    <div class="carousel-item"><img class="w-100 d-block" src="assets/img/scenery/image12.jpg"
                                                     alt="Slide Image"></div>
                 </div>
                 <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span

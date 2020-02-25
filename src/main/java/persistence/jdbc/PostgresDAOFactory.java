@@ -63,6 +63,11 @@ public class PostgresDAOFactory extends DAOFactory {
 
     @Override
     public GoogleUserDao getGoogleUserDao() {
-        return null;
+        return new GoogleUserDaoJDBC();
+    }
+
+    @Override
+    public AdminDao getAdminDao() {
+        return new AdminDaoJDBC();
     }
 }

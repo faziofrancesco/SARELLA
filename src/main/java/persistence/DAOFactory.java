@@ -26,4 +26,6 @@ public abstract class DAOFactory {
 
     public abstract GoogleUserDao getGoogleUserDao();
 
+    public abstract AdminDao getAdminDao();
+
 }
