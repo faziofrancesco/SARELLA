@@ -85,7 +85,7 @@
                                     <div class="clean-product-item">
                                         <div class="image">
                                             <a class="d-lg-flex justify-content-lg-center align-items-lg-center" href="rooms-handler?target=single&id=${prods.getIdCamera()}">
-                                                <img class="img-fluid d-flex d-lg-flex justify-content-lg-center align-items-lg-center" src="${prods.getImagePath()}">
+                                                <img class="img-fluid d-flex d-lg-flex justify-content-lg-center align-items-lg-center" src="images/${prods.getImagePath()}">
                                             </a>
                                         </div>
                                         <div class="product-name"><a href="#">Camera n. ${prods.getIdCamera()}</a></div>
