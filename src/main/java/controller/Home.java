@@ -16,7 +16,13 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
-        rd.include(req, resp);
+        try {
+            RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+            rd.include(req, resp);
+
+        } catch(Exception e) {
+            e.printStackTrace();
+            resp.setStatus(500);
+        }
     }
 }

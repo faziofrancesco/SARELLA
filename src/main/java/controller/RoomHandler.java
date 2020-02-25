@@ -85,7 +85,7 @@ public class RoomHandler extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
-            resp.setStatus(404);
+            resp.setStatus(500);
         }
     }
 }

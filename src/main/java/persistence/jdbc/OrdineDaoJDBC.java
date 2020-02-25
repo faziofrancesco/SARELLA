@@ -118,7 +118,29 @@ public class OrdineDaoJDBC implements OrdineDao {
             handler.execute();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new PersistenceException(e.getMessage());
         }
+    }
+
+    @Override
+    public Integer retrieveTotalPrice(Integer idOrdine) {
+
+        Integer ret = null;
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_total_price_for_ordine(?)")) {
+
+            handler.getStatement().setInt(1, idOrdine);
+            handler.execute();
+
+            if(handler.existsResultSet()) {
+                handler.getResultSet().next();
+                ret = handler.getResultSet().getInt("sum_prices");
+            }
+
+            return ret;
+
+        } catch (SQLException e) {
+            throw new PersistenceException(e.getMessage());
+        }
+
     }
 }

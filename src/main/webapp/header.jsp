@@ -140,7 +140,7 @@
 
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))){%>
-                <div class="dropdown-divider" role="presentation"></div>
+                <div class="dropdown-divider" style="padding-top: 2%" role="presentation"></div>
                 <script>
                         function onSignIn(googleUser) {
                             googleSignIn(googleUser);
