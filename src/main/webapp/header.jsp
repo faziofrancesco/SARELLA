@@ -30,7 +30,7 @@
     <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <meta name="google-signin-client_id" content="602416974316-iv76p5524v5q0rht3eg8h87kflrf03od.apps.googleusercontent.com">
     <meta name="google-signin-scope" content="profile email">
-
+    <script src="assets/js/header.js"></script>
 </head>
 
 <body>
@@ -63,7 +63,7 @@
                                title="Sign In" role="button" data-toggle="modal" data-target="#loginModal">Sign In</a>
                                 <%} else {%>
                                     <div class="dropdown show" style="position:absolute; z-index:100">
-                                        <a data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" href="#"
+                                        <a id="usernameDropdown" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true" href="#"
                                            class="dropdown-toggle text-center border rounded d-inline-block small-padding btn btn-info">${username}</a>
                                         <div role="menu" class="dropdown-menu">
                                             <a role="presentation" class="dropdown-item" href="service-page.jsp">Vai al profilo</a>
@@ -90,13 +90,13 @@
                                title="Sign Up" role="button" data-toggle="modal" data-target="#registrationModal">Sign Up</a>
                                 <%} else {%>
                                 <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))) {%>
-                            <a class="text-center border rounded d-inline-block small-padding btn btn-info"
+                            <a id="signOutButton" class="text-center border rounded d-inline-block small-padding btn btn-info"
                                title="Sign Out" role="button" href="logout">Sign Out</a>
                                 <%} else {%>
-                                    <a href="logout" onclick="signOut();">Sign out with Google</a>
+                                    <a id="signOutButton" href="logout" onclick="signOut()">Sign out with Google</a>
                                     <script>
                                         function signOut() {
-                                            var auth2 = gapi.auth2.getAuthInstance();
+                                            let auth2 = gapi.auth2.getAuthInstance();
                                             auth2.signOut().then(function () {
                                                 console.log('User signed out.');
 
@@ -118,7 +118,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
                 <h4 class="modal-title">Eventi Agriturismo</h4>
             </div>
             <div class="modal-body">
@@ -186,8 +186,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Recupera credenziali</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&#10006;</button>
             </div>
             <div class="modal-body">
                 <div>
@@ -232,8 +231,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">RegistrationForm</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&#10006;</button>
             </div>
             <div class="modal-body">
                 <form id="regForm" enctype="multipart/form-data">
@@ -274,7 +272,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Scegli il periodo di permanenza</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <h4 class="modal-title">Scegli il periodo di permanenza</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&#10006;</button></div>
             <div class="modal-body">
                 <form id="roomForm" method="get" action="rooms-handler">
                 <div id="andata" class="form-group">

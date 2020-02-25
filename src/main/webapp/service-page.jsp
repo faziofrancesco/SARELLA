@@ -32,7 +32,7 @@
                                 <h4 class="card-title">Modifica profilo</h4>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
                             </div>
-                            <div><button class="btn btn-outline-primary btn-sm" type="button">Learn More</button></div>
+                            <div><button class="btn btn-outline-primary btn-sm" type="button">Modifica profilo</button></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
@@ -52,7 +52,7 @@
                                 <h4 class="card-title">Eventi</h4>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
                             </div>
-                            <div><button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#myModal">Learn More</button></div>
+                            <div><button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#myModal">Visualizza i tuoi eventi</button></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
@@ -61,7 +61,7 @@
                                 <h4 class="card-title">Carrello</h4>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
                             </div>
-                            <div><button class="btn btn-outline-primary btn-sm" type="button">Learn More</button></div>
+                            <div><button class="btn btn-outline-primary btn-sm" type="button">Vai al carrello</button></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
@@ -70,7 +70,7 @@
                                 <h4 class="card-title">Recensioni</h4>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
                             </div>
-                            <div><button class="btn btn-outline-primary btn-sm" type="button">Learn More</button></div>
+                            <div><button class="btn btn-outline-primary btn-sm" type="button">Le tue reensioni</button></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
