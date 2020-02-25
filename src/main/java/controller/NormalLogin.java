@@ -19,8 +19,6 @@ public class NormalLogin extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        System.out.println(username + " " + password);
-
         if (DBManager.getInstance().getDAOFactory().getClienteDao().existusernameandpassword(username, password)!=null) {
 
             req.getSession().setAttribute("logged", true);
