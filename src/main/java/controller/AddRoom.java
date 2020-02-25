@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @WebServlet(value = "/addrooms_servlet", name = "addrooms_servlet")
@@ -53,8 +56,12 @@ public class AddRoom extends HttpServlet {
             Part img = req.getPart("addRoomFormImg");
             if (img != null) {
                 String filename = Paths.get(img.getSubmittedFileName()).getFileName().toString();
-                InputStream fileContent = img.getInputStream();
                 r.setImagePath(filename);
+
+                File upload = new File(FileSystems.getDefault().getPath(".").toString() + "/SIW_res");
+                try(InputStream fileContent = img.getInputStream()) {
+                    Files.copy(fileContent, upload.toPath());
+                }
             }
 
             DBManager.getInstance().getDAOFactory().getCameraDao().save(r);
