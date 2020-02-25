@@ -18,14 +18,19 @@ public class Logout extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().setAttribute("userGoogle", false);
-        req.getSession().setAttribute("logged", false);
-        req.getSession().removeAttribute("username");
-        resp.addCookie(new Cookie("logged", "false"));
-        resp.addCookie(new Cookie("logged", "false"));
-        resp.addCookie(new Cookie("userGoogle", "false"));
-        req.getRequestDispatcher("/homepage").forward(req, resp);
-        // resp.sendRedirect(req.getHeader("referer"));
+        try {
+            req.getSession().setAttribute("userGoogle", false);
+            req.getSession().setAttribute("logged", false);
+            req.getSession().removeAttribute("username");
+            resp.addCookie(new Cookie("logged", "false"));
+            resp.addCookie(new Cookie("logged", "false"));
+            resp.addCookie(new Cookie("userGoogle", "false"));
+            req.getRequestDispatcher("/homepage").forward(req, resp);
+            // resp.sendRedirect(req.getHeader("referer"));
+        }catch(Exception e) {
+            e.printStackTrace();
+            resp.setStatus(500);
+        }
     }
 
     @Override

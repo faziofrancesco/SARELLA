@@ -78,15 +78,11 @@ public class lostUsername extends HttpServlet {
        
     	try {
     		String email = request.getParameter("email");
-
-	        
-
-	        
 	        emailSender(email);
-	        
 	        response.setStatus(201);
+
     	} catch(Exception e) {
-    		response.setStatus(401);
+    		response.setStatus(500);
     	}
     
     }

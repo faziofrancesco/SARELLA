@@ -11,7 +11,8 @@ function addc(formName) {
         processData: false,
         success: function () {
             alert("Camera Inserita correttamente");
-            window.location.replace("/gestionecamere");
+            $("#addRoomModal").modal("hide");
+            $(".modal-backdrop").remove();
         },
         error: function () {
             alert("la camera non è stata inserita correttamente");
@@ -32,7 +33,8 @@ function updc(formName) {
         processData: false,
         success: function () {
             alert("Camera aggiornata correttamente");
-            window.location.replace("/gestionecaemre");
+            $("#updateRoomModal").modal("hide");
+            $(".modal-backdrop").remove();
         },
         error: function () {
             alert("Camera non aggiornata correttamente");
@@ -51,7 +53,8 @@ function delc(formName) {
         data: formData,
         success: function () {
             alert("Camera eliminata correttamente");
-            window.location.replace("/gestionecaemre");
+            $("#deleteRoomModal").modal("hide");
+            $(".modal-backdrop").remove();
         },
         error: function () {
             alert("Camera non eliminata correttamente");

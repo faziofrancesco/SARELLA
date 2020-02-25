@@ -120,7 +120,31 @@ public class RecensioneDaoJDBC implements RecensioneDao {
             handler.execute();
 
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new PersistenceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Recensione> retrieveByRoom(Integer idCamera) {
+
+        List<Recensione> rec = null;
+
+        try(JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_by_camera_for_recensione(?)")) {
+
+            handler.getStatement().setInt(1, idCamera);
+            handler.execute();
+
+            if(handler.existsResultSet()) {
+                rec = new ArrayList<>();
+                ResultSet results = handler.getResultSet();
+                while(results.next())
+                    rec.add(extractTo(results));
+            }
+
+            return rec;
+
+        } catch(SQLException e) {
+            throw new PersistenceException(e.getMessage());
         }
     }
 }

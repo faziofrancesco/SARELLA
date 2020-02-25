@@ -102,14 +102,14 @@
                         <div class="form-row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 d-flex flex-row flex-wrap">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="addRoomModalNumC">Numero camera</label>
+                                    <label for="addRoomFormId">Numero camera</label>
                                     <input class="form-control item" name="addRoomFromId" type="text"
-                                           id="addRoomModalNumC" placeholder="Il numero identificativo della camera"
-                                           required=""></div>
+                                           id="addRoomFormId" placeholder="Il numero identificativo della camera"
+                                           required="required"></div>
                                 <div class="form-group">
-                                    <label for="addRoomModalType">Tipologia</label>
-                                    <select id="addRoomModalType" name="addRoomFormType" class="form-control"
-                                            required="">
+                                    <label for="addRoomFormType">Tipologia</label>
+                                    <select id="addRoomFormType" name="addRoomFormType" class="form-control"
+                                            required="required">
                                         <optgroup label="Tipologie">
                                             <c:forEach items="${tip}" var="tipolgie">
                                                 <option value="${tipolgie.getIdTipologia()}">${tipolgie.getTipologia()}</option>
@@ -118,9 +118,9 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="addRoomModalNumP">Numero persone</label>
-                                    <select id="addRoomModalNumP" name="addRoomFormNumPersone" class="form-control"
-                                            required="">
+                                    <label for="addRoomFormNumPersone">Numero persone</label>
+                                    <select id="addRoomFormNumPersone" name="addRoomFormNumPersone" class="form-control"
+                                            required="required">
                                         <optgroup label="NumeroPersone">
                                             <c:forEach var="nump" items="${nump}">
                                                 <option value="${nump.getIdNumPersone()}">${nump.getNumPersone()}</option>
@@ -129,26 +129,25 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="addRoomModalImg">Immagine</label>
-                                    <input class="form-control" name="addRoomFormImg"
-                                           id="addRoomModalImg" type="file"></div>
+                                    <label for="addRoomFormImg">Immagine</label>
+                                    <input class="form-control" name="addRoomFormImg" id="addRoomFormImg" type="file"></div>
                                 <div class="form-group">
-                                    <label for="addRoomModalPrice">Prezzo</label>
-                                    <input class="form-control" name="addRoomFormPrice" id="addRoomModalPrice"
-                                           type="number" min="0" step="0.01" required=""></div>
+                                    <label for="addRoomFormPrice">Prezzo</label>
+                                    <input class="form-control" name="addRoomFormPrice" id="addRoomFormPrice"
+                                           type="number" min="0" step="0.01" required="required"></div>
                             </div>
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="addRoomModalDescription">Descrizione</label>
-                                    <textarea id="addRoomModalDescription" name="addRoomFormDesc" class="form-control"
-                                              rows="15" required=""></textarea></div>
+                                    <label for="addRoomFormDesc">Descrizione</label>
+                                    <textarea id="addRoomFormDesc" name="addRoomFormDesc" class="form-control"
+                                              rows="15" required="required"></textarea></div>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="btnaddc" onclick="addc('addRoomForm')">Aggiungi
+                <button class="btn btn-primary" type="button" id="btnaddc" onclick="addc('#addRoomForm')">Aggiungi
                     camera
                 </button>
             </div>
@@ -218,7 +217,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="btnupdc" onclick="updc('updateRoomForm')">Modifica la
+                <button class="btn btn-primary" type="button" id="btnupdc" onclick="updc('#updateRoomForm')">Modifica la
                     camera
                 </button>
             </div>
@@ -248,7 +247,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="btndelc" onclick="delc('deleteRoomForm')">Elimina la
+                <button class="btn btn-primary" type="button" id="btndelc" onclick="delc('#deleteRoomForm')">Elimina la
                     camera
                 </button>
             </div>

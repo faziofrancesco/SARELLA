@@ -183,5 +183,52 @@ public class CameraDaoJDBC implements CameraDao {
             throw new PersistenceException(e.getMessage());
         }
     }
+
+    @Override
+    public Integer retrieveMeanVote(Integer idCamera) {
+
+        Integer ret = 0;
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_mean_vote_for_camera(?)")) {
+
+            handler.getStatement().setInt(1, idCamera);
+            handler.execute();
+
+            if(handler.existsResultSet()) {
+                handler.getResultSet().next();
+                ret = handler.getResultSet().getInt("avg_vote");
+            }
+
+            return ret;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Camera> retrieveByOrder(Integer idOrdine) {
+
+        List<Camera> camere = null;
+
+        try(JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_by_ordine_from_camera(?)")) {
+
+            handler.getStatement().setInt(1, idOrdine);
+            handler.execute();
+
+            if (handler.existsResultSet()) {
+
+                camere = new ArrayList<>();
+                ResultSet result = handler.getResultSet();
+
+                while (result.next())
+                    camere.add(extractFrom(result));
+            }
+
+            return camere;
+
+        } catch(SQLException e) {
+            throw new PersistenceException(e.getMessage());
+        }
+    }
 }
 

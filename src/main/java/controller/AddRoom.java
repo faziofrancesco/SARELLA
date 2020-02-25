@@ -35,6 +35,7 @@ public class AddRoom extends HttpServlet {
             String prezzo = req.getParameter("addRoomFormPrice");
 
             Camera r = new Camera();
+
             r.setIdCamera(Integer.parseInt(id));
             r.setPrezzo(new BigDecimal(prezzo));
             r.setDescrizione(descrizione);

@@ -25,11 +25,7 @@ public class LostPassword extends HttpServlet {
 
     private void emailSender(String email,String username1) {
 
-
         /*	importare mail.jar e activation.jar per farlo funzionare
-         *
-         * 				SEND EMAIL IN JAVA BY Rocchicedo :D
-         *
          *  scaricabili dal sito di oracle o nel WEBBE in generale
          */
 
@@ -80,14 +76,11 @@ public class LostPassword extends HttpServlet {
             String email = request.getParameter("email");
             String username = request.getParameter("username");
 
-
-
-
             emailSender(email,username);
-
             response.setStatus(201);
+
         } catch(Exception e) {
-            response.setStatus(401);
+            response.setStatus(500);
         }
 
     }

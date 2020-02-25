@@ -90,13 +90,13 @@
                             <a id="signOutButton" class="text-center border rounded d-inline-block small-padding btn btn-info"
                                title="Sign Out" role="button" href="logout">Sign Out</a>
                                 <%} else {%>
-                                    <a id="signOutButton" href="logout" onclick="signOut()">Sign out with Google</a>
+                                    <a id="signOutButton" class="text-center border rounded d-inline-block small-padding btn btn-info"
+                                       href="logout" role="button" onclick="signOut()">Sign out with Google</a>
                                     <script>
                                         function signOut() {
                                             let auth2 = gapi.auth2.getAuthInstance();
                                             auth2.signOut().then(function () {
                                                 console.log('User signed out.');
-
                                             });
                                         }
                                     </script>
@@ -140,7 +140,8 @@
 
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
                 <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))){%>
-                    <script>
+                <div class="dropdown-divider" style="padding-top: 2%" role="presentation"></div>
+                <script>
                         function onSignIn(googleUser) {
                             googleSignIn(googleUser);
                         }
