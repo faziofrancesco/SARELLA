@@ -39,6 +39,7 @@ function loginUser(event) {
     });
 }
 
+
 function googleSignIn(googleUser) {
 
             $.ajax({

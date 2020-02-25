@@ -10,6 +10,8 @@
     <title>AdminPage - Agriturismo Sarella</title>
     <%@ include file="include.jsp" %>
     <script type="text/javascript" src="assets/js/room-administration.js"></script>
+    <script type="text/javascript" src="assets/js/calendarevent.js.js"></script>
+
 
 </head>
 
@@ -65,6 +67,19 @@
                         <div>
                             <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal"
                                     data-target="#deleteRoomModal">Elimina una camera
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Aggiungi evento del giorno</h4>
+                            <p class="card-text"></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal"
+                                    data-target="#addEventofday">Aggiungi evento
                             </button>
                         </div>
                     </div>
@@ -223,8 +238,8 @@
                         <label for="deleteRoomModalId">ID_camera</label>
                         <select id="deleteRoomModalId" class="form-control" required="">
                             <optgroup label="Id_camera">
-                                <c:forEach var="id" items="${id}">
-                                    <option value="${id}">${id}</option>
+                                <c:forEach var="prods" items="${prods}">
+                                    <option value="${prods.getIdCamera()}">${prods.getIdCamera()}</option>
                                 </c:forEach>
                             </optgroup>
                         </select>
@@ -239,7 +254,23 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="addEventofday" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
+                <h4 class="modal-title">Eventi Agriturismo</h4>
+            </div>
+            <div class="modal-body">
+                <iframe id="videoContainer" width="750" height="400" src="addeventofday.jsp" frameborder="100" allowfullscreen></iframe>
 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 <%@ include file="footer.jsp" %>
 
 <script src="assets/js/jquery.min.js"></script>
