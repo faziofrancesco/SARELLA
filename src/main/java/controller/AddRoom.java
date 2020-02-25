@@ -14,9 +14,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 @WebServlet(value = "/addrooms_servlet", name = "addrooms_servlet")
 @MultipartConfig
@@ -58,9 +58,9 @@ public class AddRoom extends HttpServlet {
                 String filename = Paths.get(img.getSubmittedFileName()).getFileName().toString();
                 r.setImagePath(filename);
 
-                File upload = new File(FileSystems.getDefault().getPath(".").toString() + "/SIW_res");
+                File upload = new File("C:" + File.separator + "SIW-resources", filename);
                 try(InputStream fileContent = img.getInputStream()) {
-                    Files.copy(fileContent, upload.toPath());
+                    Files.copy(fileContent, upload.toPath(), StandardCopyOption.REPLACE_EXISTING);
                 }
             }
 
