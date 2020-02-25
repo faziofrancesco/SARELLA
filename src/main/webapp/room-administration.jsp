@@ -236,7 +236,7 @@
                 <form id="deleteRoomForm">
                     <div class="form-group">
                         <label for="deleteRoomModalId">ID_camera</label>
-                        <select id="deleteRoomModalId" class="form-control" required="">
+                        <select id="deleteRoomModalId" class="form-control" required="" name="deleteRoomModalId">
                             <optgroup label="Id_camera">
                                 <c:forEach var="prods" items="${prods}">
                                     <option value="${prods.getIdCamera()}">${prods.getIdCamera()}</option>
