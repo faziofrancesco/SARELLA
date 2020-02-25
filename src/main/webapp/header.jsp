@@ -66,6 +66,9 @@
                                             <a role="presentation" class="dropdown-item" href="service-page.jsp">Vai al profilo</a>
                                             <a role="presentation" class="dropdown-item" href="#">Carrello</a>
                                             <a role="presentation" class="dropdown-item" data-toggle="modal" data-target="#myModal">Eventi</a>
+                                            <% if((request.getSession().getAttribute("admin") != null || (boolean)request.getSession().getAttribute("admin"))) {%>
+                                                <a role="presentation" class="dropdown-item" href="rooms-handler?target=admin">Pannello Admin</a>
+                                            <% }%>
                                         </div>
                                     </div>
                                 <% }%>

@@ -25,6 +25,8 @@ public class Logout extends HttpServlet {
             resp.addCookie(new Cookie("logged", "false"));
             resp.addCookie(new Cookie("logged", "false"));
             resp.addCookie(new Cookie("userGoogle", "false"));
+            req.getSession().setAttribute("admin", false);
+            resp.addCookie(new Cookie("admin", "false"));
             req.getRequestDispatcher("/homepage").forward(req, resp);
             // resp.sendRedirect(req.getHeader("referer"));
         }catch(Exception e) {

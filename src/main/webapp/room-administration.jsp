@@ -24,17 +24,15 @@
     <section class="clean-block clean-services dark">
         <div class="container">
             <div class="block-heading">
-                <h2 class="text-info">Gestisci Camere</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in,
-                    mattis vitae leo.</p>
+                <h2 class="text-info">Gestione Admin</h2>
+                <p>pannello di controllo</p>
             </div>
             <div class="row">
                 <div class="col-md-6 col-lg-4">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Aggiungi Camera</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
-                                urna, dignissim nec auctor in.</p>
+                            <p class="card-text"></p>
                         </div>
                         <div>
                             <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal"
@@ -47,8 +45,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Modifica Camera</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
-                                urna, dignissim nec auctor in.</p>
+                            <p class="card-text"></p>
                         </div>
                         <div>
                             <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal"
@@ -61,8 +58,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Elimina Camera</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
-                                urna, dignissim nec auctor in.</p>
+                            <p class="card-text"></p>
                         </div>
                         <div>
                             <button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal"
