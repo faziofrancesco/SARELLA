@@ -119,8 +119,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
                 <h4 class="modal-title">Eventi Agriturismo</h4>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
                 <iframe id="videoContainer" width="750" height="400" src="calendar.jsp" frameborder="100" allowfullscreen></iframe>
