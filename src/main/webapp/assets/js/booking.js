@@ -2,10 +2,7 @@ function booking(googleUser) {
 
     $.ajax({
         type: "POST",
-        url: "/addbookingtocart",
-        data: {
-
-        },
+        url: "addbookingtocart",
         success: function () {
             window.location.replace("homepage");
         },

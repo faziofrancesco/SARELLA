@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Shopping Cart - Agriturismo Sarella</title>
-    <%@include file="include.jsp" %>
+    <%@ include file="include.jsp" %>
     <meta name="description" content="I cinghiali lo amano, i sanpietresi lo temono.">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
@@ -51,9 +51,9 @@
                                         </div>
                                         <div class="col-6 col-md-2 quantity">
                                             <label class="d-none d-md-block" for="eliminaPren">Elimina?</label>
-                                            <a id="eliminaPren" onclick="delp(${ordrooms.getIdCamera()})"></a>
+                                            <a id="eliminaPren"></a>
                                         </div>
-                                        <div class="col-6 col-md-2 price"><span>$ ${ordrooms.getPrice()}</span></div>
+                                        <div class="col-6 col-md-2 price"><span>${ordrooms.getPrice()}</span></div>
                                     </div>
                                 </div>
                             </c:forEach>
