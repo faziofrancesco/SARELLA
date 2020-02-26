@@ -29,10 +29,10 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
             index = 1;
         }
 
-        statement.setInt(1, object.getIdOrdineFk());
-        statement.setInt(2, object.getIdCameraFk());
-        statement.setDate(3, object.getDataCheckIn());
-        statement.setDate(4, object.getDataCheckout());
+        statement.setInt(index+1, object.getIdOrdineFk());
+        statement.setInt(index+2, object.getIdCameraFk());
+        statement.setDate(index+3, object.getDataCheckIn());
+        statement.setDate(index+4, object.getDataCheckout());
 
     }
 

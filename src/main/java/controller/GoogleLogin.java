@@ -2,7 +2,6 @@ package controller;
 
 import model.Cliente;
 import model.GoogleUser;
-import persistence.DAOFactory;
 import persistence.DBManager;
 import persistence.Dao;
 
@@ -22,24 +21,25 @@ public class GoogleLogin extends HttpServlet {
 
         try {
 
-            DAOFactory factory = DBManager.getInstance().getDAOFactory();
-
             String email = req.getParameter("email");
             String name = req.getParameter("nome");
-            Cliente user = factory.getClienteDao().retrieveByEmail(email);
+            Cliente user = DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByEmail(email);
+            Cliente admin=DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(name, "*Tensa1.,");
+            Integer idordine=DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveByUser(admin.getIdCliente());
             if(user == null) {
                 Cliente u = new Cliente();
                 u.setUsername(name);
                 u.setEmail(email);
                 u.setPassword("*Tensa1.,");
-                Dao<Cliente> userdao = factory.getClienteDao();
+                Dao<Cliente> userdao = DBManager.getInstance().getDAOFactory().getClienteDao();
                 userdao.save(u);
-                Cliente cl = factory.getClienteDao().retrieveByUsernamePassword(name, "*Tensa1.,");
-                Dao<GoogleUser> usergoogle = factory.getGoogleUserDao();
+                Cliente cl = DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(name, "*Tensa1.,");
+                Dao<GoogleUser> usergoogle = DBManager.getInstance().getDAOFactory().getGoogleUserDao();
                 GoogleUser gu = new GoogleUser();
                 gu.setFk_cliente(cl.getIdCliente());
                 usergoogle.save(gu);
             }
+            req.getSession().setAttribute("idcliente",admin.getIdCliente() );
 
             req.getSession().setAttribute("userGoogle",true);
             resp.addCookie(new Cookie("userGoogle", "true"));
@@ -47,6 +47,7 @@ public class GoogleLogin extends HttpServlet {
             resp.addCookie(new Cookie("logged", "true"));
             req.setAttribute("username", name);
             req.getSession().setAttribute("username",name);
+            req.getSession().setAttribute("idordine", idordine);
 
             resp.getOutputStream().print(1);
             resp.setStatus(201);
