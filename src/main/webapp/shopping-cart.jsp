@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Shopping Cart - Agriturismo Sarella</title>
+    <%@include file="include.jsp" %>
     <meta name="description" content="I cinghiali lo amano, i sanpietresi lo temono.">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
@@ -15,37 +19,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style="padding-bottom: 0px;">
-        <div class="container">
-            <p class="align-self-center navbar-brand logo" id="header-title" style="padding-left: 5px;padding-right: 5px;margin-right: 0;margin-bottom: 12px;">Agriturismo Sarella</p><button data-toggle="collapse" class="navbar-toggler align-self-center" data-target="#navcol-1" style="min-height: 50.8;height: 50.8px;margin-bottom: 12px;margin-right: 0;"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon align-self-center"></span></button>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <div class="table-responsive table-borderless d-flex flex-row justify-content-start align-items-center">
-                    <table class="table table-bordered table-sm">
-                        <tbody>
-                            <tr>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="infos/index.html" style="color: rgb(134,138,143);" title="Home">Home</a></td>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="../rooms/rooms-catalog-page.html" style="color: rgb(134,138,143);" title="Rooms">Rooms</a></td>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="../infos/about-us.html" style="color: rgb(134,138,143);" title="About us">About us</a></td>
-                                <td class="text-center d-inline-block nav-item" role="presentation">
-                                    <div class="dropdown d-inline-block d-lg-flex" style="position:absolute; z-index:100"><a class="dropdown-toggle text-center border rounded d-inline-flex d-lg-flex flex-grow-1 flex-fill justify-content-lg-center align-items-lg-center small-padding btn btn-info" data-toggle="dropdown" aria-expanded="false"
-                                            href="#" aria-haspopup="true">Dropdown </a>
-                                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
-                                    </div><a class="text-center border rounded d-none small-padding btn btn-info" title="${username}" role="button">${username}</a></td>
-                            </tr>
-                            <tr>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="blog-post-list.html" style="color: rgb(134,138,143);" title="Blog">Blog</a></td>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="products/products-catalog-page.html" style="color: rgb(134,138,143);" title="Products">Products</a></td>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center d-inline-block small-padding index-a" href="../infos/contact-us.html" style="color: rgb(134,138,143);" title="Contacts">Contacts</a></td>
-                                <td class="text-center nav-item" role="presentation"><a class="text-center border rounded d-inline-block small-padding btn btn-info" title="Sign Up" role="button" data-toggle="modal" data-target="#registrationModal">Sign Up</a><a class="text-center border rounded d-none small-padding btn btn-info"
-                                        title="Log Out" role="button">Log Out</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-        </div>
-        </div>
-    </nav>
+<%@ include file="header.jsp" %>
+
+<div style="width:100%; height:15%"></div>
+
     <main class="page shopping-cart-page">
         <section class="clean-block clean-cart dark">
             <div class="container">
@@ -120,53 +97,8 @@
             </div>
         </section>
     </main>
-    <footer class="page-footer dark" style="padding-top: 1%;">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-3 d-flex flex-column align-content-center align-items-lg-center justify-content-xl-start align-items-xl-center col-sm-4">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sign In</a></li>
-                        <li><a href="#">Sign Up</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 d-flex d-xl-flex flex-column align-items-lg-center justify-content-xl-start align-items-xl-center col-sm-4">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 d-none flex-column align-items-lg-center justify-content-xl-start align-items-xl-center col-sm-4">
-                    <h5>Legal</h5>
-                    <ul>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col" style="background-color: #ffffff;">
-                    <div class="d-flex flex-column flex-shrink-1 justify-content-center align-items-center align-self-center container" style="padding: 2%;">
-                        <div class="intro">
-                            <h2 class="text-center">Newsletter</h2>
-                            <p class="text-center">Subscribe for the latest info!</p>
-                        </div>
-                        <form class="d-flex justify-content-center form-inline" method="post">
-                            <div class="d-flex justify-content-sm-center align-items-sm-center form-group"><input class="form-control" type="email" name="email" placeholder="Your Email" required="" style="margin-right: 5%;"></div>
-                            <div class="form-group"><button class="btn btn-primary d-xl-flex align-self-center justify-content-xl-center align-items-xl-center" type="submit">Submit</button></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <p>© 2018 Copyright Text</p>
-        </div>
-    </footer>
+
+<%@ include file="footer.jsp" %>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>

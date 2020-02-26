@@ -91,7 +91,31 @@
                                         <div class="product-name"><a href="#">Camera n. ${prods.getIdCamera()}</a></div>
                                         <div class="about">
                                             <div class="rating">
-                                                <img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star.svg"><img src="assets/img/rooms/star-half-empty.svg"><img src="assets/img/rooms/star-empty.svg"></div>
+                                                <c:choose>
+                                                    <c:when test="${meanvote >= 1}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+
+                                                <c:choose>
+                                                    <c:when test="${meanvote >= 2}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+
+                                                <c:choose>
+                                                    <c:when test="${meanvote >= 3}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+
+                                                <c:choose>
+                                                    <c:when test="${meanvote >= 4}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+
+                                                <c:choose>
+                                                    <c:when test="${meanvote >= 5}"><span class="fa fa-star"></span></c:when>
+                                                    <c:otherwise><span class="fa fa-star unchecked"></span></c:otherwise>
+                                                </c:choose>
+                                            </div>
                                             <div class="price">
                                                 <h3>$ ${prods.getPrezzo()}</h3>
                                             </div>
