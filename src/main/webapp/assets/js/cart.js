@@ -25,12 +25,11 @@ function loadCart() {
         success:function () {
             window.location.replace("shopping-cart.jsp");
 
-        }
-        ,
+        },
         error: function(jqXHR, textStatus, errorThrown) {
             if(jqXHR.status === 412) {
                 alert("Il carrello è vuoto");
-                window.location.replace("homepage");
+                window.location.replace("/homepage");
             } else {
                 alert("Errore nell'eliminazione, siete invitati a riprovare");
             }

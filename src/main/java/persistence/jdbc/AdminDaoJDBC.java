@@ -128,7 +128,7 @@ public class AdminDaoJDBC implements AdminDao {
             return utente;
 
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
+            throw new PersistenceException(e.getMessage());
         }
     }
 }
