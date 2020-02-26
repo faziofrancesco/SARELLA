@@ -137,8 +137,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Login</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
 
@@ -189,7 +188,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Recupera credenziali</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&#10006;</button>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
                 <div>
@@ -234,8 +233,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Modifica Profilo</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
 
@@ -268,7 +266,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">RegistrationForm</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&#10006;</button>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
                 <form id="regForm" enctype="multipart/form-data">
@@ -310,7 +308,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Scegli il periodo di permanenza</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">&#10006;</button></div>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
+            </div>
             <div class="modal-body">
                 <form id="roomForm" method="get" action="rooms-handler">
                 <div id="andata" class="form-group">
