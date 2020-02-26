@@ -18,9 +18,17 @@
             <div class="col-sm-3 d-flex flex-column align-content-center align-items-lg-center justify-content-xl-start align-items-xl-center col-sm-4">
                 <h5>Get started</h5>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="index.jsp">Home</a></li>
+                    <% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))) {%>
+                    <li><a role="button" data-target="modal" data-toggle="#loginModal">Sign In</a></li>
+                    <%} else {%>
+                    <li><a href="service-page.jsp">Vai al profilo</a></li>
+                    <%}%>
+                    <% if((request.getSession().getAttribute("logged") == null || !(boolean)request.getSession().getAttribute("logged"))) {%>
+                    <li><a role="button" data-target="modal" data-toggle="#registrationModal">Sign Up</a></li>
+                    <%} else {%>
+                    <li><a href="logout">Logout</a></li>
+                    <%}%>
                 </ul>
             </div>
             <div class="col-sm-3 d-flex d-xl-flex flex-column align-items-lg-center justify-content-xl-start align-items-xl-center col-sm-4">
@@ -38,27 +46,6 @@
                     <li><a href="#">Terms of Use</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                 </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="background-color: #ffffff;">
-                <div class="d-flex flex-column flex-shrink-1 justify-content-center align-items-center align-self-center container"
-                     style="padding: 2%;">
-                    <div class="intro">
-                        <h2 class="text-center">Newsletter</h2>
-                        <p class="text-center">Subscribe for the latest info!</p>
-                    </div>
-                    <form class="d-flex justify-content-center form-inline" method="post">
-                        <div class="d-flex justify-content-sm-center align-items-sm-center form-group"><input
-                                class="form-control" type="email" name="email" placeholder="Your Email" required=""
-                                style="margin-right: 5%;"></div>
-                        <div class="form-group">
-                            <button class="btn btn-primary d-xl-flex align-self-center justify-content-xl-center align-items-xl-center"
-                                    type="submit">Submit
-                            </button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
