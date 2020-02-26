@@ -1,6 +1,7 @@
 package controller;
 
 import model.Camera;
+import model.Cliente;
 import persistence.DAOFactory;
 import persistence.DBManager;
 
@@ -26,11 +27,12 @@ public class ShowCart extends HttpServlet {
                 throw new NullPointerException();
             }
 
+            Integer idordine=DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveByUser((Integer) req.getSession().getAttribute("idcliente"));
+            req.getSession().setAttribute("idordine",idordine);
             DAOFactory factory = DBManager.getInstance().getDAOFactory();
 
-            Integer idOrdine = (Integer)req.getSession().getAttribute("idordine");
-            List<Camera> ret = factory.getCameraDao().retrieveByOrder(idOrdine);
-            BigDecimal totPrice = factory.getOrdineDao().retrieveTotalPrice(idOrdine);
+            List<Camera> ret = factory.getCameraDao().retrieveByOrder(idordine);
+            Integer totPrice = factory.getOrdineDao().retrieveTotalPrice(idordine).intValueExact();
 
             if(ret != null) {
                 req.getSession().setAttribute("ordrooms", ret);

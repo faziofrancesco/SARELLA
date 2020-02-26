@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script type="text/javascript" src="assets/js/cart.js"></script>
+
 </head>
 
 <body>
@@ -63,7 +66,51 @@
                                 <h3>Summary</h3>
                                 <h4><span class="text">Subtotal</span><span class="price"> ${totPrice}</span></h4>
                                 <h4><span class="text">Total</span><span class="price"> ${totPrice}</span></h4>
-                                <button class="btn btn-primary btn-block btn-lg" type="button">Paga con PayPal</button>
+                                <!-- START PAYPAL PAYMENTS-->
+                                <div class ="float-right" id="paypal-button"></div>
+                                <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+                                <script>
+                                paypal.Button.render({
+                                        // Configure environment
+                                        env: 'sandbox',
+                                        client: {
+                                            sandbox: 'AeVv1fuwCcg9YddrZS1IYJ93ukIOEOSJfrUc85dWzGRY7oTHhhbhbJ-lUBCuqfAxB-CcdqinWZ1MXJPJ',
+                                        },
+                                        // Customize button (optional)
+                                        locale: 'it_IT',
+                                        style: {
+                                            size: 'large',
+                                            color: 'gold',
+                                            shape: 'pill',
+                                        },
+
+                                        // Enable Pay Now checkout flow (optional)
+                                        commit: true,
+
+                                        // Set up a payment
+                                        payment: function(data, actions) {
+                                            return actions.payment.create({
+                                                transactions: [{
+                                                    amount: {
+                                                        total: '${totPrice}',
+                                                        currency: 'EUR'
+                                                    }
+                                                }]
+                                            });
+                                        },
+                                        // Execute the payment
+                                        onAuthorize: function(data, actions) {
+                                            return actions.payment.execute().then(function()
+                                            {
+                                                // Show a confirmation message to the buyer
+                                                var alert = window.alert('Pagamento avvenuto con successo!');
+                                                $.post("/Paga",
+                                                );
+                                            });
+                                        }
+                                    }, '#paypal-button');
+                                </script>
                             </div>
                         </div>
                     </div>

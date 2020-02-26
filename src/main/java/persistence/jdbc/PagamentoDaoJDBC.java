@@ -122,4 +122,25 @@ public class PagamentoDaoJDBC implements PagamentoDao {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    @Override
+    public Pagamento retrieveLastPaypment() {
+        Pagamento pagamento = null;
+
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM pagamento ORDER BY id_pagamento DESC LIMIT 1")) {
+
+            handler.execute();
+
+            if (handler.existsResultSet()) {
+
+                ResultSet result = handler.getResultSet();
+                result.next();
+                pagamento = extractTo(result);
+            }
+            return pagamento;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
