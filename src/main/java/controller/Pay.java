@@ -38,8 +38,13 @@ public class Pay extends HttpServlet {
             o.setIdClienteFk((Integer) req.getSession().getAttribute("idcliente"));
             o.setIdPagamentoFk(idpfk.getIdPagamento());
             DBManager.getInstance().getDAOFactory().getOrdineDao().update(o);
+
+            req.getSession().removeAttribute("ordrooms");
+            req.getSession().removeAttribute("totPrice");
+
             RequestDispatcher rd = req.getRequestDispatcher("/homepage");
             rd.forward(req,resp);
+
         } catch (Exception e) {
             e.printStackTrace();
             resp.setStatus(500);
