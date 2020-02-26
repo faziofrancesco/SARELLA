@@ -2,6 +2,7 @@ package controller;
 
 import model.Cliente;
 import model.GoogleUser;
+import persistence.DAOFactory;
 import persistence.DBManager;
 import persistence.Dao;
 
@@ -21,18 +22,20 @@ public class GoogleLogin extends HttpServlet {
 
         try {
 
+            DAOFactory factory = DBManager.getInstance().getDAOFactory();
+
             String email = req.getParameter("email");
             String name = req.getParameter("nome");
-            Cliente user = DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByEmail(email);
+            Cliente user = factory.getClienteDao().retrieveByEmail(email);
             if(user == null) {
                 Cliente u = new Cliente();
                 u.setUsername(name);
                 u.setEmail(email);
                 u.setPassword("*Tensa1.,");
-                Dao<Cliente> userdao = DBManager.getInstance().getDAOFactory().getClienteDao();
+                Dao<Cliente> userdao = factory.getClienteDao();
                 userdao.save(u);
-                Cliente cl = DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(name, "*Tensa1.,");
-                Dao<GoogleUser> usergoogle = DBManager.getInstance().getDAOFactory().getGoogleUserDao();
+                Cliente cl = factory.getClienteDao().retrieveByUsernamePassword(name, "*Tensa1.,");
+                Dao<GoogleUser> usergoogle = factory.getGoogleUserDao();
                 GoogleUser gu = new GoogleUser();
                 gu.setFk_cliente(cl.getIdCliente());
                 usergoogle.save(gu);

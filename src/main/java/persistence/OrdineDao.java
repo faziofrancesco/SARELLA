@@ -2,9 +2,11 @@ package persistence;
 
 import model.Ordine;
 
+import java.math.BigDecimal;
+
 public interface OrdineDao extends Dao<Ordine> {
 
-    Integer retrieveTotalPrice(Integer idOrdine);
+    BigDecimal retrieveTotalPrice(Integer idOrdine);
     Integer retrieveByUser(Integer Cliente);
 
 }

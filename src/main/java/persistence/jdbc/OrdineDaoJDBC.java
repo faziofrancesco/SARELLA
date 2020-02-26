@@ -4,6 +4,7 @@ import model.Ordine;
 import persistence.OrdineDao;
 import persistence.PersistenceException;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -123,17 +124,17 @@ public class OrdineDaoJDBC implements OrdineDao {
     }
 
     @Override
-    public Integer retrieveTotalPrice(Integer idOrdine) {
+    public BigDecimal retrieveTotalPrice(Integer idOrdine) {
 
-        Integer ret = null;
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_total_price_for_ordine(?)")) {
+        BigDecimal ret = null;
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_total_price_for_ordine(?)")) {
 
             handler.getStatement().setInt(1, idOrdine);
             handler.execute();
 
             if(handler.existsResultSet()) {
                 handler.getResultSet().next();
-                ret = handler.getResultSet().getInt("sum_prices");
+                ret = handler.getResultSet().getBigDecimal("retrieve_total_price_for_ordine");
             }
 
             return ret;

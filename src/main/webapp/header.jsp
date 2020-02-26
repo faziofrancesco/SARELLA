@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="assets/css/Newsletter-Subscription-Form.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
     <script src="assets/js/header.js"></script>
+    <script src="assets/js/cart.js"></script>
 </head>
 
 <body>
@@ -64,7 +65,7 @@
                                            class="dropdown-toggle text-center border rounded d-inline-block small-padding btn btn-info">${username}</a>
                                         <div role="menu" class="dropdown-menu">
                                             <a role="presentation" class="dropdown-item" href="service-page.jsp">Vai al profilo</a>
-                                            <a role="presentation" class="dropdown-item" href="shopping-cart.jsp">Carrello</a>
+                                            <a role="presentation" class="dropdown-item" onclick="loadCart()">Carrello</a>
                                             <a role="presentation" class="dropdown-item" data-toggle="modal" data-target="#myModal">Eventi</a>
                                             <% if((request.getSession().getAttribute("admin") != null &&  (boolean)request.getSession().getAttribute("admin"))) {%>
                                                 <a role="presentation" class="dropdown-item" href="rooms-handler?target=admin">Pannello Admin</a>
@@ -301,6 +302,7 @@
 <script src="assets/js/smoothproducts.min.js"></script>
 <script src="assets/js/theme.js"></script>
 <script src="assets/js/header.js"></script>
+<script src="assets/js/cart.js"></script>
 </body>
 
 </html>
