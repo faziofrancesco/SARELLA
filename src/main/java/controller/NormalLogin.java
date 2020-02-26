@@ -25,11 +25,12 @@ public class NormalLogin extends HttpServlet {
                check=true;
             }
             if (DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(username, password)!=null) {
-
-                req.getSession().setAttribute("logged", true);
+                Integer idordine=DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveByUser(admin.getIdCliente());
+                req.getSession().setAttribute("idordine", idordine);
                 resp.addCookie(new Cookie("logged", "true"));
                 req.setAttribute("username", username);
                 req.getSession().setAttribute("username", username);
+                req.getSession().setAttribute("logged",true);
                 if(check==true){
                     req.getSession().setAttribute("admin", true);
                     resp.addCookie(new Cookie("admin", "true"));

@@ -49,6 +49,8 @@ public class RoomHandler extends HttpServlet {
         } else {
             Date andata = Date.valueOf(req.getParameter("arrivalDate"));
             Date ritorno = Date.valueOf(req.getParameter("departureDate"));
+            req.getSession().setAttribute("andata", andata);
+            req.getSession().setAttribute("ritorno", ritorno);
             cm = f.getCameraDao().retrieveInRange(andata, ritorno);
         }
         req.setAttribute("prods", cm);
@@ -59,6 +61,7 @@ public class RoomHandler extends HttpServlet {
         c.setIdCamera(Integer.parseInt(req.getParameter("id")));
         c = DBManager.getInstance().getDAOFactory().getCameraDao().retrieve(c);
         req.setAttribute("room", c);
+        req.getSession().setAttribute("idca",c.getIdCamera());
     }
 
     @Override

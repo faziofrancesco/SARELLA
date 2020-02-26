@@ -11,6 +11,7 @@
     <meta name="description" content="I cinghiali lo amano, i sanpietresi lo temono.">
     <%@ include file="include.jsp" %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="assets/js/booking.js"></script>
 
 </head>
 
@@ -67,7 +68,7 @@
                                     </div>
                                     <div class="price">
                                         <h3>$ ${room.getPrezzo()}</h3>
-                                    </div><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button>
+                                    </div><button class="btn btn-primary" onclick="booking(event)"type="button" ><i class="icon-basket"></i>Add to Cart</button>
                                     <div class="summary">
                                         <p>${room.getDescrizione()}</p>
                                     </div>
