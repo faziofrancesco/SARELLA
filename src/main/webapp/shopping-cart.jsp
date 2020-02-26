@@ -50,10 +50,10 @@
                                             </div>
                                         </div>
                                         <div class="col-6 col-md-2 quantity">
-                                            <label class="d-none d-md-block" for="eliminaPren">Elimina?</label>
+                                            <label class="d-none d-md-block" for="eliminaPren">Elimina</label>
                                             <a id="eliminaPren" onclick="delp(${ordrooms.getIdCamera()})"></a>
                                         </div>
-                                        <div class="col-6 col-md-2 price"><span>$ ${ordrooms.getPrice()}</span></div>
+                                        <div class="col-6 col-md-2 price"><span>${ordrooms.getPrice()}</span></div>
                                     </div>
                                 </div>
                             </c:forEach>
