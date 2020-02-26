@@ -17,14 +17,20 @@ public class NormalLogin extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 
         try {
-            String username = req.getParameter("username");
-            String password = req.getParameter("password");
+            String username = req.getParameter("username2");
+            String password = req.getParameter("password2");
+            System.out.println(username);
+            System.out.println(password);
             Boolean check=false;
             Cliente admin=DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(username, password);
             if(DBManager.getInstance().getDAOFactory().getAdminDao().retrieveByUser(admin.getIdCliente())!=null){
                check=true;
+               System.out.println("brando");
             }
-            if (DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(username, password)!=null) {
+            Cliente cl=DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(username, password);
+
+            if (DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(username, password)!=null && cl.getIdCliente()!=0) {
+
                 Integer idordine=DBManager.getInstance().getDAOFactory().getOrdineDao().retrieveByUser(admin.getIdCliente());
                 req.getSession().setAttribute("idordine", idordine);
                 req.getSession().setAttribute("idcliente",admin.getIdCliente() );

@@ -80,7 +80,7 @@
                                         // Customize button (optional)
                                         locale: 'it_IT',
                                         style: {
-                                            size: 'large',
+                                            size: 'small',
                                             color: 'gold',
                                             shape: 'pill',
                                         },

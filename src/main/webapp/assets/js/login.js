@@ -26,8 +26,8 @@ function loginUser(event) {
         type: "POST",
         url: "normalLogin",
         data: {
-            username: $("#Login-username").val(),
-            password: $("#Login-password").val(),
+            username2: $("#Login-username").val(),
+            password2: $("#Login-password").val(),
         },
         success: function () {
             window.location.replace("homepage");
@@ -43,12 +43,13 @@ function UpdateCliente() {
         type: "POST",
         url: "/updateUser",
         data: {
-            name2: $("#UpdateName").val(),
-            surname2: $("#UpdateSurname").val(),
+            a: $("#UpdateName").val(),
+            k: $("#UpdateSurname").val(),
             date2: $("#UpdateDate").val(),
             email2: $("#UpdateEmail").val()
         },
         success: function () {
+
             window.location.replace("homepage");
 
         },

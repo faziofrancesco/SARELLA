@@ -30,8 +30,9 @@ public class UpdateUser extends HttpServlet {
         try {
             Cliente r = new Cliente();
             r.setIdCliente((Integer) req.getSession().getAttribute("idcliente"));
-            r.setNome((String) req.getAttribute("name2"));
-            r.setCognome((String) req.getAttribute("surname2"));
+            r.setNome((String) req.getAttribute("a"));
+            System.out.println((String) req.getAttribute("a"));
+            r.setCognome((String) req.getAttribute("k"));
             r.setDataDiNascita((Date) req.getAttribute("date2"));
             r.setEmail((String) req.getAttribute("email2"));
             DBManager.getInstance().getDAOFactory().getClienteDao().update(r);
