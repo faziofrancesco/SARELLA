@@ -148,7 +148,7 @@ public class OrdineDaoJDBC implements OrdineDao {
     @Override
     public Integer retrieveByUser(Integer Cliente) {
         Integer ret = null;
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT id_ordine from ordine where fk_cliente=?")) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT id_ordine from ordine where fk_cliente=? and fk_pagamento IS NULL")) {
 
             handler.getStatement().setInt(1, Cliente);
             handler.execute();
@@ -156,6 +156,29 @@ public class OrdineDaoJDBC implements OrdineDao {
             if(handler.existsResultSet()) {
                 handler.getResultSet().next();
                 ret = handler.getResultSet().getInt("id_ordine");
+            }
+
+            return ret;
+
+        } catch (SQLException e) {
+            throw new PersistenceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Ordine> retrieveForStorico(Integer Cliente) {
+        List<Ordine> ret = null;
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * from ordine where fk_cliente=?")) {
+
+            handler.getStatement().setInt(1, Cliente);
+            handler.execute();
+
+            if(handler.existsResultSet()) {
+                ret = new ArrayList<>();
+                ResultSet res = handler.getResultSet();
+                while(res.next()) {
+                    ret.add(extractTo(res));
+                }
             }
 
             return ret;
