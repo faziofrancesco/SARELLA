@@ -10,6 +10,8 @@
     <title>Services - Agriturismo Sarella</title>
     <meta name="description" content="I cinghiali lo amano, i sanpietresi lo temono.">
     <%@ include file="include.jsp" %>
+    <script src="assets/js/login.js"></script>
+
 </head>
 
 <body>
@@ -23,23 +25,23 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Benvenuto, ${username}!</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <p></p>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Modifica profilo</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
+                                <p class="card-text"></p>
                             </div>
-                            <div><button class="btn btn-outline-primary btn-sm" type="button">Modifica profilo</button></div>
+                            <div><button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#myProfile">Modifica Profilo</button></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Storico Ordini</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
+                                <p class="card-text"></p>
                             </div>
                             <div>
                                 <a class="btn btn-outline-primary btn-sm" role="button" href="storico-ordini.jsp">Vai allo storico ordini</a>
@@ -50,7 +52,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Eventi</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
+                                <p class="card-text"></p>
                             </div>
                             <div><button class="btn btn-outline-primary btn-sm" type="button" data-toggle="modal" data-target="#myModal">Visualizza i tuoi eventi</button></div>
                         </div>
@@ -59,7 +61,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Carrello</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
+                                <p class="card-text"></p>
                             </div>
                             <div><button class="btn btn-outline-primary btn-sm" type="button">Vai al carrello</button></div>
                         </div>
@@ -68,7 +70,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Recensioni</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
+                                <p class="card-text"></p>
                             </div>
                             <div><button class="btn btn-outline-primary btn-sm" type="button">Le tue reensioni</button></div>
                         </div>
@@ -77,7 +79,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Logout</h4>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in.</p>
+                                <p class="card-text"></p>
                             </div>
                             <div><a class="btn btn-outline-primary btn-sm" role="button" href="logout">Esegui il logout</a></div>
                         </div>
@@ -92,6 +94,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+
 </body>
 
 </html>

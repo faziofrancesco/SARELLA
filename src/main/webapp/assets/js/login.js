@@ -38,7 +38,25 @@ function loginUser(event) {
         }
     });
 }
+function UpdateCliente() {
+    $.ajax({
+        type: "POST",
+        url: "/updateUser",
+        data: {
+            name2: $("#UpdateName").val(),
+            surname2: $("#UpdateSurname").val(),
+            date2: $("#UpdateDate").val(),
+            email2: $("#UpdateEmail").val()
+        },
+        success: function () {
+            window.location.replace("homepage");
 
+        },
+        error: function () {
+            alert("update non eseguito");
+        }
+    });
+}
 
 function googleSignIn(googleUser) {
 

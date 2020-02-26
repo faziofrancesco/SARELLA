@@ -145,10 +145,10 @@
                 <% if((request.getSession().getAttribute("userGoogle") == null || !(boolean)request.getSession().getAttribute("userGoogle"))){%>
                 <div class="dropdown-divider" style="padding-top: 2%" role="presentation"></div>
                 <script>
-                        function onSignIn(googleUser) {
-                            googleSignIn(googleUser);
-                        }
-                    </script>
+                    function onSignIn(googleUser) {
+                        googleSignIn(googleUser);
+                    }
+                </script>
                 <%}%>
 
                 <form>
@@ -180,7 +180,7 @@
                 <button class="btn btn-primary" type="button" id="btnLogin" onclick="loginUser(event)">Accedi</button>
             </div>
 
-            </div>
+        </div>
     </div>
 </div>
 <div class="modal fade" role="dialog" tabindex="-1" id="retrievalModal">
@@ -225,6 +225,40 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" role="dialog" tabindex="-1" id="myProfile">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modifica Profilo</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="UpdateName">Nome</label>
+                        <input class="form-control item" type="text" id="UpdateName" placeholder="Nome">
+                    </div>
+                <div class="form-group">
+                    <label for="UpdateSurname">Cognome</label>
+                    <input class="form-control item" type="text" id="UpdateSurname" placeholder="Cognome">
+                </div>
+                <div class="form-group">
+                    <label for="UpdateDate">Data</label>
+                    <input class="form-control item" type="date" id="UpdateDate" placeholder="Date">
+                </div>
+                <div class="form-group">
+                    <label for="UpdateEmail">Email</label>
+                    <input class="form-control item" type="text" id="UpdateEmail" placeholder="email">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="btnUpdate" onclick="UpdateCliente()">Update</button>
+            </div>
+
         </div>
     </div>
 </div>
@@ -301,6 +335,7 @@
 <script src="assets/js/smoothproducts.min.js"></script>
 <script src="assets/js/theme.js"></script>
 <script src="assets/js/header.js"></script>
+
 </body>
 
 </html>

@@ -25,6 +25,8 @@ public class Logout extends HttpServlet {
             req.getSession().removeAttribute("idordine");
             req.getSession().removeAttribute("andata");
             req.getSession().removeAttribute("ritorno");
+            req.getSession().removeAttribute("idcliente");
+
             resp.addCookie(new Cookie("logged", "false"));
             resp.addCookie(new Cookie("logged", "false"));
             resp.addCookie(new Cookie("userGoogle", "false"));

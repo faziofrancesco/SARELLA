@@ -22,7 +22,7 @@ public class Booking extends HttpServlet{
         try {
             Prenotazione p = new Prenotazione();
             p.setIdOrdineFk((Integer) request.getSession().getAttribute("idordine"));
-
+            System.out.println((Integer) request.getSession().getAttribute("idordine"));
             java.sql.Date andata = (Date)request.getSession().getAttribute("andata");;
             java.sql.Date ritorno = (Date)request.getSession().getAttribute("ritorno");;
 

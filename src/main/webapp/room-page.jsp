@@ -50,9 +50,9 @@
                             <div class="col-md-6">
                                 <div class="gallery">
                                     <div class="sp-wrap">
-                                        <a href="images/${room.getImagePath()}">
+
                                             <img class="img-fluid d-block mx-auto" src="images/${room.getImagePath()}">
-                                        </a>
+
                                     </div>
                                 </div>
                             </div>
