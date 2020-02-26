@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Prenotazione implements Serializable {
@@ -10,10 +11,10 @@ public class Prenotazione implements Serializable {
     private Integer idPrenotazione;
     private Integer idOrdineFk;
     private Integer idCameraFk;
-    private Timestamp dataCheckIn;
-    private Timestamp dataCheckout;
+    private Date dataCheckIn;
+    private Date dataCheckout;
 
-    public Prenotazione(Integer idPrenotazione, Integer idOrdineFk, Integer idCameraFk, Timestamp dataCheckIn, Timestamp dataCheckout) {
+    public Prenotazione(Integer idPrenotazione, Integer idOrdineFk, Integer idCameraFk, Date dataCheckIn, Date dataCheckout) {
         this.idPrenotazione = idPrenotazione;
         this.idOrdineFk = idOrdineFk;
         this.idCameraFk = idCameraFk;
@@ -48,19 +49,19 @@ public class Prenotazione implements Serializable {
         this.idCameraFk = idCameraFk;
     }
 
-    public Timestamp getDataCheckIn() {
+    public Date getDataCheckIn() {
         return dataCheckIn;
     }
 
-    public void setDataCheckIn(Timestamp dataCheckIn) {
+    public void setDataCheckIn(Date dataCheckIn) {
         this.dataCheckIn = dataCheckIn;
     }
 
-    public Timestamp getDataCheckout() {
+    public Date getDataCheckout() {
         return dataCheckout;
     }
 
-    public void setDataCheckout(Timestamp dataCheckout) {
+    public void setDataCheckout(Date dataCheckout) {
         this.dataCheckout = dataCheckout;
     }
 }

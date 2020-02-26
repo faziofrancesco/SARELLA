@@ -52,7 +52,7 @@ public class MetodoPagamentoDaoJDBC implements MetodoPagamentoDao {
     public MetodoPagamento retrieve(MetodoPagamento object) {
         MetodoPagamento metodopagamento = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_metodop(?)")) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_metodo_pagamento(?)")) {
             handler.getStatement().setInt(1, object.getIdMetodoPagamento());
             handler.execute();
 

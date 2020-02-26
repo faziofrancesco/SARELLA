@@ -46,7 +46,7 @@ public class NumPersoneDaoJDBC implements NumPersoneDao {
 
         NumPersone numpersone = null;
 
-        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_from_nump(?)")) {
+        try (JDBCQueryHandler handler = new JDBCQueryHandler("SELECT retrieve_by_id_num_persone(?)")) {
             handler.getStatement().setInt(1, object.getIdNumPersone());
 
             handler.execute();

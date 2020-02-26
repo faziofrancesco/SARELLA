@@ -16,8 +16,8 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
         obj.setIdPrenotazione(set.getInt("id_prenotazione"));
         obj.setIdOrdineFk(set.getInt("fk_ordine"));
         obj.setIdCameraFk(set.getInt("fk_camera"));
-        obj.setDataCheckIn(set.getTimestamp("data_check_in"));
-        obj.setDataCheckout(set.getTimestamp("data_check_out"));
+        obj.setDataCheckIn(set.getDate("data_check_in"));
+        obj.setDataCheckout(set.getDate("data_check_out"));
         return obj;
     }
 
@@ -31,8 +31,8 @@ public class PrenotazioneDaoJDBC implements PrenotazioneDao {
 
         statement.setInt(1, object.getIdOrdineFk());
         statement.setInt(2, object.getIdCameraFk());
-        statement.setTimestamp(3, object.getDataCheckIn());
-        statement.setTimestamp(4, object.getDataCheckout());
+        statement.setDate(3, object.getDataCheckIn());
+        statement.setDate(4, object.getDataCheckout());
 
     }
 

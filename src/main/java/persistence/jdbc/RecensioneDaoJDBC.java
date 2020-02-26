@@ -129,7 +129,7 @@ public class RecensioneDaoJDBC implements RecensioneDao {
 
         List<Recensione> rec = null;
 
-        try(JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_by_camera_for_recensione(?)")) {
+        try(JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_by_camera_from_recensione(?)")) {
 
             handler.getStatement().setInt(1, idCamera);
             handler.execute();

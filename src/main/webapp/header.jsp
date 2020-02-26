@@ -280,11 +280,11 @@
                 <form id="roomForm" method="get" action="rooms-handler">
                 <div id="andata" class="form-group">
                     <label for="arrivalDate" title="Data di partenza"> Data Check-In</label>
-                    <input type="datetime-local" id="arrivalDate" name="arrivalDate" required="" class="form-control item">
+                    <input type="date" id="arrivalDate" name="arrivalDate" required="" class="form-control item">
                 </div>
                 <div id="ritorno" class="form-group">
                     <label for="departureDate" title="Data di ritorno"> Data Check-Out </label>
-                    <input type="datetime-local" id="departureDate" name="departureDate" required="" class="form-control item">
+                    <input type="date" id="departureDate" name="departureDate" required="" class="form-control item">
                 </div>
                     <input type="hidden" id="target" name="target" value="show">
                 </form>

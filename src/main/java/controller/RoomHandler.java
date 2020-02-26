@@ -49,8 +49,8 @@ public class RoomHandler extends HttpServlet {
         if(!dateRange) {
             cm = f.getCameraDao().retrieveAll();
         } else {
-            Timestamp andata = Timestamp.valueOf(req.getParameter("arrivalDate").replace("T"," "));
-            Timestamp ritorno = Timestamp.valueOf(req.getParameter("departureDate").replace("T", " "));
+            Date andata = Date.valueOf(req.getParameter("arrivalDate"));
+            Date ritorno = Date.valueOf(req.getParameter("departureDate"));
             req.getSession().setAttribute("andata", andata);
             req.getSession().setAttribute("ritorno", ritorno);
             cm = f.getCameraDao().retrieveInRange(andata, ritorno);
