@@ -44,7 +44,7 @@
                                 <p class="card-text"></p>
                             </div>
                             <div>
-                                <a class="btn btn-outline-primary btn-sm" role="button" href="storico-ordini.jsp">Vai allo storico ordini</a>
+                                <button class="btn btn-outline-primary btn-sm" role="button"><a href="storico-ordini.jsp">Vai allo storico ordini</a></button>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                                 <h4 class="card-title">Carrello</h4>
                                 <p class="card-text"></p>
                             </div>
-                            <div><button class="btn btn-outline-primary btn-sm" type="button">Vai al carrello</button></div>
+                            <div><button class="btn btn-outline-primary btn-sm" type="button" onclick="loadCart()">Vai al carrello</button></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
@@ -72,7 +72,7 @@
                                 <h4 class="card-title">Recensioni</h4>
                                 <p class="card-text"></p>
                             </div>
-                            <div><button class="btn btn-outline-primary btn-sm" type="button">Le tue reensioni</button></div>
+                            <div><button class="btn btn-outline-primary btn-sm" type="button">Le tue recensioni</button></div>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-4">
@@ -81,7 +81,7 @@
                                 <h4 class="card-title">Logout</h4>
                                 <p class="card-text"></p>
                             </div>
-                            <div><a class="btn btn-outline-primary btn-sm" role="button" href="logout">Esegui il logout</a></div>
+                            <div><button class="btn btn-outline-primary btn-sm" role="button"><a href="logout">Esegui il logout</a></button></div>
                         </div>
                     </div>
                 </div>
