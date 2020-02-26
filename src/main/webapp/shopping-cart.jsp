@@ -50,10 +50,10 @@
                                             </div>
                                         </div>
                                         <div class="col-6 col-md-2 quantity">
-                                            <label class="d-none d-md-block" for="eliminaPren">Elimina?</label>
+                                            <label class="d-none d-md-block" for="eliminaPren">Elimina</label>
                                             <a id="eliminaPren"></a>
                                         </div>
-                                        <div class="col-6 col-md-2 price"><span>${ordrooms.getPrice()}</span></div>
+                                        <div class="col-6 col-md-2 price"><span>${ordrooms.getPrezzo()}</span></div>
                                     </div>
                                 </div>
                             </c:forEach>
@@ -61,13 +61,14 @@
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
                                 <h3>Summary</h3>
-                                <h4><span class="text">Subtotal</span><span class="price">$ ${totPrice}</span></h4>
-                                <h4><span class="text">Total</span><span class="price">$ ${totPrice}</span></h4>
+                                <h4><span class="text">Subtotal</span><span class="price"> ${totPrice}</span></h4>
+                                <h4><span class="text">Total</span><span class="price"> ${totPrice}</span></h4>
                                 <button class="btn btn-primary btn-block btn-lg" type="button">Paga con PayPal</button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>

@@ -36,8 +36,7 @@ public class ShowCart extends HttpServlet {
                 req.getSession().setAttribute("ordrooms", ret);
                 req.getSession().setAttribute("totPrice", totPrice);
 
-                RequestDispatcher rd = req.getRequestDispatcher("shopping-cart.jsp");
-                rd.include(req, resp);
+                resp.setStatus(201);
 
             } else {
                 resp.setStatus(412);

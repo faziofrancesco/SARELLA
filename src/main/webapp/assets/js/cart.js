@@ -21,8 +21,12 @@ function loadCart() {
 
     $.ajax({
         type: "GET",
-        url: "show_cart",
-        async: false,
+        url: "/show_cart",
+        success:function () {
+            window.location.replace("shopping-cart.jsp");
+
+        }
+        ,
         error: function(jqXHR, textStatus, errorThrown) {
             if(jqXHR.status === 412) {
                 alert("Il carrello è vuoto");
