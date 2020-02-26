@@ -156,14 +156,14 @@ public class CameraDaoJDBC implements CameraDao {
     }
 
     @Override
-    public List<Camera> retrieveInRange(Date min, Date max) {
+    public List<Camera> retrieveInRange(Timestamp min, Timestamp max) {
 
         List<Camera> camere = null;
         Camera camera = null;
         try(JDBCQueryHandler handler = new JDBCQueryHandler("SELECT * FROM retrieve_by_date_range_from_camera(?,?)")) {
 
-            handler.getStatement().setDate(1, min);
-            handler.getStatement().setDate(2, max);
+            handler.getStatement().setTimestamp(1, min);
+            handler.getStatement().setTimestamp(2, max);
             handler.execute();
 
             if (handler.existsResultSet()) {

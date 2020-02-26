@@ -17,6 +17,8 @@ import javax.validation.constraints.Null;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -47,8 +49,8 @@ public class RoomHandler extends HttpServlet {
         if(!dateRange) {
             cm = f.getCameraDao().retrieveAll();
         } else {
-            Date andata = Date.valueOf(req.getParameter("arrivalDate"));
-            Date ritorno = Date.valueOf(req.getParameter("departureDate"));
+            Timestamp andata = Timestamp.valueOf(req.getParameter("arrivalDate").replace("T"," "));
+            Timestamp ritorno = Timestamp.valueOf(req.getParameter("departureDate").replace("T", " "));
             req.getSession().setAttribute("andata", andata);
             req.getSession().setAttribute("ritorno", ritorno);
             cm = f.getCameraDao().retrieveInRange(andata, ritorno);

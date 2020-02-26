@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @WebServlet(value = "/addbookingtocart", name = "addbookingtocart")
 public class Booking extends HttpServlet{
@@ -19,18 +20,19 @@ public class Booking extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 
         try {
-            System.out.println( request.getSession().getAttribute("andata"));
-            Prenotazione p=new Prenotazione();
+            Prenotazione p = new Prenotazione();
             p.setIdOrdineFk((Integer) request.getSession().getAttribute("idordine"));
-            java.sql.Date date =  (Date)request.getSession().getAttribute("andata");
-            java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
-            java.sql.Date date1 =  (Date)request.getSession().getAttribute("ritorno");
-            java.sql.Timestamp timestamp1 = new java.sql.Timestamp(date1.getTime());
-            p.setDataCheckIn(timestamp);
-            p.setDataCheckout(timestamp1);
+
+            java.sql.Timestamp andata = (Timestamp)request.getSession().getAttribute("andata");;
+            java.sql.Timestamp ritorno = (Timestamp)request.getSession().getAttribute("ritorno");;
+
+            p.setDataCheckIn(andata);
+            p.setDataCheckout(ritorno);
+
             p.setIdCameraFk((Integer) request.getSession().getAttribute("idca"));
             DBManager.getInstance().getDAOFactory().getPrenotazioneDao().save(p);
             response.setStatus(201);
+
         } catch(Exception e) {
             e.printStackTrace();
             response.setStatus(500);
