@@ -1,5 +1,6 @@
 package controller;
 
+import model.Admin;
 import model.Cliente;
 import persistence.DBManager;
 
@@ -23,7 +24,8 @@ public class NormalLogin extends HttpServlet {
             System.out.println(password);
             Boolean check=false;
             Cliente admin=DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(username, password);
-            if(DBManager.getInstance().getDAOFactory().getAdminDao().retrieveByUser(admin.getIdCliente())!=null){
+            Admin ad=DBManager.getInstance().getDAOFactory().getAdminDao().retrieveByUser(admin.getIdCliente());
+            if(DBManager.getInstance().getDAOFactory().getAdminDao().retrieveByUser(admin.getIdCliente())!=null &&  ad.getIdAdmin()!=0){
                check=true;
                System.out.println("brando");
             }
