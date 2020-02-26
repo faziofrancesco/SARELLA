@@ -44,7 +44,7 @@
                                 <p class="card-text"></p>
                             </div>
                             <div>
-                                <button class="btn btn-outline-primary btn-sm" role="button"><a href="storico-ordini.jsp">Vai allo storico ordini</a></button>
+                                <button class="btn btn-outline-primary btn-sm" role="button"><a>Vai allo storico ordini</a></button>
                             </div>
                         </div>
                     </div>
