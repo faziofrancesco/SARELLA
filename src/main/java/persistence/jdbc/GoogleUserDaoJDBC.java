@@ -1,8 +1,6 @@
 package persistence.jdbc;
 
-import model.Commento;
 import model.GoogleUser;
-import model.NumPersone;
 import persistence.GoogleUserDao;
 import persistence.PersistenceException;
 

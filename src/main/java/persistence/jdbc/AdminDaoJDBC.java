@@ -1,8 +1,7 @@
 package persistence.jdbc;
 
-import model.*;
+import model.Admin;
 import persistence.AdminDao;
-import persistence.GoogleUserDao;
 import persistence.PersistenceException;
 
 import java.sql.PreparedStatement;
