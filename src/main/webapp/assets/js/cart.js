@@ -4,10 +4,11 @@ function delp(room) {
         type: "POST",
         url: "eliminaPrenotazione",
         data: {
-            roomId: room
+            roomId:room
         },
         success: function () {
-            window.location.replace("show_cart");
+
+            loadCart();
 
         },
         error: function () {

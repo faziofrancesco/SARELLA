@@ -7,7 +7,7 @@ function booking(googleUser) {
             window.location.replace("homepage");
         },
         error: function () {
-            alert("Something has gone wrong bookingrooms");
+            alert("effettua il login per prenotare la camera");
         }
     });
 

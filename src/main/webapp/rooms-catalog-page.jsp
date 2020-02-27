@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Catalog - Agriturismo Sarella</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%@ include file="include.jsp" %>
     <script type="text/javascript" src="assets/js/rooms.js"></script>
 </head>
@@ -141,7 +142,7 @@
     </main>
 
 <%@ include file="footer.jsp" %>
-
+<script type="text/javascript" src="assets/js/rooms.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>

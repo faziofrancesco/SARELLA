@@ -54,8 +54,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 col-md-2 quantity">
-                                            <label class="d-none d-md-block" for="eliminaPren">Elimina</label>
-                                            <a id="eliminaPren"></a>
+                                            <button class="btn btn-primary" type="button" id="btndeletep" onclick="delp(${ordrooms.getIdCamera()})"></button>
                                         </div>
                                         <div class="col-6 col-md-2 price"><span>${ordrooms.getPrezzo()}</span></div>
                                     </div>
