@@ -20,28 +20,28 @@ function filterNumP(id) {
 
     if(id === '1') {
         if($(id).is(":checked")) {
-            $('.filtro-nump1').show();
+            $('.filtro-nump1').hide();
 
         } else {
-            $('.filtro-nump1').hide();
+            $('.filtro-nump1').show();
         }
     }
 
     if(id === '2') {
         if($(id).is(":checked")) {
-            $('.filtro-nump2').show();
+            $('.filtro-nump2').hide();
 
         } else {
-            $('.filtro-nump2').hide();
+            $('.filtro-nump2').show();
         }
     }
 
     if(id === '3') {
         if($(id).is(":checked")) {
-            $('.filtro-nump3').show();
+            $('.filtro-nump3').hide();
 
         } else {
-            $('.filtro-nump3').hide();
+            $('.filtro-nump3').show();
         }
     }
 }
@@ -50,28 +50,28 @@ function filterTipo(id) {
 
     if(id === '1') {
         if($(id).is(":checked")) {
-            $('.filtro-tip1').show();
+            $('.filtro-tip1').hide();
 
         } else {
-            $('.filtro-tip1').hide();
+            $('.filtro-tip1').show();
         }
     }
 
     if(id === '2') {
         if($(id).is(":checked")) {
-            $('.filtro-tip2').show();
+            $('.filtro-tip2').hide();
 
         } else {
-            $('.filtro-tip2').hide();
+            $('.filtro-tip2').show();
         }
     }
 
     if(id === '3') {
         if($(id).is(":checked")) {
-            $('.filtro-tip3').show();
+            $('.filtro-tip3').hide();
 
         } else {
-            $('.filtro-tip3').hide();
+            $('.filtro-tip3').show();
         }
     }
 }
