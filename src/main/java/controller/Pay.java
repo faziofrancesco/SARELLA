@@ -22,6 +22,9 @@ import java.util.Date;
 import java.util.List;
 @WebServlet(value = "/Paga", name = "Paga")
 public class Pay extends HttpServlet {
+
+    private static final long serialVersionUID = 4628435760395132596L;
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
 

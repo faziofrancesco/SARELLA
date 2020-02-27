@@ -46,7 +46,7 @@
                     <tbody>
                     <tr>
                         <td class="text-center nav-item" role="presentation"><a
-                                class="text-center d-inline-block small-padding index-a" href="index.jsp"
+                                class="text-center d-inline-block small-padding index-a" href="homepage"
                                 style="color: rgb(134,138,143);" title="Home">Home</a></td>
                         <td class="text-center nav-item" role="presentation"><a
                                 class="text-center d-inline-block small-padding index-a"

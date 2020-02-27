@@ -19,6 +19,9 @@ import java.sql.Date;
 
 @WebServlet(value = "/updateUser", name = "updateUser")
 public class UpdateUser extends HttpServlet {
+
+    private static final long serialVersionUID = -1502971624749032132L;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(405);
