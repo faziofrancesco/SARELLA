@@ -37,3 +37,15 @@ function loadCart() {
         }
     });
 }
+
+function eliminaButton() {
+    let button = $('#btndeletep');
+    if(button.length) {
+        button.css('width', '100%');
+        button.css('height', '100%');
+    }
+}
+
+$(document).ready(function(){
+    eliminaButton();
+});

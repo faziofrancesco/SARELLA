@@ -53,14 +53,14 @@
                                                 <p>${ordrooms.getDescrizione()}</p>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-md-2 quantity">
-                                            <button class="btn btn-primary" type="button" id="btndeletep" onclick="delp(${ordrooms.getIdCamera()})"></button>
-                                        </div>
                                         <div class="col-6 col-md-2 price"><span>${ordrooms.getPrezzo()}</span></div>
+                                        <button class="btn btn-primary col-6 col-md-2 quantity" style="padding-right:2%"
+                                                type="button" id="btndeletep" onclick="delp(${ordrooms.getIdCamera()})">Elimina prenotazioni</button>
                                     </div>
                                 </div>
                             </c:forEach>
                             </div>
+                        </div>
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
                                 <h3>Summary</h3>
@@ -115,7 +115,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </section>
     </main>
