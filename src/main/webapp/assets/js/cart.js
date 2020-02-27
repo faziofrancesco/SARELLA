@@ -45,7 +45,7 @@ function eliminaButton() {
         button.css('height', '100%');
     }
 }
-
 $(document).ready(function(){
     eliminaButton();
 });
+

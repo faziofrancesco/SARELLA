@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-4">
-                            <div class="summary">
+                            <div class="summary" style="padding: 8% 8% 16% 8%">
                                 <h3>Summary</h3>
                                 <h4><span class="text">Subtotal</span><span class="price"><p>$ ${totPrice}</p></span></h4>
                                 <h4><span class="text">Total</span><span class="price"><p>$ ${totPrice}</p></span></h4>
