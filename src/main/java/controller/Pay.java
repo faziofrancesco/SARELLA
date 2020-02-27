@@ -1,11 +1,7 @@
 package controller;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import model.Ordine;
 import model.Pagamento;
-
-import persistence.DAOFactory;
 import persistence.DBManager;
 
 import javax.servlet.RequestDispatcher;
@@ -13,13 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.Null;
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 @WebServlet(value = "/Paga", name = "Paga")
 public class Pay extends HttpServlet {
 

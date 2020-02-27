@@ -1,17 +1,13 @@
 package controller;
 
 import model.Camera;
-import model.Cliente;
 import persistence.DAOFactory;
 import persistence.DBManager;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.constraints.Null;
-import java.math.BigDecimal;
 import java.util.List;
 
 @WebServlet(value = "/show_cart", name = "show_cart")

@@ -1,17 +1,13 @@
 package controller;
-import model.Cliente;
+
 import model.Prenotazione;
 import persistence.DBManager;
-import persistence.Dao;
 
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 @WebServlet(value = "/addbookingtocart", name = "addbookingtocart")
 public class Booking extends HttpServlet{

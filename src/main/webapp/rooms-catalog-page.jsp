@@ -33,8 +33,8 @@
                                     <div class="filter-item">
                                         <h3>Numero persone</h3>
                                         <c:forEach items="${nump}" var="nump">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="nump_${nump.getIdNumPersone()}" onchange="filterNumP('${nump.getIdNumPersone()}')">
+                                            <div class="form-check filtro">
+                                                <input class="form-check-input" type="checkbox" id="nump_${nump.getIdNumPersone()}">
                                                 <label class="form-check-label" for="nump_${nump.getIdNumPersone()}">${nump.getNumPersone()}</label>
                                             </div>
                                         </c:forEach>
@@ -42,8 +42,8 @@
                                     <div class="filter-item">
                                         <h3>Tipologia</h3>
                                         <c:forEach items="${tip}" var="tip">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="tip_${tip.getIdTipologia()}" onchange="filterTipo('${tip.getIdTipologia()}')">
+                                            <div class="form-check filtro">
+                                                <input class="form-check-input" type="checkbox" id="tip_${tip.getIdTipologia()}">
                                                 <label class="form-check-label" for="tip_${tip.getIdTipologia()}">${tip.getTipologia()}</label>
                                             </div>
                                         </c:forEach>
@@ -60,8 +60,8 @@
                                         <div class="filter-item">
                                             <h3>Numero persone</h3>
                                             <c:forEach items="${nump}" var="nump">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="nump_${nump.getIdNumPersone()}" onchange="filterNumP('${nump.getIdNumPersone()}')">
+                                                <div class="form-check filtro">
+                                                    <input class="form-check-input" type="checkbox" id="nump_${nump.getIdNumPersone()}">
                                                     <label class="form-check-label" for="nump_${nump.getIdNumPersone()}">${nump.getNumPersone()}</label>
                                                 </div>
                                             </c:forEach>
@@ -69,8 +69,8 @@
                                         <div class="filter-item">
                                             <h3>Tipologia</h3>
                                             <c:forEach items="${tip}" var="tip">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="tip_${tip.getIdTipologia()}" onchange="filterTipo('${tip.getIdTipologia()}')">
+                                                <div class="form-check filtro">
+                                                    <input class="form-check-input" type="checkbox" id="tip_${tip.getIdTipologia()}">
                                                     <label class="form-check-label" for="tip_${tip.getIdTipologia()}">${tip.getTipologia()}</label>
                                                 </div>
                                             </c:forEach>
@@ -84,7 +84,7 @@
                         <div class="col-md-9">
                             <div class="products">
                                 <c:forEach items="${prods}" var="prods">
-                                    <div class="clean-product-item filtro-nump${prods.getNumPersone()} filtro-tip${prods.getTipologia()}">
+                                    <div class="clean-product-item filtro-num" data-filterN="nump_${prods.getNumPersone()}" data-filterT="tip_${prods.getTipologia()}">
                                         <div class="image">
                                             <a class="d-lg-flex justify-content-lg-center align-items-lg-center" href="rooms-handler?target=single&id=${prods.getIdCamera()}">
                                                 <img class="img-fluid d-flex d-lg-flex justify-content-lg-center align-items-lg-center" src="images/${prods.getImagePath()}">
