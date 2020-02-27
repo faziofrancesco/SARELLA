@@ -8,7 +8,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Shopping Cart - Agriturismo Sarella</title>
-    <%@ include file="include.jsp" %>
     <meta name="description" content="I cinghiali lo amano, i sanpietresi lo temono.">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
@@ -19,6 +18,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="assets/js/cart.js"></script>
+    <%@ include file="include.jsp" %>
+
 
 </head>
 
@@ -32,7 +33,7 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">Shopping Cart</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <p></p>
                 </div>
                 <div class="content">
                     <div class="row no-gutters">
