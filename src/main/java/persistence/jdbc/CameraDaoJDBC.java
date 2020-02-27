@@ -18,7 +18,7 @@ public class CameraDaoJDBC implements CameraDao {
         obj.setNumPersone(set.getInt("fk_nump"));
         obj.setDescrizione(set.getString("descrizione"));
         obj.setImagePath(set.getString("image_path"));
-        obj.setPrezzo(set.getBigDecimal("prezzo"));
+        obj.setPrezzo(set.getBigDecimal("prezzo").setScale(2));
         return obj;
 
     }

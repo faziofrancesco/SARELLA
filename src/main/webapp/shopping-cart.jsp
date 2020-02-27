@@ -53,7 +53,7 @@
                                                 <p>${ordrooms.getDescrizione()}</p>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-md-2 price"><span>${ordrooms.getPrezzo()}</span></div>
+                                        <div class="col-6 col-md-2 price"><span><p>$ ${ordrooms.getPrezzo()}</p></span></div>
                                         <button class="btn btn-primary col-6 col-md-2 quantity" style="padding-right:2%"
                                                 type="button" id="btndeletep" onclick="delp(${ordrooms.getIdCamera()})">Elimina prenotazioni</button>
                                     </div>
@@ -64,8 +64,8 @@
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
                                 <h3>Summary</h3>
-                                <h4><span class="text">Subtotal</span><span class="price"> ${totPrice}</span></h4>
-                                <h4><span class="text">Total</span><span class="price"> ${totPrice}</span></h4>
+                                <h4><span class="text">Subtotal</span><span class="price"><p>$ ${totPrice}</p></span></h4>
+                                <h4><span class="text">Total</span><span class="price"><p>$ ${totPrice}</p></span></h4>
                                 <!-- START PAYPAL PAYMENTS-->
                                 <div class ="float-right" id="paypal-button"></div>
                                 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
