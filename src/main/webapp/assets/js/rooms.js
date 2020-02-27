@@ -16,7 +16,7 @@ function showRooms(formName) {
     }
 }
 
-function filterNumP(id) {
+$(function filterNumP(id) {
 
     if(id === '1') {
         if($(id).is(":checked")) {
@@ -25,18 +25,14 @@ function filterNumP(id) {
         } else {
             $('.filtro-nump1').show();
         }
-    }
-
-    if(id === '2') {
+    } else if(id === '2') {
         if($(id).is(":checked")) {
             $('.filtro-nump2').hide();
 
         } else {
             $('.filtro-nump2').show();
         }
-    }
-
-    if(id === '3') {
+    } else if(id === '3') {
         if($(id).is(":checked")) {
             $('.filtro-nump3').hide();
 
@@ -44,9 +40,9 @@ function filterNumP(id) {
             $('.filtro-nump3').show();
         }
     }
-}
+});
 
-function filterTipo(id) {
+$(function filterTipo(id) {
 
     if(id === '1') {
         if($(id).is(":checked")) {
@@ -55,18 +51,14 @@ function filterTipo(id) {
         } else {
             $('.filtro-tip1').show();
         }
-    }
-
-    if(id === '2') {
+    } else if(id === '2') {
         if($(id).is(":checked")) {
             $('.filtro-tip2').hide();
 
         } else {
             $('.filtro-tip2').show();
         }
-    }
-
-    if(id === '3') {
+    } else if(id === '3') {
         if($(id).is(":checked")) {
             $('.filtro-tip3').hide();
 
@@ -74,4 +66,4 @@ function filterTipo(id) {
             $('.filtro-tip3').show();
         }
     }
-}
+});
