@@ -228,39 +228,6 @@
         </div>
     </div>
 </div>
-<div class="modal fade" role="dialog" tabindex="-1" id="myProfile">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Modifica Profilo</h4>
-                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
-            </div>
-            <div class="modal-body">
-
-                    <div class="form-group">
-                        <label for="UpdateName">Nome</label>
-                        <input class="form-control item" type="text" id="UpdateName" placeholder="Nome">
-                    </div>
-                <div class="form-group">
-                    <label for="UpdateSurname">Cognome</label>
-                    <input class="form-control item" type="text" id="UpdateSurname" placeholder="Cognome">
-                </div>
-                <div class="form-group">
-                    <label for="UpdateDate">Data</label>
-                    <input class="form-control item" type="date" id="UpdateDate" placeholder="Date">
-                </div>
-                <div class="form-group">
-                    <label for="UpdateEmail">Email</label>
-                    <input class="form-control item" type="text" id="UpdateEmail" placeholder="email">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" id="btnUpdate" onclick="UpdateCliente()">Update</button>
-            </div>
-
-        </div>
-    </div>
-</div>
 <div class="modal fade justify-content-center align-items-center" role="dialog" tabindex="-1" id="registrationModal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">

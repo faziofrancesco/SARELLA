@@ -35,27 +35,41 @@ public class ClienteDaoJDBC implements ClienteDao {
             index = 1;
         }
 
-        if (object.getNome() != null) {
+        if (object.getNome() != null && !object.getNome().equals("")) {
             statement.setString(index + 1, object.getNome());
         } else {
             statement.setNull(index + 1, Types.VARCHAR);
         }
 
-        if (object.getCognome() != null) {
+        if (object.getCognome() != null && !object.getCognome().equals("")) {
             statement.setString(index + 2, object.getCognome());
         } else {
             statement.setNull(index + 2, Types.VARCHAR);
         }
 
-        if (object.getDataDiNascita() != null) {
+        if (object.getDataDiNascita() != null && !object.getDataDiNascita().toString().equals("")) {
             statement.setDate(index + 3, object.getDataDiNascita());
         } else {
             statement.setNull(index + 3, Types.DATE);
         }
 
-        statement.setString(index + 4, object.getEmail());
-        statement.setString(index + 5, object.getUsername());
-        statement.setString(index + 6, object.getPassword());
+        if (object.getEmail() != null && !object.getEmail().equals("")) {
+            statement.setString(index + 4, object.getEmail());
+        } else {
+            statement.setNull(index + 4, Types.VARCHAR);
+        }
+
+        if (object.getUsername() != null && !object.getUsername().equals("")) {
+            statement.setString(index + 5, object.getUsername());
+        } else {
+            statement.setNull(index + 5, Types.VARCHAR);
+        }
+
+        if (object.getPassword() != null  && !object.getPassword().equals("")) {
+            statement.setString(index + 6, object.getPassword());
+        } else {
+            statement.setNull(index + 6, Types.VARCHAR);
+        }
     }
 
     @Override

@@ -20,14 +20,11 @@ public class NormalLogin extends HttpServlet {
         try {
             String username = req.getParameter("username2");
             String password = req.getParameter("password2");
-            System.out.println(username);
-            System.out.println(password);
             Boolean check=false;
             Cliente admin=DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(username, password);
             Admin ad=DBManager.getInstance().getDAOFactory().getAdminDao().retrieveByUser(admin.getIdCliente());
             if(DBManager.getInstance().getDAOFactory().getAdminDao().retrieveByUser(admin.getIdCliente())!=null &&  ad.getIdAdmin()!=0){
                check=true;
-               System.out.println("brando");
             }
             Cliente cl=DBManager.getInstance().getDAOFactory().getClienteDao().retrieveByUsernamePassword(username, password);
 

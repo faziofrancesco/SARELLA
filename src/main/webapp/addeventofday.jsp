@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Calendar Example</title>
+    <title>Google Calendar Event</title>
     <link rel="stylesheet" href="">
     <script src="assets/js/calendarevent.js"></script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<h1>Example for Google Calendar</h1>
+<h1>Event for Google Calendar</h1>
 <div id="content">
     <p>Fill these fields to enter a new event in your Google Calendar.</p>
     <p><label>Select a date: <input type="date" id="date"></label></p>

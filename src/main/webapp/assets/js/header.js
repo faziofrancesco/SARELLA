@@ -10,3 +10,7 @@ function usernameButton() {
 $(document).ready(function(){
     usernameButton();
 });
+
+$('.modal').on('shown.bs.modal', function(){
+    $('.modal').not(this).modal('hide');
+});

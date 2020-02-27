@@ -88,6 +88,48 @@
             </div>
         </section>
     </main>
+
+<div class="modal fade" role="dialog" tabindex="-1" id="myProfile">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Modifica Profilo</h4>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
+            </div>
+            <form id="updateClienteForm" class="modal-body" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="updateClienteNam">Nome</label>
+                    <input class="form-control item" type="text" id="updateClienteNam" name="updateClienteName" placeholder="Nome">
+                </div>
+                <div class="form-group">
+                    <label for="updateClienteSurname">Cognome</label>
+                    <input class="form-control item" type="text" id="updateClienteSurname" name="updateClienteSurname" placeholder="Cognome">
+                </div>
+                <div class="form-group">
+                    <label for="updateClienteDate">Data</label>
+                    <input class="form-control item" type="date" id="updateClienteDate" name="updateClienteDate" placeholder="Date">
+                </div>
+                <div class="form-group">
+                    <label for="updateClienteEmail">Email</label>
+                    <input class="form-control item" type="text" id="updateClienteEmail" name="updateClienteEmail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <label for="updateClienteUsername">Username</label>
+                    <input class="form-control item" type="text" id="updateClienteUsername" name="updateClienteUsername" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="updateClientePassword">Password</label>
+                    <input class="form-control item" type="text" id="updateClientePassword" name="updateClientePassword" placeholder="Password">
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" id="btnUpdate" onclick="UpdateCliente()">Update</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <%@ include file="footer.jsp" %>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

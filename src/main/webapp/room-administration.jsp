@@ -89,8 +89,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Inserisci una nuova camera</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
                 <form id="addRoomForm" enctype="multipart/form-data">
@@ -155,8 +154,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Modifica la camera</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
                 <form id="updateRoomForm" enctype="multipart/form-data">
@@ -225,8 +223,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Rimuovi camera</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
                 <form id="deleteRoomForm">
@@ -254,8 +251,8 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
                 <h4 class="modal-title">Eventi Agriturismo</h4>
+                <button type="button" class="close" data-dismiss="modal">&#10006;</button>
             </div>
             <div class="modal-body">
                 <iframe id="videoContainer" width="750" height="400" src="addeventofday.jsp" frameborder="100" allowfullscreen></iframe>

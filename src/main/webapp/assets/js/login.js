@@ -39,19 +39,19 @@ function loginUser(event) {
     });
 }
 function UpdateCliente() {
+
+    let form = $("#updateClienteForm")[0];
+    let formData = new FormData(form);
+
     $.ajax({
         type: "POST",
         url: "/updateUser",
-        data: {
-            a: $("#UpdateName").val(),
-            k: $("#UpdateSurname").val(),
-            date2: $("#UpdateDate").val(),
-            email2: $("#UpdateEmail").val()
-        },
+        data: formData,
+        contentType: false,
+        processData: false,
         success: function () {
-
-            window.location.replace("homepage");
-
+            $("#myProfile").modal("hide");
+            $(".modal-backdrop").remove();
         },
         error: function () {
             alert("update non eseguito");
