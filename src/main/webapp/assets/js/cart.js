@@ -21,7 +21,7 @@ function delp(room) {
 function loadCart() {
 
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: "/show_cart",
         success:function () {
             window.location.replace("shopping-cart.jsp");

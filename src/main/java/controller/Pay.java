@@ -37,8 +37,7 @@ public class Pay extends HttpServlet {
             req.getSession().removeAttribute("ordrooms");
             req.getSession().removeAttribute("totPrice");
 
-            RequestDispatcher rd = req.getRequestDispatcher("/homepage");
-            rd.forward(req,resp);
+            resp.setStatus(201);
 
         } catch (Exception e) {
             e.printStackTrace();

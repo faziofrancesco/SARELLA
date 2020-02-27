@@ -105,7 +105,13 @@
                                             {
                                                 // Show a confirmation message to the buyer
                                                 var alert = window.alert('Pagamento avvenuto con successo!');
+
+                                            }).then(function(){
                                                 $.post("/Paga",
+                                                    function() {
+
+                                                        window.location.replace("/homepage");
+                                                    }
                                                 );
                                             });
                                         }
